@@ -1,4 +1,6 @@
 # Prerequisites
+.vscode
+.build
 *.d
 
 # Compiled Object files
@@ -30,3 +32,4 @@
 *.exe
 *.out
 *.app
+ft_containers
