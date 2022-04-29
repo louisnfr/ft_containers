@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/04/26 17:02:52 by lraffin          ###   ########.fr        #
+#    Updated: 2022/04/29 02:42:59 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ifeq ($(HOST),macbook)
 else
 	CXX = c++
 endif
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic #$(DEBUG)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g3 #$(DEBUG)
 DEBUG = -g3 -fsanitize=address
 
 S = src
