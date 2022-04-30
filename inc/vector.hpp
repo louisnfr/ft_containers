@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:04:21 by lraffin           #+#    #+#             */
-/*   Updated: 2022/04/29 02:43:35 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/04/30 03:46:52 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,23 @@ namespace ft
 		typedef size_t								size_type;
 		typedef typename allocator_type::pointer	pointer;
 
-		public:
-			explicit vector(const allocator_type& alloc = allocator_type()) : _alloc(alloc), _array(NULL) {}
-			~vector(void) {}
 		private:
 			allocator_type	_alloc;
 			pointer			_array;
+			size_type		_size;
+			size_type		_capacity;
+
+		public:
+			// default
+			explicit vector(const allocator_type &alloc = allocator_type())
+				: _alloc(alloc), _array(NULL), _size(0), _capacity(0) {}
+			// fill
+			explicit vector (size_type n, const value_type &val = value_type(), const allocator_type &alloc = allocator_type())
+				: _alloc(alloc), _array(NULL), _size(n), _capacity(n)
+			{
+				// things to be done
+			}
+			virtual ~vector(void) {}
 	};
 }
 
