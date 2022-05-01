@@ -6,14 +6,14 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/04/29 02:42:59 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/01 03:37:56 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_containers
 
-SRC =				\
-	main.cpp		\
+SRC =			\
+	main.cpp	\
 
 HOST = $(shell hostname)
 ifeq ($(HOST),macbook)
@@ -58,7 +58,7 @@ re: fclean all
 push:
 	@git add .
 	@git status
-	@git commit -m "cpp (make push)"
+	@git commit -m $(m)
 	@git push
 
 .PHONY: all clean fclean re push
