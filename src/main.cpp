@@ -20,7 +20,7 @@ int	main(void)
 {
 	ft::vector<int>	vect(5, 12);
 
-	std::cout << vect << std::endl;
+	std::cout << vect;
 
 	return (0);
 }
