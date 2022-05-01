@@ -55,13 +55,7 @@ fclean: clean
 
 re: fclean all
 
-push:
-	@git add .
-	@git status
-	@git commit -m $(m)
-	@git push
-
-.PHONY: all clean fclean re push
+.PHONY: all clean fclean re
 
 YELLOW	= \033[38;5;184m
 GREEN	= \033[38;5;46m
