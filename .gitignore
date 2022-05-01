@@ -29,7 +29,7 @@
 *.lib
 
 # Executables
+ft_containers
 *.exe
 *.out
 *.app
-ft_containers
