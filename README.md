@@ -2,5 +2,4 @@
 
 42Paris, May 2022.
 
-The standard C++ containers have all a specific usage.
-To make sure you understand them, let’s re-implement them!
+The goal of this project is to re-implement the standard C++ containers.
