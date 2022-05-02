@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 00:58:20 by lraffin           #+#    #+#             */
-/*   Updated: 2022/05/02 23:35:51 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/05/03 00:01:27 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 
 #if STD
  #define NS std
- #define test "STD"
 #else
  #define NS ft
- #define test "FT"
 #endif
 
 int	main(void)
@@ -35,8 +33,6 @@ int	main(void)
 
 	std::cout << copy[4] << std::endl;
 	std::cout << vect[4] << std::endl;
-
-	std::cout << test << std::endl;
 
 	return (0);
 }

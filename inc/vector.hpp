@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:04:21 by lraffin           #+#    #+#             */
-/*   Updated: 2022/05/02 22:37:12 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/05/03 00:00:26 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define __VECTOR_HPP__
 
 # include <iostream>
-
-# include <memory>
 
 namespace ft
 {
@@ -80,14 +78,6 @@ namespace ft
 			size_t		capacity(void) const { return(this->_capacity); }
 	};
 
-}
-
-template<typename T>
-std::ostream	&operator<<(std::ostream &o, ft::vector<T> &rhs)
-{
-	for (size_t i = 0; i < rhs.size(); i++)
-		std::cout << rhs.get_data()[i] << std::endl;
-	return (o);
 }
 
 #endif
