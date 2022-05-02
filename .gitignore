@@ -30,6 +30,12 @@
 
 # Executables
 ft_containers
+std_containers
 *.exe
 *.out
 *.app
+
+# Diff
+ft_containers.txt
+std_containers.txt
+diff.txt

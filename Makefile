@@ -6,14 +6,14 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/01 03:57:40 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/02 23:55:29 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_containers
+NAME_FT = ft_containers
+NAME_STD = std_containers
 
-SRC =			\
-	main.cpp	\
+SRC =	main.cpp
 
 HOST = $(shell hostname)
 ifeq ($(HOST),macbook)
@@ -21,41 +21,64 @@ ifeq ($(HOST),macbook)
 else
 	CXX = c++
 endif
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g3 #$(DEBUG)
+
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #$(DEBUG)
 DEBUG = -g3 -fsanitize=address
 
 S = src
 I = inc
+
 B = .build
-O = $(SRC:%.cpp=$(B)/%.o)
-D = $(SRC:%.cpp=$(B)/%.d)
+B_FT = .build/ft
+B_STD = .build/std
 
-all: $(NAME)
+O_FT = $(SRC:%.cpp=$(B_FT)/%.o)
+O_STD = $(SRC:%.cpp=$(B_STD)/%.o)
 
-$(NAME): $(O)
+D_FT = $(SRC:%.cpp=$(B_FT)/%.d)
+D_STD = $(SRC:%.cpp=$(B_STD)/%.d)
+
+all: $(NAME_FT) $(NAME_STD)
+
+$(NAME_FT): $(O_FT)
 	@$(CXX) $(CXXFLAGS) $^ -o $@
 	@echo "$(DONE) $@"
 
-$(B):
-	@mkdir $@
+$(NAME_STD): $(O_STD)
+	@$(CXX) $(CXXFLAGS) $^ -o $@
+	@echo "$(DONE) $@"
 
--include $(D)
+-include $(D_FT)
+-include $(D_STD)
 
-$(B)/%.o: $(S)/%.cpp | $(B)
+$(B_FT)/%.o: $(S)/%.cpp
+	@mkdir -p $(B_FT)
 	@echo "$(COMPILE)$(NOC) $*.cpp"
 	@$(CXX) $(CXXFLAGS) -MMD -MP $(I:%=-I %) -c $< -o $@
+
+$(B_STD)/%.o: $(S)/%.cpp
+	@mkdir -p $(B_STD)
+	@echo "$(COMPILE)$(NOC) $*.cpp"
+	@$(CXX) $(CXXFLAGS) -MMD -MP -DSTD $(I:%=-I %) -c $< -o $@
 
 clean:
 	@echo "$(INFO) deleting $(B)"
 	@rm -rf $(B)
 
 fclean: clean
-	@echo "$(INFO) deleting $(NAME)"
-	@rm -f $(NAME)
+	@echo "$(INFO) deleting binaries"
+	@rm -f $(NAME_FT) $(NAME_STD)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+diff: $(NAME_FT) $(NAME_STD)
+	@./$(NAME_FT) > $(NAME_FT).txt
+	@./$(NAME_STD) > $(NAME_STD).txt
+	-@diff $(NAME_FT).txt $(NAME_STD).txt > diff.txt
+	@cat diff.txt
+	@rm -rf $(NAME_FT).txt $(NAME_STD).txt diff.txt
+
+.PHONY: all clean fclean re diff
 
 YELLOW	= \033[38;5;184m
 GREEN	= \033[38;5;46m
