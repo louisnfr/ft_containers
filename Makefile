@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/02 23:55:29 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/04 22:29:44 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ O_STD = $(SRC:%.cpp=$(B_STD)/%.o)
 D_FT = $(SRC:%.cpp=$(B_FT)/%.d)
 D_STD = $(SRC:%.cpp=$(B_STD)/%.d)
 
-all: $(NAME_FT) $(NAME_STD)
+all: $(NAME_FT)
 
 $(NAME_FT): $(O_FT)
 	@$(CXX) $(CXXFLAGS) $^ -o $@
@@ -71,6 +71,8 @@ fclean: clean
 
 re: fclean all
 
+std: $(NAME_STD)
+
 diff: $(NAME_FT) $(NAME_STD)
 	@./$(NAME_FT) > $(NAME_FT).txt
 	@./$(NAME_STD) > $(NAME_STD).txt
@@ -78,7 +80,7 @@ diff: $(NAME_FT) $(NAME_STD)
 	@cat diff.txt
 	@rm -rf $(NAME_FT).txt $(NAME_STD).txt diff.txt
 
-.PHONY: all clean fclean re diff
+.PHONY: all clean fclean re std diff
 
 YELLOW	= \033[38;5;184m
 GREEN	= \033[38;5;46m
