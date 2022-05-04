@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:04:21 by lraffin           #+#    #+#             */
-/*   Updated: 2022/05/03 00:39:32 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/05/04 22:49:30 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ class vector
 		explicit vector(const allocator_type &alloc = allocator_type())
 			: _alloc(alloc), _data(NULL), _size(0), _capacity(0) {}
 		// fill
-		explicit vector(size_type n, const value_type &val = value_type(), const allocator_type &alloc = allocator_type())
+		explicit vector(size_type n, const value_type &val = value_type(),
+			const allocator_type &alloc = allocator_type())
 			: _alloc(alloc), _data(NULL), _size(n), _capacity(n)
 		{
 			_data = _alloc.allocate(n);
@@ -45,13 +46,23 @@ class vector
 				_alloc.construct(_data + i, val);
 		}
 		// range
+		template <class InputIterator>
+		vector (InputIterator first, InputIterator last,
+			const allocator_type &alloc = allocator_type())
+		{
+			while (first != last)
+			{
+				this
+			}
+		}
 		// copy
 		vector(const vector &src)
+			:  _alloc(src._alloc), _size(src._size), _capacity(src._capacity)
 		{
 			_capacity = src.capacity();
 			_size = src.size();
 			_alloc = src.get_allocator();
-			_data = _alloc.allocate(src.size());
+			_data = _alloc.allocate(src.capacity());
 			for (size_type i = 0; i < src.size(); i++)
 				_alloc.construct(_data + i, src.get_data()[i]);
 		}
