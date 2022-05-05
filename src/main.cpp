@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 00:58:20 by lraffin           #+#    #+#             */
-/*   Updated: 2022/05/05 17:35:48 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/05/05 17:41:01 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 int	main(void)
 {
-	std::cout << NSd << std::endl;
+	// std::cout << NSd << std::endl;
 	NS::vector<int>	vect(5, 42);
 	NS::vector<int>	copy(vect);
 
