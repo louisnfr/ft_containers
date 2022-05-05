@@ -1,16 +1,16 @@
 #if STD
   #define NS std
-  #define NSd "std"
   #include <iostream>
-  #include <map>
-  #include <stack>
   #include <vector>
+  #include <stack>
+  #include <map>
+  #define diff "std"
 #else
   #define NS ft
-  #define NSd "ft"
-  #include "stack.hpp"
-  #include "vector.hpp"
-  // #include "map.hpp"
+  #include "inc/vector.hpp"
+  #include "inc/stack.hpp"
+  // #include "inc/map.hpp"
+  #define diff "ft"
 #endif
 
 int main(void) {

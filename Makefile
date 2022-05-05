@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/05 17:36:16 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/05 19:05:53 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ else
 	CXX = c++
 endif
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #$(DEBUG)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. #$(DEBUG)
 DEBUG = -g3 -fsanitize=address
 
 S = src
@@ -54,12 +54,12 @@ $(NAME_STD): $(O_STD)
 $(B_FT)/%.o: $(S)/%.cpp
 	@mkdir -p $(B_FT)
 	@echo "$(COMPILE)$(NOC) $*.cpp"
-	@$(CXX) $(CXXFLAGS) -MMD -MP $(I:%=-I %) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -MMD -MP -I$(I) -c $< -o $@
 
 $(B_STD)/%.o: $(S)/%.cpp
 	@mkdir -p $(B_STD)
 	@echo "$(COMPILE)$(NOC) $*.cpp"
-	@$(CXX) $(CXXFLAGS) -MMD -MP -DSTD $(I:%=-I %) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -MMD -MP -DSTD -I$(I) -c $< -o $@
 
 clean:
 	@echo "$(INFO) deleting $(B)"
