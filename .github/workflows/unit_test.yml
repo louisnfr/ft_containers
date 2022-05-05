@@ -1,0 +1,16 @@
+name: unit_test
+on: [push]
+
+jobs:
+  unit_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: install valgrind
+        run: sudo apt update && sudo apt install -y valgrind
+      - name: make diff
+        run: make diff
+#       - name: verify
+#         run: cat log && grep -v "FAILED" log
+
