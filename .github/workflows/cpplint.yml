@@ -1,0 +1,11 @@
+name: cpplint
+on : [push]
+
+jobs:
+  cpplint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+    - run: pip install cpplint
+    - run: cpplint --recursive --root=src --filter=-whitespace/tab,-legal/copyright,-build/explicit_make_pair,-build/include_what_you_use,-build/storage_class,-runtime/int src/
