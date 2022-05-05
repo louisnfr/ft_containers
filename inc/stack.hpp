@@ -1,36 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 02:08:08 by lraffin           #+#    #+#             */
-/*   Updated: 2022/04/30 03:47:54 by lraffin          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef INC_STACK_HPP_
+#define INC_STACK_HPP_
 
-#ifndef __STACK_HPP__
-# define __STACK_HPP__
+#include "inc/vector.hpp"
 
-# include "vector.hpp"
-
-namespace ft
-{
-	template <class T, class Container = vector<T> >
-	class stack
-	{
+namespace ft {
+template <class T, class Container = ft::vector<T> >
+class stack {
 		typedef T			value_type;
 		typedef Container	container_type;
 		typedef size_t		size_type;
 
-		protected:
-			container_type	under_ctr;
+	protected:
+		container_type	under_ctr;
 
-		public:
-			explicit stack (const container_type &c = container_type()) : under_ctr(c) {}
+	public:
+		explicit stack(const container_type &c = container_type()) : under_ctr(c) {}
+};
+}  // namespace ft
 
-	};
-}
-
-#endif
+#endif  // INC_STACK_HPP_
