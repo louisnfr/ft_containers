@@ -6,7 +6,7 @@
 /*   By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:04:21 by lraffin           #+#    #+#             */
-/*   Updated: 2022/05/04 22:49:30 by lraffin          ###   ########.fr       */
+/*   Updated: 2022/05/05 17:34:45 by lraffin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ class vector
 				_alloc.construct(_data + i, val);
 		}
 		// range
-		template <class InputIterator>
-		vector (InputIterator first, InputIterator last,
-			const allocator_type &alloc = allocator_type())
-		{
-			while (first != last)
-			{
-				this
-			}
-		}
+		// template <class InputIterator>
+		// vector (InputIterator first, InputIterator last,
+		// 	const allocator_type &alloc = allocator_type())
+		// {
+		// 	while (first != last)
+		// 	{
+		// 		this
+		// 	}
+		// }
 		// copy
 		vector(const vector &src)
 			:  _alloc(src._alloc), _size(src._size), _capacity(src._capacity)
