@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/04 22:29:44 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/05 17:36:16 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ std: $(NAME_STD)
 diff: $(NAME_FT) $(NAME_STD)
 	@./$(NAME_FT) > $(NAME_FT).txt
 	@./$(NAME_STD) > $(NAME_STD).txt
-	-@diff $(NAME_FT).txt $(NAME_STD).txt > diff.txt
+	@diff $(NAME_FT).txt $(NAME_STD).txt > diff.txt
 	@cat diff.txt
 	@rm -rf $(NAME_FT).txt $(NAME_STD).txt diff.txt
 
