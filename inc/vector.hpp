@@ -11,8 +11,8 @@ class vector {
 		typedef T				value_type;
 		typedef Allocator		allocator_type;
 
-		typedef size_t			size_type;
-		typedef ptrdiff_t		difference_type;
+		typedef std::size_t		size_type;
+		typedef std::ptrdiff_t	difference_type;
 
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::reference reference;
@@ -55,7 +55,7 @@ class vector {
 			_alloc = x.get_allocator();
 			_data = _alloc.allocate(x.capacity());
 			for (size_type i = 0; i < x.size(); i++)
-			_alloc.construct(_data + i, x.get_data()[i]);
+			_alloc.construct(_data + i, x._data[i]);
 		}
 
 	// destructor
