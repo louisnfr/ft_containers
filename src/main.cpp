@@ -22,9 +22,5 @@ int main(void) {
 	std::cout << copy[4] << std::endl;
 	std::cout << vect[4] << std::endl;
 
-	NS::vector<int>	no(1, 1);
-
-	std::cout << no.empty() << std::endl;
-
 	return (0);
 }
