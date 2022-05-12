@@ -20,7 +20,8 @@ class stack {
 	public:
 	// constructor
 
-		explicit stack(const container_type &ctnr = container_type()) : c(ctnr) {}
+		explicit stack(const container_type &ctnr = container_type())
+			: c(ctnr) {}
 
 	// destructor
 
@@ -38,23 +39,28 @@ class stack {
 	// non-member function overloads
 
 		// template <class T, class Container>
-		// bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
+		// bool operator== (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 
 		// template <class T, class Container>
-		// bool operator!= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
+		// bool operator!= (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 
 		// template <class T, class Container>
-		// bool operator<  (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
+		// bool operator<  (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 
 		// template <class T, class Container>
-		// bool operator<= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
+		// bool operator<= (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 
 		// template <class T, class Container>
-		// bool operator>  (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
+		// bool operator>  (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 
 		// template <class T, class Container>
-		// bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {}
-
+		// bool operator>= (const stack<T,Container>& lhs,
+		// 	const stack<T,Container>& rhs) {}
 };
 }  // namespace ft
 

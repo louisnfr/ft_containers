@@ -90,7 +90,7 @@ class vector {
 		// size_type	max_size() const {}
 		// void		resize(size_type n, value_type val = value_type()) {}
 		size_type	capacity(void) const { return (this->_capacity); }
-		bool		empty(void) const { return (true); }
+		// bool		empty(void) const {}
 		// void		reserve(size_type n) {}
 
 	// element access
@@ -119,7 +119,8 @@ class vector {
 		// iterator insert(iterator position, const value_type& val) {}
 		// void insert(iterator position, size_type n, const value_type& val) {}
 		// template <class InputIterator>
-		// void insert(iterator position, InputIterator first, InputIterator last) {}
+		// void insert(iterator position, InputIterator first,
+		// 	InputIterator last) {}
 
 		// iterator erase(iterator position) {}
 		// iterator erase(iterator first, iterator last) {}
@@ -137,18 +138,22 @@ class vector {
 	// void swap (vector<T,Alloc> &x, vector<T,Alloc> &y) {}
 
 	// template <class T, class Alloc>
-	// bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-	// template <class T, class Alloc>
-	// bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-	// template <class T, class Alloc>
-	// bool operator<  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-	// template <class T, class Alloc>
-	// bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-	// template <class T, class Alloc>
-	// bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-	// template <class T, class Alloc>
-	// bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
 
+	// template <class T, class Alloc>
+	// bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
 };
 }  // namespace ft
 
