@@ -13,7 +13,7 @@ class vector {
 
 		typedef size_t			size_type;
 		typedef ptrdiff_t		difference_type;
-		
+
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::reference reference;
 
@@ -130,6 +130,25 @@ class vector {
 	// allocator
 
 		allocator_type	get_allocator(void) const { return (this->_alloc); }
+
+	// non-member function overloads
+
+	// template <class T, class Alloc>
+	// void swap (vector<T,Alloc> &x, vector<T,Alloc> &y) {}
+
+	// template <class T, class Alloc>
+	// bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// template <class T, class Alloc>
+	// bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// template <class T, class Alloc>
+	// bool operator<  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// template <class T, class Alloc>
+	// bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// template <class T, class Alloc>
+	// bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	// template <class T, class Alloc>
+	// bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
 };
 }  // namespace ft
 
