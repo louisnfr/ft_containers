@@ -14,13 +14,17 @@
 #endif
 
 int main(void) {
-	std::vector<int> vect(5, 42);
-	std::vector<int> copy(vect);
+	NS::vector<int> vect(5, 42);
+	NS::vector<int> copy(vect);
 
 	vect[4] = 0;
 
 	std::cout << copy[4] << std::endl;
 	std::cout << vect[4] << std::endl;
+
+	NS::vector<int>	no(1, 1);
+
+	std::cout << no.empty() << std::endl;
 
 	return (0);
 }
