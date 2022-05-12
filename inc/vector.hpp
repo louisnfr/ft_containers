@@ -7,7 +7,8 @@
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
 class vector {
-		typedef T	value_type;
+	public:
+		typedef T			value_type;
 		typedef Allocator	allocator_type;
 		typedef size_t		size_type;
 		typedef typename allocator_type::pointer pointer;
@@ -15,7 +16,9 @@ class vector {
 
 	private:
 		allocator_type _alloc;
+
 		pointer _data;
+
 		size_type _size;
 		size_type _capacity;
 
