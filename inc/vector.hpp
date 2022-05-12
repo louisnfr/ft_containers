@@ -50,12 +50,9 @@ class vector {
 
 		vector(const vector &x)
 			: _alloc(x._alloc), _size(x._size), _capacity(x._capacity) {
-			_capacity = x.capacity();
-			_size = x.size();
-			_alloc = x.get_allocator();
 			_data = _alloc.allocate(x.capacity());
-			for (size_type i = 0; i < x.size(); i++)
-			_alloc.construct(_data + i, x._data[i]);
+			for (size_type i = 0; i < _size; i++)
+				_alloc.construct(_data + i, x._data[i]);
 		}
 
 	// destructor
