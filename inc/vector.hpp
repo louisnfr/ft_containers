@@ -29,7 +29,7 @@ class vector {
 			: _alloc(alloc), _data(NULL), _size(n), _capacity(n) {
 			_data = _alloc.allocate(n);
 			for (size_t i = 0; i < n; i++) _alloc.construct(_data + i, val);
-		}
+		} 
 		// range
 		// template <class InputIterator>
 		// vector (InputIterator first, InputIterator last,

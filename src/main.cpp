@@ -14,8 +14,8 @@
 #endif
 
 int main(void) {
-	NS::vector<int> vect(5, 42);
-	NS::vector<int> copy(vect);
+	std::vector<int> vect(5, 42);
+	std::vector<int> copy(vect);
 
 	vect[4] = 0;
 
