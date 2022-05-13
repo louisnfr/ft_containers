@@ -1,5 +1,4 @@
-#ifndef INC_VECTOR_HPP_
-#define INC_VECTOR_HPP_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -153,5 +152,3 @@ class vector {
 	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
 };
 }  // namespace ft
-
-#endif  // INC_VECTOR_HPP_

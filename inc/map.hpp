@@ -1,5 +1,4 @@
-#ifndef INC_MAP_HPP_
-#define INC_MAP_HPP_
+#pragma once
 
 namespace ft {
 template <class Key,
@@ -13,5 +12,3 @@ class map {
 
 };
 } // namespace ft
-
-#endif // INC_MAP_HPP_

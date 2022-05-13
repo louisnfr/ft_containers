@@ -1,5 +1,4 @@
-#ifndef INC_STACK_HPP_
-#define INC_STACK_HPP_
+#pragma once
 
 #include "inc/vector.hpp"
 
@@ -86,5 +85,3 @@ class stack {
 			}
 };
 }  // namespace ft
-
-#endif  // INC_STACK_HPP_
