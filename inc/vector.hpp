@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <memory>
+#include <limits>
 
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
@@ -36,7 +37,8 @@ class vector {
 						const allocator_type &alloc = allocator_type())
 			: _alloc(alloc), _data(NULL), _size(n), _capacity(n) {
 			_data = _alloc.allocate(n);
-			for (size_t i = 0; i < n; i++) _alloc.construct(_data + i, val);
+			for (size_t i = 0; i < n; i++)
+				_alloc.construct(_data + i, val);
 		}
 
 	// range constructor
@@ -64,7 +66,7 @@ class vector {
 
 	// operator overload
 
-		// vector	&operator=(const vector &x) {}
+		vector	&operator=(const vector &x) {}
 
 	// iterators
 
@@ -83,11 +85,24 @@ class vector {
 	// capacity
 
 		size_type	size(void) const { return (this->_size); }
-		// size_type	max_size() const {}
+		size_type	max_size() const { return (_alloc.max_size()); }
 		// void		resize(size_type n, value_type val = value_type()) {}
 		size_type	capacity(void) const { return (this->_capacity); }
-		// bool		empty(void) const {}
-		// void		reserve(size_type n) {}
+		bool		empty(void) const {
+			return (_size == 0 ? true : false);
+		}
+		void		reserve(size_type n) {
+			if (n > max_size())
+				throw std::length_error("vector::reserve");
+			pointer tmp = _alloc.allocate(n);
+			for (size_t i = 0; i < _size; i++) {
+				_alloc.construct(tmp + i, _data[i]);
+				_alloc.destroy(_data + i);
+			}
+			_alloc.deallocate(_data, _capacity);
+			_data = tmp;
+			_capacity = n;
+		}
 
 	// element access
 
@@ -109,8 +124,20 @@ class vector {
 		// void assign(InputIterator first, InputIterator last) {}
 		// void assign(size_type n, const value_type& val) {}
 
-		// void push_back(const value_type& val) {}
-		// void pop_back() {}
+		void push_back(const value_type& val) {
+			size_type new_cap;
+
+			if (_size == 0)
+				new_cap = 1;
+			else
+				new_cap = _size * 2;
+			if (_size == _capacity)
+				reserve(new_cap);
+			_alloc.construct(_data + _size++, val);
+		}
+		void pop_back() {
+			_alloc.destroy(_data + _size--);
+		}
 
 		// iterator insert(iterator position, const value_type& val) {}
 		// void insert(iterator position, size_type n, const value_type& val) {}
