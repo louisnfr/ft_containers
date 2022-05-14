@@ -2,17 +2,18 @@
 
 namespace ft {
 template<class Iterator>
-struct iterator_traits {
-
-}
-
-template<class T>
-struct iterator_traits<T*> {
-
-}
+class iterator_traits {
+	public:
+		
+};
 
 template<class T>
-struct iterator_traits<const T*> {
+class iterator_traits<T*> {
 
-}
+};
+
+template<class T>
+class iterator_traits<const T*> {
+
+};
 }  // namespace ft
