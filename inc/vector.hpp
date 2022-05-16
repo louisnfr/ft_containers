@@ -16,6 +16,7 @@ class vector {
 
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::reference reference;
+		typedef typename allocator_type::const_reference const_reference;
 
 	private:
 		allocator_type _alloc;
@@ -69,8 +70,6 @@ class vector {
 
 		virtual ~vector(void) {
 			_alloc.deallocate(_data, size());
-			_size = 0;
-			_capacity = 0;
 		}
 
 	// operator overload
@@ -105,11 +104,13 @@ class vector {
 
 		size_type	max_size() const { return (_alloc.max_size()); }
 
-		// void		resize(size_type n, value_type val = value_type()) {}
+		// void	resize(size_type n, value_type val = value_type()) {
+
+		// }
 
 		size_type	capacity(void) const { return (this->_capacity); }
 
-		bool		empty(void) const {
+		bool	empty(void) const {
 			return (_size == 0);
 		}
 
@@ -128,11 +129,16 @@ class vector {
 
 	// element access
 
-		reference operator[](size_type n) { return (this->_data[n]); }
-		// const_reference operator[](size_type n) const {}
+		reference operator[](size_type n) { return (_data[n]); }
+		const_reference operator[](size_type n) const { return (_data[n]); }
 
-		// reference at(size_type n) {}
-		// const_reference at (size_type n) const {}
+		reference at(size_type n) {
+			if (n >= _size)
+				throw std::out_of_range("vector::_M_range_check: __n " + \
+				"(which is " + n + ") >= this->size() (which is " + _size + ")");
+			return (_data[n]);
+		}
+		const_reference at (size_type n) const { return (_data[n]); }
 
 		// reference front() {}
 		// const_reference front() const {}

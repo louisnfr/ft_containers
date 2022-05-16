@@ -15,14 +15,22 @@
 
 int main(void) {
 	NS::vector<int> vect;
-	NS::vector<int> v;
+	NS::vector<int> v(2506, 2560);
 
-	for (size_t i = 0; i < 5; i++)
-		vect.push_back(i);
+	// for (size_t i = 0; i < 5; i++)
+	// 	vect.push_back(i);
 
 	v = vect;
-	// for (size_t i = 0; i < v.size(); i++)
-	// 	std::cout << v[i] << std::endl;
+
+	for (size_t i = 0; i < v.size(); i++)
+		std::cout << v[i] << std::endl;
+
+	try {
+		std::cout << v.at(654) << std::endl;
+	} catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
 	return (0);
 }
 	// capacity and reserve throw error test
