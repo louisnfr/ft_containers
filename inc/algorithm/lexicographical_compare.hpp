@@ -8,4 +8,3 @@ template<class InputIt1, class InputIt2, class Compare>
 bool lexicographical_compare(InputIt1 first1, InputIt1 last1,
 							InputIt2 first2, InputIt2 last2,
 							Compare comp) {}
-	

@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include <sstream>
-#include <string>
-#include <memory>
 #include <limits>
 
 namespace ft {
@@ -198,6 +196,7 @@ class vector {
 		// iterator erase(iterator first, iterator last) {}
 
 		// void swap (vector& x) {}
+
 		void clear() {
 			if (_data) {
 				for (size_t i = 0; i < _size; i++)

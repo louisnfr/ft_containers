@@ -35,9 +35,9 @@ int main(void) {
 	NS::vector<int> foo;
 	sz = foo.capacity();
 	std::cout << "making foo grow:\n";
-	for (int i=0; i<100; ++i) {
+	for (int i = 0; i < 100; ++i) {
 		foo.push_back(i);
-		if (sz!=foo.capacity()) {
+		if (sz != foo.capacity()) {
 		sz = foo.capacity();
 		std::cout << "capacity changed: " << sz << '\n';
 		}
@@ -46,19 +46,17 @@ int main(void) {
 	NS::vector<int> bar;
 	sz = bar.capacity();
 	std::cout << bar.max_size() << std::endl;
-	try
-	{
+	try {
 		bar.reserve(2305843009213693959);
 	}
-	catch(const std::exception& e)
-	{
+	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
 	std::cout << "making bar grow:\n";
-	for (int i=0; i<100; ++i) {
+	for (int i = 0; i < 100; ++i) {
 		bar.push_back(i);
-		if (sz!=bar.capacity()) {
+		if (sz != bar.capacity()) {
 		sz = bar.capacity();
 		std::cout << "capacity changed: " << sz << '\n';
 		}
