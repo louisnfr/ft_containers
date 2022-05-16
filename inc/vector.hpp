@@ -45,14 +45,14 @@ class vector {
 
 	// range constructor
 
-		template <class InputIterator>
-		vector(
-			InputIterator first,
-			InputIterator last,
-			const allocator_type& alloc = allocator_type()
-		) {
-			std::cout << "debug" << std::endl;
-		}
+		// template <class InputIterator>
+		// vector(
+		// 	InputIterator first,
+		// 	InputIterator last,
+		// 	const allocator_type& alloc = allocator_type()
+		// ) {
+		// 	std::cout << "debug" << std::endl;
+		// }
 
 	// copy constructor
 
@@ -75,7 +75,7 @@ class vector {
 
 	// operator overload
 
-		vector	&operator=(const vector &x) {}
+		// vector	&operator=(const vector &x) {}
 
 	// iterators
 
