@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/16 17:45:15 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/17 01:30:12 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ std: $(NAME_STD)
 diff: $(NAME_FT) $(NAME_STD)
 	@./$(NAME_FT) &> $(NAME_FT).txt
 	@./$(NAME_STD) &> $(NAME_STD).txt
-	-@diff -y $(NAME_FT).txt $(NAME_STD).txt
+	-@diff -ys $(NAME_FT).txt $(NAME_STD).txt
 	@rm -rf $(NAME_FT).txt $(NAME_STD).txt
 
 .PHONY: all clean fclean re std diff
