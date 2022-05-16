@@ -75,7 +75,15 @@ class vector {
 
 	// operator overload
 
-		// vector	&operator=(const vector &x) {}
+		vector	&operator=(const vector &x) {
+			clear();
+			if (_capacity < x._size)
+				reserve(x._capacity);
+			_size = x._size;
+			for (size_t i = 0; i < x._size; i++)
+				_alloc.construct(_data + i, x._data[i]);
+			return (*this);
+		}
 
 	// iterators
 
@@ -105,7 +113,7 @@ class vector {
 			return (_size == 0);
 		}
 
-		void		reserve(size_type n) {
+		void	reserve(size_type n) {
 			if (n > max_size())
 				throw std::length_error("vector::reserve");
 			pointer tmp = _alloc.allocate(n);
@@ -164,7 +172,14 @@ class vector {
 		// iterator erase(iterator first, iterator last) {}
 
 		// void swap (vector& x) {}
-		// void clear() {}
+		void clear() {
+			if (_data)
+			{
+				for (size_t i = 0; i < _size; i++)
+					_alloc.destroy(_data + i);
+			}
+			_size = 0;
+		}
 
 	// allocator
 
