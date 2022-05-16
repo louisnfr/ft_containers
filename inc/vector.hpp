@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include <memory>
 #include <limits>
 
@@ -17,6 +19,8 @@ class vector {
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::reference reference;
 		typedef typename allocator_type::const_reference const_reference;
+
+		typedef typename std::random_access_iterator_tag iterator;
 
 	private:
 		allocator_type _alloc;
@@ -129,22 +133,38 @@ class vector {
 
 	// element access
 
-		reference operator[](size_type n) { return (_data[n]); }
-		const_reference operator[](size_type n) const { return (_data[n]); }
-
-		reference at(size_type n) {
-			if (n >= _size)
-				throw std::out_of_range("vector::_M_range_check: __n " + \
-				"(which is " + n + ") >= this->size() (which is " + _size + ")");
+		reference operator[](size_type n) {
 			return (_data[n]);
 		}
-		const_reference at (size_type n) const { return (_data[n]); }
 
-		// reference front() {}
-		// const_reference front() const {}
+		const_reference operator[](size_type n) const {
+			return (_data[n]);
+		}
 
-		// reference back() {}
-		// const_reference back() const {}
+		reference at(size_type n) {
+			__range_check(n);
+			return (_data[n]);
+		}
+		const_reference at(size_type n) const {
+			__range_check(n);
+			return (_data[n]);
+		}
+
+		reference front() {
+			return (_data[0]);
+		}
+
+		const_reference front() const {
+			return (_data[0]);
+		}
+
+		reference back() {
+			return (_data[_size - 1]);
+		}
+
+		const_reference back() const {
+			return (_data[_size - 1]);
+		}
 
 	// modifiers
 
@@ -179,8 +199,7 @@ class vector {
 
 		// void swap (vector& x) {}
 		void clear() {
-			if (_data)
-			{
+			if (_data) {
 				for (size_t i = 0; i < _size; i++)
 					_alloc.destroy(_data + i);
 			}
@@ -213,5 +232,20 @@ class vector {
 
 	// template <class T, class Alloc>
 	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	private:
+		void	__range_check(size_type n) {
+			std::ostringstream c_n;
+			std::ostringstream c_size;
+
+			c_n << n;
+			c_size << _size;
+			if (n >= _size)
+				throw std::out_of_range(
+					std::string("vector::_M_range_check: __n ") + \
+					std::string("(which is ") + c_n.str() + \
+					std::string(") >= this->size() (which is ") + \
+					c_size.str() + std::string(")"));
+		}
 };
 }  // namespace ft
