@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stack>
 #include "inc/vector.hpp"
 
 namespace ft {
@@ -87,4 +86,4 @@ class stack {
 };
 
 
-}  // namespace ft
+} // namespace ft

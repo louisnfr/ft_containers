@@ -28,4 +28,4 @@ class iterator_traits<const T*> {
 		typedef const T& reference
 		typedef std::random_access_iterator_tag iterator_category
 };
-}  // namespace ft
+} // namespace ft

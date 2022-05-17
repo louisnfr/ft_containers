@@ -4,6 +4,8 @@
 #include <sstream>
 #include <limits>
 
+#include "iterators/random_access_iterator.hpp"
+
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
 class vector {
@@ -11,14 +13,20 @@ class vector {
 		typedef T				value_type;
 		typedef Allocator		allocator_type;
 
-		typedef std::size_t		size_type;
+		typedef typename allocator_type::reference			reference;
+		typedef typename allocator_type::const_reference	const_reference;
+
+		typedef typename allocator_type::pointer		pointer;
+		typedef typename allocator_type::const_pointer	const_pointer;
+
+		typedef ft::random_access_iterator iterator;
+		// typedef std::const_random_access_iterator const_iterator;
+
+		// typedef typename ft::reverse_iterator rever_iterator iterator;
+		// typedef typename std::random_access_iterator iterator;
+
 		typedef std::ptrdiff_t	difference_type;
-
-		typedef typename allocator_type::pointer pointer;
-		typedef typename allocator_type::reference reference;
-		typedef typename allocator_type::const_reference const_reference;
-
-		typedef typename std::random_access_iterator_tag iterator;
+		typedef std::size_t		size_type;
 
 	private:
 		allocator_type _alloc;
@@ -247,4 +255,4 @@ class vector {
 					c_size.str() + std::string(")"));
 		}
 };
-}  // namespace ft
+} // namespace ft
