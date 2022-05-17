@@ -1,8 +1,11 @@
 #pragma once
 
+/*
+**	https://www.cplusplus.com/reference/vector/vector/
+*/
+
 #include <iostream>
 #include <sstream>
-#include <limits>
 
 #include "iterators/random_access_iterator.hpp"
 
@@ -19,7 +22,7 @@ class vector {
 		typedef typename allocator_type::pointer		pointer;
 		typedef typename allocator_type::const_pointer	const_pointer;
 
-		typedef ft::random_access_iterator iterator;
+		typedef ft::random_access_iterator<T> iterator;
 		// typedef std::const_random_access_iterator const_iterator;
 
 		// typedef typename ft::reverse_iterator rever_iterator iterator;
@@ -96,10 +99,14 @@ class vector {
 
 	// iterators
 
-		// iterator begin() {}
+		iterator begin() {
+			return (iterator(_data));
+		}
 		// const_iterator begin() const {}
 
-		// iterator end() {}
+		iterator end() {
+			return (iterator(_data + _size));
+		}
 		// const_iterator end() const {}
 
 		// reverse_iterator rbegin() {}
