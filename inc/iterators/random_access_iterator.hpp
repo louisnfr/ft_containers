@@ -88,7 +88,7 @@ class random_access_iterator {
 		// arithmetic operators
 
 		random_access_iterator	operator+(const difference_type &n) const {
-			return (_ptr + n);
+			return random_access_iterator(_ptr + n);
 		}
 
 		difference_type	operator+(const random_access_iterator &rhs) const {
@@ -96,7 +96,7 @@ class random_access_iterator {
 		}
 
 		random_access_iterator	operator-(const difference_type &n) const {
-			return (_ptr - n);
+			return random_access_iterator(_ptr - n);
 		}
 
 		difference_type	operator-(const random_access_iterator &rhs) const {
@@ -139,4 +139,5 @@ class random_access_iterator {
 			return *(_ptr + n);
 		}
 };
+
 } // namespace ft
