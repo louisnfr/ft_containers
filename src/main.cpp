@@ -14,22 +14,32 @@
 #endif
 
 int main(void) {
-	// NS::vector<int> vect;
-	NS::vector<int> *v = new NS::vector<int>(59797, 15);
-	std::cout << "size: " << v->size() << std::endl;
 
-	for (size_t i = 0; i < 5; i++)
-		v->push_back(i);
+	// NS::vector<int> ref(10, 42);
 
-	std::cout << "capacity: " << v->capacity() << std::endl;
-	v->resize(5, 49);
+	// NS::vector<int> v(ref.begin(), ref.end());
+	// std::cout << v.size() << std::endl;
+	// std::cout << v.capacity() << std::endl;
 
-	std::cout << "capacity: " << v->capacity() << std::endl;
-	// for (NS::vector<int>::iterator ite = v->begin(); ite != v->end(); ++ite)
+	// for (NS::vector<int>::iterator ite = v.begin(); ite != v.end(); ++ite)
 	// 	std::cout << *ite << std::endl;
-	std::cout << "size: " << v->size() << std::endl;
 
-	delete v;
+	// NS::vector<int> vect;
+	// NS::vector<int> v;
+	// std::cout << "size: " << v.size() << std::endl;
+
+	// for (size_t i = 0; i < 5; i++)
+	// 	v.push_back(i);
+
+	// std::cout << "capacity: " << v.capacity() << std::endl;
+	// v.resize(5, 49);
+
+	// std::cout << "capacity: " << v.capacity() << std::endl;
+	// for (NS::vector<int>::iterator ite = v.begin(); ite != v.end(); ++ite)
+	// 	std::cout << *ite << std::endl;
+	// std::cout << "size: " << v.size() << std::endl;
+
+	// delete v;
 	// v.push_back(468);
 	// v.push_back(0);
 	// v.push_back(-2);
