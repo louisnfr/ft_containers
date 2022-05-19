@@ -7,7 +7,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "iterators/random_access_iterator.hpp"
+#include "inc/iterators/random_access_iterator.hpp"
 
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
