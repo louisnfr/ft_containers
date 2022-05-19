@@ -23,7 +23,7 @@ class vector {
 		typedef typename allocator_type::const_pointer	const_pointer;
 
 		typedef ft::random_access_iterator<T> iterator;
-		// typedef std::const_random_access_iterator const_iterator;
+		typedef ft::random_access_iterator<const T> const_iterator;
 
 		// typedef typename ft::reverse_iterator rever_iterator iterator;
 		// typedef typename std::random_access_iterator iterator;
@@ -59,14 +59,12 @@ class vector {
 
 	// range constructor
 
-		// template <class InputIterator>
-		// vector(
-		// 	InputIterator first,
-		// 	InputIterator last,
-		// 	const allocator_type& alloc = allocator_type()
-		// ) {
-		// 	std::cout << "debug" << std::endl;
-		// }
+		template <class InputIterator>
+		vector(InputIterator first, InputIterator last,
+			const allocator_type& alloc = allocator_type()
+		) {
+			std::cout << "debug" << std::endl;
+		}
 
 	// copy constructor
 
@@ -102,12 +100,17 @@ class vector {
 		iterator begin() {
 			return (iterator(_data));
 		}
-		// const_iterator begin() const {}
+		const_iterator begin() const {
+			return (const_iterator(_data));
+		}
 
 		iterator end() {
 			return (iterator(_data + _size));
 		}
-		// const_iterator end() const {}
+
+		const_iterator end() const {
+			return (const_iterator(_data + _size));
+		}
 
 		// reverse_iterator rbegin() {}
 		// const_reverse_iterator rbegin() const {}
@@ -121,9 +124,19 @@ class vector {
 
 		size_type	max_size() const { return (_alloc.max_size()); }
 
-		// void	resize(size_type n, value_type val = value_type()) {
+		void	resize(size_type n, value_type val = value_type()) {
+			if (n < _size) {
+				for (size_type i = n; i < _size; i++)
+					_alloc.destroy(_data + i);
+			} else if (n > _size) {
+				if (n > _capacity)
+					reserve(n);
+				for (size_type i = _size; i < n; i++)
+					_alloc.construct(_data + i, val);
+			}
+			_size = n;
+		}
 
-		// }
 
 		size_type	capacity(void) const { return (this->_capacity); }
 
