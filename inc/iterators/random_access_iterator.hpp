@@ -10,7 +10,7 @@ class random_access_iterator {
 	public:
 		typedef std::random_access_iterator_tag		iterator_category;
 		typedef T					value_type;
-		typedef std:: ptrdiff_t		difference_type;
+		typedef std::ptrdiff_t		difference_type;
 		typedef T*					pointer;
 		typedef T&					reference;
 
@@ -20,11 +20,11 @@ class random_access_iterator {
 	public:
 		// default constructible
 
-		random_access_iterator(void) : _ptr(NULL) {}
-
-		random_access_iterator(pointer ptr) : _ptr(ptr) {}
+		random_access_iterator(void);
 
 		// copy constructible
+
+		explicit random_access_iterator(pointer ptr) : _ptr(ptr) {}
 
 		random_access_iterator(const random_access_iterator &x) : _ptr(x._ptr) {}
 
@@ -37,21 +37,71 @@ class random_access_iterator {
 
 		// destructible
 
-		~random_access_iterator(void) {}
+		virtual ~random_access_iterator(void) {}
 
-		// equality operator
+		// equality and inequality operators
 
 		bool	operator==(const random_access_iterator &rhs) const {
 			return (_ptr == rhs._ptr);
 		}
 
-		// inequality operator
-
 		bool	operator!=(const random_access_iterator &rhs) const {
 			return (_ptr != rhs._ptr);
 		}
 
-		// inequality relationable iterators
+		// dereferenceable
+
+		reference	operator*(void) const {
+			return (*_ptr);
+		}
+
+		pointer	operator->(void) const {
+			return (_ptr);
+		}
+
+		// increment and decrement operators
+
+		random_access_iterator	&operator++(void) {
+			_ptr++;
+			return (*this);
+		}
+
+		random_access_iterator	operator++(int) {
+			random_access_iterator	tmp = *this;
+			_ptr++;
+			return (tmp);
+		}
+
+		random_access_iterator	&operator--(void) {
+			_ptr--;
+			return (*this);
+		}
+
+		random_access_iterator	operator--(int) {
+			random_access_iterator	tmp = *this;
+			_ptr--;
+			return (tmp);
+		}
+
+		// arithmetic operators
+
+		random_access_iterator	operator+(const difference_type &n) const {
+			return (_ptr + n);
+		}
+
+		difference_type	operator+(const random_access_iterator &rhs) const {
+			return (_ptr + rhs._ptr);
+		}
+
+		random_access_iterator	operator-(const difference_type &n) const {
+			return (_ptr - n);
+		}
+
+		difference_type	operator-(const random_access_iterator &rhs) const {
+			return (_ptr - rhs._ptr);
+		}
+
+		// relational operators
 
 		bool	operator<(const random_access_iterator &rhs) const {
 			return (_ptr < rhs._ptr);
@@ -69,39 +119,22 @@ class random_access_iterator {
 			return (_ptr >= rhs._ptr);
 		}
 
-		// dereferenceable
+		// assignement operators
 
-		reference	operator*(void) const {
-			return (*_ptr);
+		random_access_iterator	&operator+=(const difference_type &n) const {
+			_ptr += n;
+			return (*this);
 		}
 
-		pointer	operator->(void) const {
-			return (_ptr);
+		random_access_iterator	&operator-=(const difference_type &n) const {
+			_ptr -= n;
+			return (*this);
 		}
 
-		// can be incremented
+		// offset dereference operator
 
-		random_access_iterator	&operator++(void) {
-			return (++_ptr);
+		value_type	&operator[](size_t n) const {
+			return *(_ptr + n);
 		}
-
-		random_access_iterator	operator++(int) {
-			random_access_iterator	tmp(*this);
-			_ptr++;
-			return (tmp);
-		}
-
-		// can be decremented
-
-		random_access_iterator	&operator--(void) {
-			return (--_ptr);
-		}
-
-		random_access_iterator	operator--(int) {
-			random_access_iterator	tmp(_ptr);
-			_ptr--;
-			return (tmp);
-		}
-
 };
 } // namespace ft
