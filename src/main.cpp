@@ -14,7 +14,6 @@
 #endif
 
 int main(void) {
-
 	NS::vector<int> vect;
 	NS::vector<int> v;
 
