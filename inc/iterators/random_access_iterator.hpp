@@ -26,6 +26,8 @@ class random_access_iterator {
 
 		explicit random_access_iterator(pointer ptr) : _ptr(ptr) {}
 
+		// oeprator
+
 		random_access_iterator(const random_access_iterator &x) : _ptr(x._ptr) {}
 
 		// copy assignable
