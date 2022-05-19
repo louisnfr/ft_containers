@@ -59,12 +59,19 @@ class vector {
 
 	// range constructor
 
-		template <class InputIterator>
-		vector(InputIterator first, InputIterator last,
-			const allocator_type& alloc = allocator_type()
-		) {
-			std::cout << "debug" << std::endl;
-		}
+		// missing enable if and is integral
+		// template <class InputIterator>
+		// vector(
+		// 	InputIterator first,
+		// 	InputIterator last,
+		// 	const allocator_type& alloc = allocator_type()
+		// ) : _alloc(alloc), _data(NULL), _size(0), _capacity(0) {
+		// 	size_type n = last - first;
+		// 	reserve(n);
+		// 	for (size_type i = 0; i < n; i++)
+		// 		_alloc.construct(_data + i, *(first + i));
+		// 	_size = n;
+		// }
 
 	// copy constructor
 
@@ -122,7 +129,9 @@ class vector {
 
 		size_type	size(void) const { return (this->_size); }
 
-		size_type	max_size() const { return (_alloc.max_size()); }
+		size_type	max_size() const {
+			return (_alloc.max_size());
+		}
 
 		void	resize(size_type n, value_type val = value_type()) {
 			if (n < _size) {
@@ -147,14 +156,16 @@ class vector {
 		void	reserve(size_type n) {
 			if (n > max_size())
 				throw std::length_error("vector::reserve");
-			pointer tmp = _alloc.allocate(n);
-			for (size_t i = 0; i < _size; i++) {
-				_alloc.construct(tmp + i, _data[i]);
-				_alloc.destroy(_data + i);
+			if (n > _capacity) {
+				pointer tmp = _alloc.allocate(n);
+				for (size_t i = 0; i < _size; i++) {
+					_alloc.construct(tmp + i, _data[i]);
+					_alloc.destroy(_data + i);
+				}
+				_alloc.deallocate(_data, _capacity);
+				_data = tmp;
+				_capacity = n;
 			}
-			_alloc.deallocate(_data, _capacity);
-			_data = tmp;
-			_capacity = n;
 		}
 
 	// element access
