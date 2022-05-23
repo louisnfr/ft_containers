@@ -1,5 +1,9 @@
 #pragma once
 
+/*
+	https://en.cppreference.com/w/cpp/types/enable_if
+*/
+
 namespace ft {
 	template<bool B, class T = void>
 	struct enable_if {};
