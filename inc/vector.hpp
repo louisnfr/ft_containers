@@ -8,6 +8,8 @@
 #include <sstream>
 
 #include "inc/iterators/random_access_iterator.hpp"
+#include "inc/type_traits/enable_if.hpp"
+#include "inc/type_traits/is_integral.hpp"
 
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
@@ -59,19 +61,19 @@ class vector {
 
 	// range constructor
 
-		// missing enable if and is integral
-		// template <class InputIterator>
-		// vector(
-		// 	InputIterator first,
-		// 	InputIterator last,
-		// 	const allocator_type& alloc = allocator_type()
-		// ) : _alloc(alloc), _data(NULL), _size(0), _capacity(0) {
-		// 	size_type n = last - first;
-		// 	reserve(n);
-		// 	for (size_type i = 0; i < n; i++)
-		// 		_alloc.construct(_data + i, *(first + i));
-		// 	_size = n;
-		// }
+		template <class InputIterator>
+		vector(
+			InputIterator first,
+			InputIterator last,
+			const allocator_type& alloc = allocator_type(),
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = NULL)
+			: _alloc(alloc), _data(NULL), _size(0), _capacity(0) {
+			size_type n = last - first;
+			reserve(n);
+			for (size_type i = 0; i < n; i++)
+				_alloc.construct(_data + i, *(first + i));
+			_size = n;
+		}
 
 	// copy constructor
 
