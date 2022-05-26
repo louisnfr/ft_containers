@@ -109,6 +109,7 @@ class vector {
 		iterator begin() {
 			return (iterator(_data));
 		}
+
 		const_iterator begin() const {
 			return (const_iterator(_data));
 		}
@@ -147,7 +148,6 @@ class vector {
 			}
 			_size = n;
 		}
-
 
 		size_type	capacity(void) const { return (this->_capacity); }
 
@@ -208,8 +208,16 @@ class vector {
 	// modifiers
 
 		// template <class InputIterator>
-		// void assign(InputIterator first, InputIterator last) {}
-		// void assign(size_type n, const value_type& val) {}
+		// void assign(InputIterator first, InputIterator last) {
+
+		// }
+
+		void assign(size_type n, const value_type& val) {
+			reserve(n);
+			for (size_type i = 0; i < n; i++)
+				_alloc.construct(_data + i, val);
+			_size = n;
+		}
 
 		void push_back(const value_type& val) {
 			size_type new_cap;

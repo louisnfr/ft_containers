@@ -4,8 +4,6 @@
 	https://www32.cplusplus.com/reference/type_traits/is_integral/
 */
 
-// #include <cuchar>
-
 namespace ft
 {
 template <class T>
@@ -21,18 +19,6 @@ struct is_integral<bool>
 
 template<>
 struct is_integral<char>
-{
-	static const bool value = true;
-};
-
-template<>
-struct is_integral<char16_t>
-{
-	static const bool value = true;
-};
-
-template<>
-struct is_integral<char32_t>
 {
 	static const bool value = true;
 };

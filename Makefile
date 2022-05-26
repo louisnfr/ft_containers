@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/24 02:37:55 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/26 13:27:12 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC =	main.cpp
 
 HOST = $(shell hostname)
 ifeq ($(HOST),macbook)
-	CXX = c++
+	CXX = c++-11
 else
 	CXX = c++
 endif

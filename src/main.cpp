@@ -17,12 +17,14 @@ int main(void) {
 
 	NS::vector<int> ref(10, 42);
 
-	NS::vector<int> v(ref.begin(), ref.end());
-	std::cout << v.size() << std::endl;
-	std::cout << v.capacity() << std::endl;
+	ref.assign(7, 100);
 
-	for (size_t i = 0; i < v.size(); i++)
-		std::cout << v[i] << std::endl;
+	// NS::vector<int> v(ref.begin(), ref.end());
+	// std::cout << v.size() << std::endl;
+	// std::cout << v.capacity() << std::endl;
+
+	for (size_t i = 0; i < ref.size(); i++)
+		std::cout << ref[i] << std::endl;
 
 	// NS::vector<int> ref(10, 42);
 
