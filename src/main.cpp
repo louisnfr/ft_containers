@@ -36,6 +36,7 @@ int main(void) {
 	for (it = myvector.begin(); it < myvector.end(); it++)
 		std::cout << " " << *it;
 	std::cout << '\n';
+	std::cout << myvector.size() << std::endl;
 
 	// NS::vector<int> first;
 	// NS::vector<int> second;
