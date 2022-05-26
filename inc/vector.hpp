@@ -246,7 +246,7 @@ class vector {
 			_alloc.destroy(_data + _size--);
 		}
 
-		iterator insert(iterator position, const value_type& val) {
+		iterator insert(iterator position, const value_type &val) {
 			size_type pos = position - begin();
 
 			reserve(++_size);
@@ -260,10 +260,24 @@ class vector {
 			return iterator(_data);
 		}
 
-		// void insert(iterator position, size_type n, const value_type& val) {}
-		// template <class InputIterator>
-		// void insert(iterator position, InputIterator first,
-		// 	InputIterator last) {}
+		void insert(iterator position, size_type n, const value_type &val) {
+			size_type pos = position - begin();
+
+			reserve(_size + n);
+			for (size_type i = _size - 1; i >= pos; i--) {
+				_alloc.construct(_data + i + n, _data[i]);
+				_alloc.destroy(_data + i);
+				if (i == 0)
+					break;
+			}
+			for (size_type i = 0; i < n; i++)
+				_alloc.construct(_data + pos + i, val);
+			_size += n;
+		}
+
+		template <class InputIterator>
+		void insert(iterator position, InputIterator first,
+			InputIterator last) {}
 
 		// iterator erase(iterator position) {}
 		// iterator erase(iterator first, iterator last) {}

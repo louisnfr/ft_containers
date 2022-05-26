@@ -34,11 +34,10 @@ int main(void) {
 	// ref.pop_back();
 
 	NS::vector<int> v(3, 100);
-	// NS::vector<int>::iterator it;
 
 	NS::vector<int>::iterator ite = v.begin();
-	ite = v.insert(ite, 200);
-
+	v.insert(ite, 5, 200);
+	
 	// invalid writes
 	for (size_t i = 0; i < v.size(); i++)
 		std::cout << v[i] << std::endl;
