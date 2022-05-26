@@ -222,8 +222,7 @@ class vector {
 
 		void assign(size_type n, const value_type& val) {
 			reserve(n);
-			for (size_type i = 0; i < n; i++)
-			{
+			for (size_type i = 0; i < n; i++) {
 				_alloc.destroy(_data + i);
 				_alloc.construct(_data + i, val);
 			}
