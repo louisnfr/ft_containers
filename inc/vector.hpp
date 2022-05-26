@@ -27,8 +27,8 @@ class vector {
 		typedef ft::random_access_iterator<T> iterator;
 		typedef ft::random_access_iterator<const T> const_iterator;
 
-		// typedef typename ft::reverse_iterator rever_iterator iterator;
-		// typedef typename std::random_access_iterator iterator;
+		// typedef ft::reverse_iterator<iterator> reverse_iterator;
+		// typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 
 		typedef std::ptrdiff_t	difference_type;
 		typedef std::size_t		size_type;
