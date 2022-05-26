@@ -154,7 +154,6 @@ class vector {
 		}
 
 		void	reserve(size_type n) {
-			std::cout << "SIZE:" << n << std::endl;
 			if (n > max_size())
 				throw std::length_error("vector::reserve");
 			if (n > _capacity) {
