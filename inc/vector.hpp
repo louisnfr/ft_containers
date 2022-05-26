@@ -281,12 +281,25 @@ class vector {
 		iterator erase(iterator position) {
 			size_type pos = position - begin();
 
+			_alloc.destroy(_data + pos);
 			__shift_left(pos, 1);
 			_size--;
 			return iterator(_data + pos);
 		}
 
-		// iterator erase(iterator first, iterator last) {}
+		iterator erase(iterator first, iterator last) {
+			size_type	diff = last - first;
+			size_type	n = first - begin();
+			size_type	i = last - begin();
+
+			while (*first != *last) {
+				_alloc.destroy(&(*first));
+				++first;
+			}
+			__shift_left(n, i - n);
+			_size -= diff;
+			return iterator(_data + n);
+		}
 
 		// void swap (vector& x) {}
 

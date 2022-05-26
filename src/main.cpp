@@ -24,7 +24,7 @@ int main(void) {
 	v.erase(v.begin() + 5);
 
 	// erase the first 3 elements:
-	// v.erase(v.begin(), v.begin() + 3);
+	v.erase(v.begin(), v.begin() + 3);
 
 	for (size_t i = 0; i < v.size(); i++)
 		std::cout << v[i] << std::endl;
