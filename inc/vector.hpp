@@ -154,6 +154,7 @@ class vector {
 		}
 
 		void	reserve(size_type n) {
+			std::cout << "SIZE:" << n << std::endl;
 			if (n > max_size())
 				throw std::length_error("vector::reserve");
 			if (n > _capacity) {
@@ -247,8 +248,17 @@ class vector {
 		}
 
 		iterator insert(iterator position, const value_type& val) {
-			reserve(_size + 1);
-			_alloc.construct(_data + position, val);
+			size_type pos = position - begin();
+
+			reserve(++_size);
+			for (size_type i = _size - 1; i >= pos; i--) {
+				_alloc.construct(_data + i + 1, _data[i]);
+				_alloc.destroy(_data + i);
+				if (i == 0)
+					break;
+			}
+			_alloc.construct(_data + pos, val);
+			return iterator(_data);
 		}
 
 		// void insert(iterator position, size_type n, const value_type& val) {}

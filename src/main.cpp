@@ -15,29 +15,34 @@
 
 int main(void) {
 
-	NS::vector<int> first;
-	NS::vector<int> second;
-	NS::vector<int> third;
+	// NS::vector<int> first;
+	// NS::vector<int> second;
+	// NS::vector<int> third;
 
-	first.assign(7, 100);
+	// first.assign(7, 100);
 
-	NS::vector<int>::iterator it = first.begin() + 1;
-	second.assign(it, first.end() - 1);
-	int myints[] = {1776, 7, 4};
-	third.assign(myints, myints + 3);
+	// NS::vector<int>::iterator it = first.begin() + 1;
+	// second.assign(it, first.end() - 1);
+	// int myints[] = {1776, 7, 4};
+	// third.assign(myints, myints + 3);
 
-	std::cout << first.size() << std::endl;
-	std::cout << second.size() << std::endl;
-	std::cout << third.size() << std::endl;
+	// std::cout << first.size() << std::endl;
+	// std::cout << second.size() << std::endl;
+	// std::cout << third.size() << std::endl;
 
-	NS::vector<int> ref(10, 42);
-	ref.pop_back();
+	// NS::vector<int> ref(10, 42);
+	// ref.pop_back();
 
-	// ref.insert(5, 789);
+	NS::vector<int> v(3, 100);
+	// NS::vector<int>::iterator it;
 
-	for (size_t i = 0; i < ref.size(); i++)
-		std::cout << ref[i] << std::endl;
-	std::cout << ref.size() << std::endl;
+	NS::vector<int>::iterator ite = v.begin();
+	ite = v.insert(ite, 200);
+
+	// invalid writes
+	for (size_t i = 0; i < v.size(); i++)
+		std::cout << v[i] << std::endl;
+	std::cout << v.size() << std::endl;
 
 	// ref.assign(7, 100);
 
