@@ -20,7 +20,7 @@ class random_access_iterator {
 	public:
 		// default constructible
 
-		random_access_iterator(void);
+		random_access_iterator(void) {}
 
 		// copy constructible
 
