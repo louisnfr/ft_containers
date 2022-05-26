@@ -278,7 +278,14 @@ class vector {
 			_size += n;
 		}
 
-		// iterator erase(iterator position) {}
+		iterator erase(iterator position) {
+			size_type pos = position - begin();
+
+			__shift_left(pos, 1);
+			_size--;
+			return iterator(_data + pos);
+		}
+
 		// iterator erase(iterator first, iterator last) {}
 
 		// void swap (vector& x) {}
@@ -339,6 +346,13 @@ class vector {
 				_alloc.destroy(_data + i);
 				if (i == 0)
 					break;
+			}
+		}
+
+		void	__shift_left(size_type pos, size_type n) {
+			for (; pos < _size; pos++) {
+				_alloc.construct(_data + pos, _data[pos + n]);
+				_alloc.destroy(_data + pos);
 			}
 		}
 };

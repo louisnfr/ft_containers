@@ -14,28 +14,44 @@
 #endif
 
 int main(void) {
-	NS::vector<int> myvector(3, 100);
-	NS::vector<int>::iterator it;
+	NS::vector<int> v;
 
-	it = myvector.begin();
-	it = myvector.insert(it, 200);
+	// set some values (from 1 to 10)
+	for (int i = 1; i <= 10; i++)
+		v.push_back(i);
 
-	myvector.insert(it, 2, 300);
+	// erase the 6th element
+	v.erase(v.begin() + 5);
 
-	// "it" no longer valid, get a new one:
-	it = myvector.begin();
+	// erase the first 3 elements:
+	// v.erase(v.begin(), v.begin() + 3);
 
-	NS::vector<int> anothervector(2, 400);
-	myvector.insert(it + 2, anothervector.begin(), anothervector.end());
+	for (size_t i = 0; i < v.size(); i++)
+		std::cout << v[i] << std::endl;
+	std::cout << "size:" << v.size() << std::endl;
 
-	int myarray[] = {501, 502, 503};
-	myvector.insert(myvector.begin(), myarray, myarray + 3);
+	// NS::vector<int> myvector(3, 100);
+	// NS::vector<int>::iterator it;
 
-	std::cout << "myvector contains:";
-	for (it = myvector.begin(); it < myvector.end(); it++)
-		std::cout << " " << *it;
-	std::cout << '\n';
-	std::cout << myvector.size() << std::endl;
+	// it = myvector.begin();
+	// it = myvector.insert(it, 200);
+
+	// myvector.insert(it, 2, 300);
+
+	// // "it" no longer valid, get a new one:
+	// it = myvector.begin();
+
+	// NS::vector<int> anothervector(2, 400);
+	// myvector.insert(it + 2, anothervector.begin(), anothervector.end());
+
+	// int myarray[] = {501, 502, 503};
+	// myvector.insert(myvector.begin(), myarray, myarray + 3);
+
+	// std::cout << "myvector contains:";
+	// for (it = myvector.begin(); it < myvector.end(); it++)
+	// 	std::cout << " " << *it;
+	// std::cout << '\n';
+	// std::cout << myvector.size() << std::endl;
 
 	// NS::vector<int> first;
 	// NS::vector<int> second;
