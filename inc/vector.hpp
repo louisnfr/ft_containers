@@ -288,9 +288,9 @@ class vector {
 		}
 
 		iterator erase(iterator first, iterator last) {
-			size_type	diff = last - first;
-			size_type	n = first - begin();
-			size_type	i = last - begin();
+			size_type diff = last - first;
+			size_type n = first - begin();
+			size_type i = last - begin();
 
 			while (*first != *last) {
 				_alloc.destroy(&(*first));
