@@ -250,12 +250,7 @@ class vector {
 			size_type pos = position - begin();
 
 			reserve(++_size);
-			for (size_type i = _size - 1; i >= pos; i--) {
-				_alloc.construct(_data + i + 1, _data[i]);
-				_alloc.destroy(_data + i);
-				if (i == 0)
-					break;
-			}
+			__shift_right(pos, 1);
 			_alloc.construct(_data + pos, val);
 			return iterator(_data);
 		}
@@ -264,20 +259,25 @@ class vector {
 			size_type pos = position - begin();
 
 			reserve(_size + n);
-			for (size_type i = _size - 1; i >= pos; i--) {
-				_alloc.construct(_data + i + n, _data[i]);
-				_alloc.destroy(_data + i);
-				if (i == 0)
-					break;
-			}
+			__shift_right(pos, n);
 			for (size_type i = 0; i < n; i++)
 				_alloc.construct(_data + pos + i, val);
 			_size += n;
 		}
 
 		template <class InputIterator>
-		void insert(iterator position, InputIterator first,
-			InputIterator last) {}
+		void insert(iterator position, InputIterator first, InputIterator last,
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+					InputIterator>::type* = NULL) {
+			size_type pos = position - begin();
+			size_type n = last - first;
+
+			reserve(_size + n);
+			__shift_right(pos, n);
+			for (size_type i = 0; i < n; i++, first++)
+				_alloc.construct(_data + pos + i, *first);
+			_size += n;
+		}
 
 		// iterator erase(iterator position) {}
 		// iterator erase(iterator first, iterator last) {}
@@ -332,6 +332,15 @@ class vector {
 					std::string("(which is ") + c_n.str() + \
 					std::string(") >= this->size() (which is ") + \
 					c_size.str() + std::string(")"));
+		}
+
+		void	__shift_right(size_type pos, size_type n) {
+			for (size_type i = _size - 1; i >= pos; i--) {
+				_alloc.construct(_data + i + n, _data[i]);
+				_alloc.destroy(_data + i);
+				if (i == 0)
+					break;
+			}
 		}
 };
 } // namespace ft
