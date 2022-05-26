@@ -14,21 +14,36 @@
 #endif
 
 int main(void) {
-	NS::vector<int> v;
+	NS::vector<int> foo(3, 100);   // three ints with a value of 100
+	NS::vector<int> bar(5, 200);   // five ints with a value of 200
 
-	// set some values (from 1 to 10)
-	for (int i = 1; i <= 10; i++)
-		v.push_back(i);
+	foo.swap(bar);
 
-	// erase the 6th element
-	v.erase(v.begin() + 5);
+	std::cout << "foo contains:";
+	for (unsigned i = 0; i < foo.size(); i++)
+	std::cout << ' ' << foo[i];
+	std::cout << '\n';
 
-	// erase the first 3 elements:
-	v.erase(v.begin(), v.begin() + 3);
+	std::cout << "bar contains:";
+	for (unsigned i = 0; i < bar.size(); i++)
+	std::cout << ' ' << bar[i];
+	std::cout << '\n';
 
-	for (size_t i = 0; i < v.size(); i++)
-		std::cout << v[i] << std::endl;
-	std::cout << "size:" << v.size() << std::endl;
+	// NS::vector<int> v;
+
+	// // set some values (from 1 to 10)
+	// for (int i = 1; i <= 10; i++)
+	// 	v.push_back(i);
+
+	// // erase the 6th element
+	// v.erase(v.begin() + 5);
+
+	// // erase the first 3 elements:
+	// v.erase(v.begin(), v.begin() + 3);
+
+	// for (size_t i = 0; i < v.size(); i++)
+	// 	std::cout << v[i] << std::endl;
+	// std::cout << "size:" << v.size() << std::endl;
 
 	// NS::vector<int> myvector(3, 100);
 	// NS::vector<int>::iterator it;

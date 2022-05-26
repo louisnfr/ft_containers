@@ -301,7 +301,12 @@ class vector {
 			return iterator(_data + n);
 		}
 
-		// void swap (vector& x) {}
+		void swap(vector& x) {
+			std::swap(_data, x._data);
+			std::swap(_size, x._size);
+			std::swap(_capacity, x._capacity);
+			std::swap(_alloc, x._alloc);
+		}
 
 		void clear() {
 			if (_data) {
