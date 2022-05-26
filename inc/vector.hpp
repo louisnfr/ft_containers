@@ -66,7 +66,8 @@ class vector {
 			InputIterator first,
 			InputIterator last,
 			const allocator_type& alloc = allocator_type(),
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = NULL)
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+			InputIterator>::type* = NULL)
 			: _alloc(alloc), _data(NULL), _size(0), _capacity(0) {
 			size_type n = last - first;
 			reserve(n);
@@ -78,9 +79,7 @@ class vector {
 	// copy constructor
 
 		vector(const vector &x)
-			: _alloc(x._alloc)
-			, _size(x._size)
-			, _capacity(x._capacity) {
+			: _alloc(x._alloc), _size(x._size), _capacity(x._capacity) {
 			_data = _alloc.allocate(x.capacity());
 			for (size_type i = 0; i < _size; i++)
 				_alloc.construct(_data + i, x._data[i]);
@@ -141,8 +140,7 @@ class vector {
 				for (size_type i = n; i < _size; i++)
 					_alloc.destroy(_data + i);
 			} else if (n > _size) {
-				if (n > _capacity)
-					reserve(n);
+				reserve(n);
 				for (size_type i = _size; i < n; i++)
 					_alloc.construct(_data + i, val);
 			}
@@ -207,15 +205,28 @@ class vector {
 
 	// modifiers
 
-		// template <class InputIterator>
-		// void assign(InputIterator first, InputIterator last) {
+		template <class InputIterator>
+		void assign(InputIterator first,
+					InputIterator last,
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+					InputIterator>::type* = NULL) {
+			size_type n = last - first;
 
-		// }
+			reserve(n);
+			for (size_type i = 0; i < n; i++, first++) {
+				_alloc.destroy(_data + i);
+				_alloc.construct(_data + i, *first);
+			}
+			_size = n;
+		}
 
 		void assign(size_type n, const value_type& val) {
 			reserve(n);
 			for (size_type i = 0; i < n; i++)
+			{
+				_alloc.destroy(_data + i);
 				_alloc.construct(_data + i, val);
+			}
 			_size = n;
 		}
 
@@ -235,7 +246,11 @@ class vector {
 			_alloc.destroy(_data + _size--);
 		}
 
-		// iterator insert(iterator position, const value_type& val) {}
+		iterator insert(iterator position, const value_type& val) {
+			reserve(_size + 1);
+			_alloc.construct(_data + position, val);
+		}
+
 		// void insert(iterator position, size_type n, const value_type& val) {}
 		// template <class InputIterator>
 		// void insert(iterator position, InputIterator first,

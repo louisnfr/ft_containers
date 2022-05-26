@@ -15,16 +15,38 @@
 
 int main(void) {
 
-	NS::vector<int> ref(10, 42);
+	NS::vector<int> first;
+	NS::vector<int> second;
+	NS::vector<int> third;
 
-	ref.assign(7, 100);
+	first.assign(7, 100);
+
+	NS::vector<int>::iterator it = first.begin() + 1;
+	second.assign(it, first.end() - 1);
+	int myints[] = {1776, 7, 4};
+	third.assign(myints, myints + 3);
+
+	std::cout << first.size() << std::endl;
+	std::cout << second.size() << std::endl;
+	std::cout << third.size() << std::endl;
+
+	NS::vector<int> ref(10, 42);
+	ref.pop_back();
+
+	// ref.insert(5, 789);
+
+	for (size_t i = 0; i < ref.size(); i++)
+		std::cout << ref[i] << std::endl;
+	std::cout << ref.size() << std::endl;
+
+	// ref.assign(7, 100);
 
 	// NS::vector<int> v(ref.begin(), ref.end());
 	// std::cout << v.size() << std::endl;
 	// std::cout << v.capacity() << std::endl;
 
-	for (size_t i = 0; i < ref.size(); i++)
-		std::cout << ref[i] << std::endl;
+	// for (size_t i = 0; i < ref.size(); i++)
+	// 	std::cout << ref[i] << std::endl;
 
 	// NS::vector<int> ref(10, 42);
 
