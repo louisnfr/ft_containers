@@ -11,6 +11,7 @@
 #include "inc/type_traits/enable_if.hpp"
 #include "inc/type_traits/is_integral.hpp"
 #include "inc/algorithm/equal.hpp"
+#include "inc/algorithm/lexicographical_compare.hpp"
 
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
@@ -372,16 +373,24 @@ class vector {
 		return !(lhs == rhs);
 	}
 
-	// template <class T, class Alloc>
-	// bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	template <class T, class Alloc>
+	bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+	}
 
-	// template <class T, class Alloc>
-	// bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	template <class T, class Alloc>
+	bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		return !(rhs < lhs);
+	}
 
-	// template <class T, class Alloc>
-	// bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	template <class T, class Alloc>
+	bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		return (rhs < lhs);
+	}
 
-	// template <class T, class Alloc>
-	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+	template <class T, class Alloc>
+	bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		return !(rhs < lhs);
+	}
 
 } // namespace ft
