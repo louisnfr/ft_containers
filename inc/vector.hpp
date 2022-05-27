@@ -10,6 +10,7 @@
 #include "inc/iterators/random_access_iterator.hpp"
 #include "inc/type_traits/enable_if.hpp"
 #include "inc/type_traits/is_integral.hpp"
+#include "inc/algorithm/equal.hpp"
 
 namespace ft {
 template <class T, class Allocator = std::allocator<T> >
@@ -320,28 +321,6 @@ class vector {
 
 		allocator_type	get_allocator(void) const { return (this->_alloc); }
 
-	// non-member function overloads
-
-	// template <class T, class Alloc>
-	// void swap (vector<T,Alloc> &x, vector<T,Alloc> &y) {}
-
-	// template <class T, class Alloc>
-	// bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-
-	// template <class T, class Alloc>
-	// bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-
-	// template <class T, class Alloc>
-	// bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-
-	// template <class T, class Alloc>
-	// bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-
-	// template <class T, class Alloc>
-	// bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
-
-	// template <class T, class Alloc>
-	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
 
 	private:
 		void	__range_check(size_type n) {
@@ -374,4 +353,35 @@ class vector {
 			}
 		}
 };
+	// non-member function overloads
+
+	template <class T, class Alloc>
+	void swap(vector<T, Alloc> &x, vector<T, Alloc> &y) {
+		x.swap(y);
+	}
+
+	template <class T, class Alloc>
+	bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		if (lhs.size() != rhs.size())
+			return false;
+		return ft::equal(lhs.begin(), lhs.end(), rhs.begin());
+	}
+
+	template <class T, class Alloc>
+	bool operator!=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
+		return !(lhs == rhs);
+	}
+
+	// template <class T, class Alloc>
+	// bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator>(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
+	// template <class T, class Alloc>
+	// bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) {}
+
 } // namespace ft

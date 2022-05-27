@@ -14,20 +14,20 @@
 #endif
 
 int main(void) {
-	NS::vector<int> foo(3, 100);   // three ints with a value of 100
-	NS::vector<int> bar(5, 200);   // five ints with a value of 200
+	// NS::vector<int> foo(3, 100);
+	// NS::vector<int> bar(5, 200);
 
-	foo.swap(bar);
+	// foo.swap(bar);
 
-	std::cout << "foo contains:";
-	for (unsigned i = 0; i < foo.size(); i++)
-	std::cout << ' ' << foo[i];
-	std::cout << '\n';
+	// std::cout << "foo contains:";
+	// for (unsigned i = 0; i < foo.size(); i++)
+	// std::cout << ' ' << foo[i];
+	// std::cout << '\n';
 
-	std::cout << "bar contains:";
-	for (unsigned i = 0; i < bar.size(); i++)
-	std::cout << ' ' << bar[i];
-	std::cout << '\n';
+	// std::cout << "bar contains:";
+	// for (unsigned i = 0; i < bar.size(); i++)
+	// std::cout << ' ' << bar[i];
+	// std::cout << '\n';
 
 	// NS::vector<int> v;
 
@@ -83,27 +83,27 @@ int main(void) {
 	// std::cout << second.size() << std::endl;
 	// std::cout << third.size() << std::endl;
 
-	// NS::vector<int> ref(10, 42);
-	// ref.pop_back();
+	NS::vector<int> ref(10, 42);
+	ref.pop_back();
 
-	// NS::vector<int> v(3, 100);
+	NS::vector<int> v(3, 100);
 
-	// NS::vector<int>::iterator ite = v.begin();
-	// v.insert(ite, 5, 200);
+	NS::vector<int>::iterator ite = v.begin();
+	v.insert(ite, 5, 200);
 
-	// // invalid writes
-	// for (size_t i = 0; i < v.size(); i++)
-	// 	std::cout << v[i] << std::endl;
-	// std::cout << v.size() << std::endl;
+	// invalid writes
+	for (size_t i = 0; i < v.size(); i++)
+		std::cout << v[i] << std::endl;
+	std::cout << v.size() << std::endl;
 
-	// ref.assign(7, 100);
+	ref.assign(7, 100);
 
-	// NS::vector<int> v(ref.begin(), ref.end());
-	// std::cout << v.size() << std::endl;
-	// std::cout << v.capacity() << std::endl;
+	NS::vector<int> vct(ref.begin(), ref.end());
+	std::cout << vct.size() << std::endl;
+	std::cout << vct.capacity() << std::endl;
 
-	// for (size_t i = 0; i < ref.size(); i++)
-	// 	std::cout << ref[i] << std::endl;
+	for (size_t i = 0; i < ref.size(); i++)
+		std::cout << ref[i] << std::endl;
 
 	// NS::vector<int> ref(10, 42);
 
