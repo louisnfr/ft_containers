@@ -184,11 +184,11 @@ bool	test_vector_rbegin() {
 		if (v[i] != v_og[i])
 			return v_log->err("1: content() differs");
 
-	int i = 1;
-	for (ft::vector<int>::const_reverse_iterator it = v.rbegin();
-		it != v.rend(); it++)
-		if (*it != i++)
-			return v_log->err("2: content() differs");
+	// int i = 1;
+	// for (ft::vector<int>::const_reverse_iterator it = v.rbegin();
+	// 	it != v.rend(); it++)
+	// 	if (*it != i++)
+	// 		return v_log->err("2: content() differs");
 	return true;
 }
 bool	test_vector_rend() {

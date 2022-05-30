@@ -29,6 +29,8 @@ class reverse_iterator {
 
 		explicit reverse_iterator(iterator_type it) : _ptr(it) {}
 
+		explicit reverse_iterator(pointer ptr) : _ptr(ptr) {}
+
 		// copy constructor
 
 		template <class Iter>

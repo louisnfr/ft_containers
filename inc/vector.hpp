@@ -108,27 +108,37 @@ class vector {
 
 	// iterators
 
-		iterator begin() {
+		iterator begin(void) {
 			return iterator(_data);
 		}
 
-		const_iterator begin() const {
+		const_iterator begin(void) const {
 			return const_iterator(_data);
 		}
 
-		iterator end() {
+		iterator end(void) {
 			return iterator(_data + _size);
 		}
 
-		const_iterator end() const {
+		const_iterator end(void) const {
 			return const_iterator(_data + _size);
 		}
 
-		// reverse_iterator rbegin() {}
-		// const_reverse_iterator rbegin() const {}
+		reverse_iterator rbegin(void) {
+			return reverse_iterator(_data + _size);
+		}
 
-		// reverse_iterator rend() {}
-		// const_reverse_iterator rend() const {}
+		const_reverse_iterator rbegin(void) const {
+			return const_reverse_iterator(_data + _size);
+		}
+
+		reverse_iterator rend(void) {
+			return reverse_iterator(_data);
+		}
+
+		const_reverse_iterator rend(void) const {
+			return const_reverse_iterator(_data);
+		}
 
 	// capacity
 
@@ -136,7 +146,7 @@ class vector {
 			return this->_size;
 		}
 
-		size_type	max_size() const {
+		size_type	max_size(void) const {
 			return _alloc.max_size();
 		}
 

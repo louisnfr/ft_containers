@@ -21,8 +21,6 @@ int main(void) {
 
 
 
-
-
 	// NS::vector<int> foo(3, 100);
 	// NS::vector<int> bar(5, 200);
 
