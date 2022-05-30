@@ -1,14 +1,6 @@
 #pragma once
 
-#include <stdlib.h>
-
-#include <string>
-#include <vector>
-#include <iostream>
-
-#include "inc/vector.hpp"
-#include "utils/logger.hpp"
-#include "utils/run_test.hpp"
+#include <cstdlib>
 
 namespace ft_test {
 ft_test::Logger *v_log;

@@ -1,10 +1,5 @@
 #pragma once
 
-#include <string>
-#include <exception>
-
-#include "utils/logger.hpp"
-
 namespace ft_test {
 void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
 	try {
