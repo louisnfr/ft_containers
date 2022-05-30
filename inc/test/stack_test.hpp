@@ -1,7 +1,5 @@
 #pragma once
 
-// #include in
-
 namespace ft_test {
 ft_test::Logger *s_log;
 

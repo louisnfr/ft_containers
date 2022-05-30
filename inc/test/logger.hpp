@@ -1,11 +1,7 @@
 #pragma once
 
-#include <string.h>
+#include <cstring>
 #include <unistd.h>
-
-#include <string>
-#include <iostream>
-#include <sstream>
 
 namespace ft_test {
 class Logger {
