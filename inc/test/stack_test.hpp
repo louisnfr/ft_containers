@@ -6,7 +6,7 @@ ft_test::Logger *s_log;
 bool	test_stack_constructor() {
 	ft::vector<int> myvector(2, 200);
 
-	ft::stack<int>	 first;
+	ft::stack<int>	first;
 
 	ft::stack<int, ft::vector<int> > third;
 	ft::stack<int, ft::vector<int> > fourth(myvector);
@@ -169,9 +169,9 @@ bool	test_stack_relationnal_operators() {
 	ft::stack<int>	 second;
 
 	if (first != second)
-		return s_log->err("1: == failed");
+		return s_log->err("1: != failed");
 	if (!(first == second))
-		return s_log->err("2: != failed");
+		return s_log->err("2: == failed");
 
 	first.push(1);
 	if (second > first)
