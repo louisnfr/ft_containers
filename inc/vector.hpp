@@ -18,8 +18,8 @@ namespace ft {
 template <class T, class Allocator = std::allocator<T> >
 class vector {
 	public:
-		typedef T				value_type;
-		typedef Allocator		allocator_type;
+		typedef T			value_type;
+		typedef Allocator	allocator_type;
 
 		typedef typename allocator_type::reference			reference;
 		typedef typename allocator_type::const_reference	const_reference;
@@ -381,7 +381,8 @@ class vector {
 
 	template <class T, class Alloc>
 	bool operator<(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
-		return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+		return ft::lexicographical_compare(
+				lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 	}
 
 	template <class T, class Alloc>
