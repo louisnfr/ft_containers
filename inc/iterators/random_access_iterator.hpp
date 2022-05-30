@@ -41,6 +41,12 @@ class random_access_iterator {
 
 		virtual ~random_access_iterator(void) {}
 
+		// const iterator cast
+
+		operator random_access_iterator<T const>(void) const {
+			return random_access_iterator<T const>(_ptr);
+		}
+
 		// equality and inequality operators
 
 		bool	operator==(const random_access_iterator &rhs) const {
@@ -75,13 +81,13 @@ class random_access_iterator {
 		}
 
 		random_access_iterator	&operator--(void) {
-			++_ptr;
+			--_ptr;
 			return *this;
 		}
 
 		random_access_iterator	operator--(int) {
 			random_access_iterator	tmp = *this;
-			--(*this);
+			--_ptr;
 			return tmp;
 		}
 

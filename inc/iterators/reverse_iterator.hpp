@@ -23,7 +23,7 @@ class reverse_iterator {
 	public:
 		// default constructor
 
-		reverse_iterator(void) : _ptr(NULL) {}
+		reverse_iterator(void) : _ptr(iterator_type()) {}
 
 		// initialization constructor
 
@@ -51,7 +51,8 @@ class reverse_iterator {
 		// dereferenceable
 
 		reference	operator*(void) const {
-			return *_ptr;
+			iterator_type	tmp = _ptr;
+			return *(--tmp);
 		}
 
 		pointer	operator->(void) const {
@@ -72,13 +73,13 @@ class reverse_iterator {
 		}
 
 		reverse_iterator	&operator--(void) {
-			_ptr--;
+			++_ptr;
 			return *this;
 		}
 
 		reverse_iterator	operator--(int) {
 			reverse_iterator tmp = *this;
-			_ptr--;
+			--(*_ptr);
 			return tmp;
 		}
 
@@ -118,6 +119,12 @@ bool operator==(const reverse_iterator<Iterator> &lhs,
 template <class Iterator>
 bool operator!=(const reverse_iterator<Iterator> &lhs,
 		const reverse_iterator<Iterator> &rhs) {
+		return (lhs.base() != rhs.base());
+}
+
+template <class IteratorA, class IteratorB>
+bool operator!=(const reverse_iterator<IteratorA> &lhs,
+		const reverse_iterator<IteratorB> &rhs) {
 		return (lhs.base() != rhs.base());
 }
 

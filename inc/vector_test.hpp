@@ -130,7 +130,7 @@ bool	test_vector_begin() {
 	}
 
 	ft::vector<int> store_v2;
-	for (ft::vector<int>::iterator it = v.begin(); it != v.end(); it++)
+	for (ft::vector<int>::const_iterator it = v.begin(); it 	!= v.end(); it++)
 		store_v2.push_back(*it);
 	for (int i = 0; i < 5; i++) {
 		if (store_v[i] != store_v_og[i])
@@ -150,10 +150,10 @@ bool	test_vector_end() {
 	ft::vector<int> store_v;
 	std::vector<int> store_v_og;
 
-	for (ft::vector<int>::iterator it = v.end();
+	for (ft::vector<int>::const_iterator it = v.end();
 		it != v.begin(); it--)
 		store_v.push_back(*it);
-	for (std::vector<int>::iterator it = v_og.end();
+	for (std::vector<int>::const_iterator it = v_og.end();
 		it != v_og.begin(); it--)
 		store_v_og.push_back(*it);
 
@@ -184,11 +184,11 @@ bool	test_vector_rbegin() {
 		if (v[i] != v_og[i])
 			return v_log->err("1: content() differs");
 
-	// int i = 1;
-	// for (ft::vector<int>::const_reverse_iterator it = v.rbegin();
-	// 	it != v.rend(); it++)
-	// 	if (*it != i++)
-	// 		return v_log->err("2: content() differs");
+	int i = 1;
+	for (ft::vector<int>::const_reverse_iterator it = v.rbegin();
+		it != v.rend(); it++)
+		if (*it != i++)
+			return v_log->err("2: content() differs");
 	return true;
 }
 bool	test_vector_rend() {

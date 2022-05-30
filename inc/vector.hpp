@@ -38,9 +38,7 @@ class vector {
 
 	private:
 		allocator_type _alloc;
-
 		pointer _data;
-
 		size_type _size;
 		size_type _capacity;
 
@@ -125,19 +123,19 @@ class vector {
 		}
 
 		reverse_iterator rbegin(void) {
-			return reverse_iterator(_data + _size);
+			return reverse_iterator(end());
 		}
 
 		const_reverse_iterator rbegin(void) const {
-			return const_reverse_iterator(_data + _size);
+			return const_reverse_iterator(end());
 		}
 
 		reverse_iterator rend(void) {
-			return reverse_iterator(_data);
+			return reverse_iterator(begin());
 		}
 
 		const_reverse_iterator rend(void) const {
-			return const_reverse_iterator(_data);
+			return const_reverse_iterator(begin());
 		}
 
 	// capacity
@@ -407,7 +405,7 @@ class vector {
 
 	template <class T, class Alloc>
 	bool operator>=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs) {
-		return !(rhs < lhs);
+		return !(lhs < rhs);
 	}
 
 } // namespace ft
