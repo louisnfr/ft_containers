@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/05/26 13:27:12 by lraffin          ###   ########.fr        #
+#    Updated: 2022/05/30 22:01:23 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,10 @@ diff: $(NAME_FT) $(NAME_STD)
 	-@diff -ys $(NAME_FT).txt $(NAME_STD).txt
 	@rm -rf $(NAME_FT).txt $(NAME_STD).txt
 
-.PHONY: all clean fclean re std diff
+lint:
+	cpplint --recursive --filter=-whitespace/tab,-whitespace/indent,-whitespace/comments,-legal/copyright,-build/include_what_you_use,-runtime/int .
+
+.PHONY: all clean fclean re std diff lint
 
 YELLOW	= \033[38;5;184m
 GREEN	= \033[38;5;46m

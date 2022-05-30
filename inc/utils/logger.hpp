@@ -1,5 +1,4 @@
-#ifndef UTILITY_LOGGER_HPP_
-#define UTILITY_LOGGER_HPP_
+#pragma once
 
 #include <string.h>
 #include <unistd.h>
@@ -92,5 +91,3 @@ class Logger {
 	}
 };
 }  // namespace ft_test
-
-#endif  // UTILITY_LOGGER_HPP_

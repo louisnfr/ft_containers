@@ -1,5 +1,4 @@
-#ifndef VECTOR_TEST_HPP_
-#define VECTOR_TEST_HPP_
+#pragma once
 
 #include <stdlib.h>
 
@@ -7,7 +6,7 @@
 #include <vector>
 #include <iostream>
 
-#include "vector.hpp"
+#include "inc/vector.hpp"
 #include "utils/logger.hpp"
 #include "utils/run_test.hpp"
 
@@ -895,5 +894,3 @@ void	vector() {
 	delete v_log;
 }
 }  // namespace ft_test
-
-#endif  // VECTOR_TEST_HPP_

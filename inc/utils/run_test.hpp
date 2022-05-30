@@ -1,10 +1,9 @@
-#ifndef UTILITY_RUN_TEST_HPP_
-#define UTILITY_RUN_TEST_HPP_
+#pragma once
 
 #include <string>
 #include <exception>
 
-#include "logger.hpp"
+#include "utils/logger.hpp"
 
 namespace ft_test {
 void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
@@ -18,5 +17,3 @@ void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
 	}
 }
 }  // namespace ft_test
-
-#endif  // UTILITY_RUN_TEST_HPP_

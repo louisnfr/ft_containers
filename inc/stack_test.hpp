@@ -1,11 +1,10 @@
-#ifndef STACK_TEST_HPP_
-#define STACK_TEST_HPP_
+#pragma once
 
 #include <stack>
 #include <vector>
 #include <iostream>
 
-#include "stack.hpp"
+#include "inc/stack.hpp"
 
 #include "utils/logger.hpp"
 #include "utils/run_test.hpp"
@@ -263,5 +262,3 @@ void	stack() {
 	delete s_log;
 }
 }  // namespace ft_test
-
-#endif  // STACK_TEST_HPP_
