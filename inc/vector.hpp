@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "inc/iterators/random_access_iterator.hpp"
+#include "inc/iterators/reverse_iterator.hpp"
 #include "inc/type_traits/enable_if.hpp"
 #include "inc/type_traits/is_integral.hpp"
 #include "inc/algorithm/equal.hpp"
@@ -29,8 +30,8 @@ class vector {
 		typedef ft::random_access_iterator<T> iterator;
 		typedef ft::random_access_iterator<const T> const_iterator;
 
-		// typedef ft::reverse_iterator<iterator> reverse_iterator;
-		// typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
+		typedef ft::reverse_iterator<iterator> reverse_iterator;
+		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 
 		typedef std::ptrdiff_t	difference_type;
 		typedef std::size_t		size_type;
@@ -102,25 +103,25 @@ class vector {
 			_size = x._size;
 			for (size_t i = 0; i < x._size; i++)
 				_alloc.construct(_data + i, x._data[i]);
-			return (*this);
+			return *this;
 		}
 
 	// iterators
 
 		iterator begin() {
-			return (iterator(_data));
+			return iterator(_data);
 		}
 
 		const_iterator begin() const {
-			return (const_iterator(_data));
+			return const_iterator(_data);
 		}
 
 		iterator end() {
-			return (iterator(_data + _size));
+			return iterator(_data + _size);
 		}
 
 		const_iterator end() const {
-			return (const_iterator(_data + _size));
+			return const_iterator(_data + _size);
 		}
 
 		// reverse_iterator rbegin() {}
@@ -131,10 +132,12 @@ class vector {
 
 	// capacity
 
-		size_type	size(void) const { return (this->_size); }
+		size_type	size(void) const {
+			return this->_size;
+		}
 
 		size_type	max_size() const {
-			return (_alloc.max_size());
+			return _alloc.max_size();
 		}
 
 		void	resize(size_type n, value_type val = value_type()) {
@@ -149,7 +152,9 @@ class vector {
 			_size = n;
 		}
 
-		size_type	capacity(void) const { return (this->_capacity); }
+		size_type	capacity(void) const {
+			return this->_capacity;
+		}
 
 		bool	empty(void) const {
 			return (_size == 0);
@@ -173,36 +178,36 @@ class vector {
 	// element access
 
 		reference operator[](size_type n) {
-			return (_data[n]);
+			return _data[n];
 		}
 
 		const_reference operator[](size_type n) const {
-			return (_data[n]);
+			return _data[n];
 		}
 
 		reference at(size_type n) {
 			__range_check(n);
-			return (_data[n]);
+			return _data[n];
 		}
 		const_reference at(size_type n) const {
 			__range_check(n);
-			return (_data[n]);
+			return _data[n];
 		}
 
 		reference front() {
-			return (_data[0]);
+			return _data[0];
 		}
 
 		const_reference front() const {
-			return (_data[0]);
+			return _data[0];
 		}
 
 		reference back() {
-			return (_data[_size - 1]);
+			return _data[_size - 1];
 		}
 
 		const_reference back() const {
-			return (_data[_size - 1]);
+			return _data[_size - 1];
 		}
 
 	// modifiers
@@ -320,8 +325,9 @@ class vector {
 
 	// allocator
 
-		allocator_type	get_allocator(void) const { return (this->_alloc); }
-
+		allocator_type	get_allocator(void) const {
+			return this->_alloc;
+		}
 
 	private:
 		void	__range_check(size_type n) {

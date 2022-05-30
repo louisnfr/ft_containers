@@ -29,19 +29,19 @@ class stack {
 	// member functions
 
 		bool empty(void) const {
-			return (_c.empty());
+			return _c.empty();
 		}
 
 		size_type size(void) const {
-			return (_c.size());
+			return _c.size();
 		}
 
 		value_type& top(void) {
-			return (_c.back());
+			return _c.back();
 		}
 
 		const value_type& top(void) const {
-			return (_c.back());
+			return _c.back();
 		}
 
 		void push(const value_type& val) {
