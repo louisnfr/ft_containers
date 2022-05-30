@@ -54,36 +54,34 @@ class stack {
 
 	// non-member function overloads
 
-		friend bool operator==(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c == rhs._c);
-		}
+	friend bool operator==(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c == rhs._c);
+	}
 
-		friend bool operator!=(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c != rhs._c);
-		}
+	friend bool operator!=(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c != rhs._c);
+	}
 
-		friend bool operator<(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c < rhs._c);
-		}
+	friend bool operator<(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c < rhs._c);
+	}
 
-		friend bool operator<=(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c <= rhs._c);
-		}
+	friend bool operator<=(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c <= rhs._c);
+	}
 
-		friend bool operator>(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c > rhs._c);
-		}
+	friend bool operator>(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c > rhs._c);
+	}
 
-		friend bool operator>=(const stack<T, Container>& lhs,
-			const stack<T, Container>& rhs) {
-				return (lhs._c >= rhs._c);
-		}
+	friend bool operator>=(const stack<T, Container>& lhs,
+		const stack<T, Container>& rhs) {
+			return (lhs._c >= rhs._c);
+	}
 };
-
-
 } // namespace ft
