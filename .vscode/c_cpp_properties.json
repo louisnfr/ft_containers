@@ -9,7 +9,7 @@
                 "${workspaceFolder}/inc/algorithm/",
                 "${workspaceFolder}/inc/iterators/",
                 "${workspaceFolder}/inc/type_traits/",
-                "${workspaceFolder}/inc/utils/"
+                "${workspaceFolder}/inc/utility/"
             ],
             "defines": [],
             "macFrameworkPath": [],

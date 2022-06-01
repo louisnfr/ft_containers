@@ -10,13 +10,13 @@
 namespace ft {
 template <class Key,
 	class T,
-	class Compare = std::less<Key>,
-	class Alloc = std::allocator<std::pair<const Key, T> >
+	class Compare = std::less<Key>, // change std
+	class Alloc = std::allocator<std::pair<const Key, T> > // change std
 > class map {
 	public:
 		typedef Key		key_type;
 		typedef T		mapped_type;
-		typedef std::pair<const Key, T> value_type;
+		typedef std::pair<const Key, T> value_type; // change std
 		typedef Compare	key_compare;
 		typedef Alloc	allocator_type;
 
@@ -62,20 +62,37 @@ template <class Key,
 
 		// range constructor
 
-		template <class InputIterator>
-		map(InputIterator first, InputIterator last,
-			const key_compare &comp = key_compare(),
-			const allocator_type &alloc = allocator_type(),
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
-			InputIterator>::type* = NULL) {}
-
+		// template <class InputIterator>
+		// map(InputIterator first, InputIterator last,
+		// 	const key_compare &comp = key_compare(),
+		// 	const allocator_type &alloc = allocator_type(),
+		// 	typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+		// 	InputIterator>::type* = NULL)
+		// 	: _alloc(alloc), _key_compare(comp), _root(NULL), _size(0) {
+		// 	insert(first, last);
+		// }
 
 		// copy constructor
 
-		map(const map &x) {}
+		map(const map &x)
+		: _alloc(x._alloc), _key_compare(x._key_compare), _root(NULL), _size(0) {
+			// *this = x;
+		}
 
 		// destructor
 
-		virtual ~map(void) {}
+		// virtual ~map(void) {
+		// 	clear();
+		// }
+
+		// map &operator=(const map &x) {
+		// 	clear();
+		// 	insert(x.begin(), x.end());
+		// }
+
+		// modifiers
+
+		// std::pair<iterator, bool> // change std
+		// insert (const value_type& val);
 };
 } // namespace ft
