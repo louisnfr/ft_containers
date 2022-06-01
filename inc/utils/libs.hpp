@@ -7,6 +7,7 @@
 #endif
 
 #include <iostream>
+#include <sstream>
 
 #include <vector>
 #include <stack>
@@ -20,4 +21,4 @@
 #include "inc/test/run_test.hpp"
 #include "inc/test/vector_test.hpp"
 #include "inc/test/stack_test.hpp"
-#include "inc/test/map_test.hpp"
+// #include "inc/test/map_test.hpp"
