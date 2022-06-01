@@ -7,3 +7,5 @@
 42Paris, May 2022.
 
 The goal of this project is to re-implement the standard C++ containers.
+
+- [Standard C++](https://www.lirmm.fr/~ducour/Doc-objets/ISO+IEC+14882-1998.pdf)
