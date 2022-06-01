@@ -4,6 +4,9 @@
 **	https://m.cplusplus.com/reference/map/map
 */
 
+#include "inc/type_traits/enable_if.hpp"
+#include "inc/type_traits/is_integral.hpp"
+
 namespace ft {
 template <class Key,
 	class T,
@@ -56,6 +59,20 @@ template <class Key,
 		explicit map(const key_compare &comp = key_compare(),
 			const allocator_type &alloc = allocator_type())
 			: _alloc(alloc), _key_compare(comp), _root(NULL), _size(0) {}
+
+		// range constructor
+
+		template <class InputIterator>
+		map(InputIterator first, InputIterator last,
+			const key_compare &comp = key_compare(),
+			const allocator_type &alloc = allocator_type(),
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+			InputIterator>::type* = NULL) {}
+
+
+		// copy constructor
+
+		map(const map &x) {}
 
 		// destructor
 
