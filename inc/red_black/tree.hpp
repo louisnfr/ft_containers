@@ -76,9 +76,10 @@ template <class T,
 
 		ft::pair<iterator, bool> __insert_node(const value_type &val) {
 			pointer node = __alloc_node(val);
-			if (!_root)
+			// first case scenario
+			if (_root == nil)
 				_root = node;
-			return ft::make_pair(iterator(), true);
+			return ft::make_pair(iterator(_root), true);
 		}
 };
 } // namespace ft
