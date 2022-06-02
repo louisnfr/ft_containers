@@ -4,9 +4,12 @@
 **	https://m.cplusplus.com/reference/map/map
 */
 
+#include "inc/utility/pair.hpp"
+
 #include "inc/type_traits/enable_if.hpp"
 #include "inc/type_traits/is_integral.hpp"
-#include "inc/utility/pair.hpp"
+
+#include "inc/red_black/tree.hpp"
 
 namespace ft {
 template <class Key,
@@ -26,8 +29,8 @@ template <class Key,
 		typedef typename allocator_type::pointer			pointer;
 		typedef typename allocator_type::const_pointer		const_pointer;
 
-		typedef ft::random_access_iterator<T>			iterator;
-		typedef ft::random_access_iterator<const T>		const_iterator;
+		typedef ft::tree_iterator<T>			iterator;
+		typedef ft::tree_iterator<const T>		const_iterator;
 		typedef ft::reverse_iterator<iterator>			reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
@@ -110,11 +113,11 @@ template <class Key,
 
 		// modifiers
 
-		ft::pair<iterator, bool> insert(const value_type &x) {
-			std::cout << "debug" << std::endl;
-			(void)x;
-			return ;
-		}
+		// ft::pair<iterator, bool> insert(const value_type &x) {
+		// 	std::cout << "debug" << std::endl;
+		// 	(void)x;
+		// 	return ;
+		// }
 
 		// iterator insert(iterator position, const value_type &x) {}
 

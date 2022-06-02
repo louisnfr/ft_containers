@@ -2,11 +2,10 @@
 
 namespace ft
 {
-
-enum color {
+typedef enum color {
 	RED,
 	BLACK
-};
+} e_color;
 
 template <typename T>
 class node {
@@ -17,8 +16,10 @@ class node {
 		node	*right;
 		node	*parent;
 
-		color	color;
+		e_color	color;
 
-		explicit node(T const &val) : key()
+		explicit node(T const &val) : key(val) {}
+
+		virtual ~node(void) {}
 };
 } // namespace ft

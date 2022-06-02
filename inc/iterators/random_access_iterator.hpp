@@ -18,37 +18,30 @@ class random_access_iterator {
 		pointer	_ptr;
 
 	public:
-		// default constructible
-
+		// default constructor
 		random_access_iterator(void) : _ptr(NULL) {}
 
-		// copy constructible
-
+		// copy constructor
 		explicit random_access_iterator(pointer ptr) : _ptr(ptr) {}
 
 		// operator
-
 		random_access_iterator(const random_access_iterator &x) : _ptr(x._ptr) {}
 
 		// copy assignable
-
 		random_access_iterator &operator=(const random_access_iterator &x) {
 			_ptr = x._ptr;
 			return *this;
 		}
 
-		// destructible
-
+		// destructor
 		virtual ~random_access_iterator(void) {}
 
 		// const iterator cast
-
 		operator random_access_iterator<T const>(void) const {
 			return random_access_iterator<T const>(_ptr);
 		}
 
 		// equality and inequality operators
-
 		bool	operator==(const random_access_iterator &rhs) const {
 			return (_ptr == rhs._ptr);
 		}
@@ -58,7 +51,6 @@ class random_access_iterator {
 		}
 
 		// dereferenceable
-
 		reference	operator*(void) const {
 			return *_ptr;
 		}
@@ -68,7 +60,6 @@ class random_access_iterator {
 		}
 
 		// increment and decrement operators
-
 		random_access_iterator	&operator++(void) {
 			++_ptr;
 			return *this;
@@ -92,7 +83,6 @@ class random_access_iterator {
 		}
 
 		// arithmetic operators
-
 		random_access_iterator	operator+(const difference_type &n) const {
 			return random_access_iterator(_ptr + n);
 		}
@@ -110,7 +100,6 @@ class random_access_iterator {
 		}
 
 		// relational operators
-
 		bool	operator<(const random_access_iterator &rhs) const {
 			return (_ptr < rhs._ptr);
 		}
@@ -128,7 +117,6 @@ class random_access_iterator {
 		}
 
 		// assignement operators
-
 		random_access_iterator	&operator+=(const difference_type &n) const {
 			_ptr += n;
 			return *this;
@@ -140,10 +128,8 @@ class random_access_iterator {
 		}
 
 		// offset dereference operator
-
 		value_type	&operator[](size_t n) const {
 			return *(_ptr + n);
 		}
 };
-
 } // namespace ft
