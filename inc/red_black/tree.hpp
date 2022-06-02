@@ -16,13 +16,17 @@ template <class T,
 		typedef Compare	key_compare;
 		typedef Alloc	allocator_type;
 
+		typedef	node<T>				node_type;
+		typedef const node<T>		const_node_type;
+
 		typedef node<T>&			reference;
 		typedef node<T>*			pointer;
+
 		typedef const node<T>&		const_reference;
 		typedef const node<T>*		const_pointer;
 
-		typedef ft::tree_iterator<T>			iterator;
-		typedef ft::tree_iterator<const T>		const_iterator;
+		typedef ft::tree_iterator<node_type>			iterator;
+		typedef ft::tree_iterator<const_node_type>		const_iterator;
 		typedef ft::reverse_iterator<iterator>			reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
@@ -33,17 +37,31 @@ template <class T,
 		allocator_type	_alloc;
 		key_compare		_comp;
 		pointer			_root;
+		pointer			nil;
 		size_type		_size;
 
 	public:
-		explicit tree(const allocator_type &alloc = allocator_type())
-			: _alloc(alloc), _comp(key_compare()), _root(NULL), _size(0) {}
+		explicit tree(allocator_type alloc = allocator_type())
+			: _alloc(alloc), _comp(key_compare()), _root(NULL), nil(NULL), _size(0) {
+			__alloc_null_node();
+		}
 
 		ft::pair<iterator, bool> insert(const value_type &val) {
 			return __insert_node(val);
 		}
 
 	private:
+		void	__alloc_null_node(void) {
+			nil = _alloc.allocate(1);
+
+			nil->parent = NULL;
+			nil->left = NULL;
+			nil->right = NULL;
+			nil->color = BLACK;
+
+			_root = nil;
+		}
+
 		pointer __alloc_node(const value_type &val) {
 			pointer node = _alloc.allocate(1);
 
@@ -60,7 +78,7 @@ template <class T,
 			pointer node = __alloc_node(val);
 			if (!_root)
 				_root = node;
-			return ft::make_pair(iterator(_root), true);
+			return ft::make_pair(iterator(), true);
 		}
 };
 } // namespace ft

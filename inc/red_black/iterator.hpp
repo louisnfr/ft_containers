@@ -9,14 +9,20 @@ namespace ft
 template <class T>
 class tree_iterator {
 	public:
+		typedef T*	node_pointer;
+
+		typedef T	value_type;
+
+		typedef value_type&			reference;
+		typedef const value_type&	const_reference;
+		typedef value_type*			pointer;
+		typedef const value_type*	const_pointer;
+
 		typedef std::bidirectional_iterator_tag		iterator_category;
-		typedef T					value_type;
-		typedef T*					pointer;
-		typedef T&					reference;
 		typedef std::ptrdiff_t		difference_type;
 
 	private:
-		pointer	_ptr;
+		node_pointer	_ptr;
 
 	public:
 		// default constructor
