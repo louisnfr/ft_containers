@@ -35,14 +35,10 @@ template <class Key,
 		typedef std::size_t		size_type;
 
 		class value_compare {
-			friend class map;
 			protected:
-				Compare comp;
+				key_compare comp;
 				explicit value_compare(Compare c) : comp(c) {}
 			public:
-				typedef bool result_type;
-				typedef value_type first_argument_type;
-				typedef value_type second_argument_type;
 				bool operator()(const value_type &x, const value_type &y) const {
 					return comp(x.first, y.first);
 				}
@@ -51,8 +47,8 @@ template <class Key,
 	private:
 		allocator_type	_alloc;
 		key_compare		_key_compare;
-		size_type		_size;
 		pointer			_root;
+		size_type		_size;
 
 	public:
 		// empty constructor
@@ -114,7 +110,11 @@ template <class Key,
 
 		// modifiers
 
-		// ft::pair<iterator, bool> insert(const value_type &x) {}
+		ft::pair<iterator, bool> insert(const value_type &x) {
+			std::cout << "debug" << std::endl;
+			(void)x;
+			return ;
+		}
 
 		// iterator insert(iterator position, const value_type &x) {}
 
