@@ -20,7 +20,7 @@ template <class Key,
 	public:
 		typedef Key		key_type;
 		typedef T		mapped_type;
-		typedef ft::pair<const Key, T> value_type;
+		typedef ft::pair<key_type, mapped_type> value_type;
 		typedef Compare	key_compare;
 		typedef Alloc	allocator_type;
 
@@ -38,27 +38,27 @@ template <class Key,
 		typedef std::size_t		size_type;
 
 		class value_compare {
-			protected:
-				key_compare comp;
-				explicit value_compare(Compare c) : comp(c) {}
-			public:
-				bool operator()(const value_type &x, const value_type &y) const {
-					return comp(x.first, y.first);
-				}
+		public:
+			bool operator()(const value_type &lhs, const value_type &rhs) const {
+				return key_compare(lhs.first, rhs.first);
+			}
 		};
 
 	private:
-		allocator_type	_alloc;
-		key_compare		_key_compare;
-		pointer			_root;
-		size_type		_size;
+		allocator_type			_alloc;
+		key_compare				_key_compare;
+		value_compare			_value_compare;
+		tree<value_type, value_compare>	_tree;
 
 	public:
 		// empty constructor
 
 		explicit map(const key_compare &comp = key_compare(),
 			const allocator_type &alloc = allocator_type())
-			: _alloc(alloc), _key_compare(comp), _root(NULL), _size(0) {}
+			: _alloc(alloc),
+			_key_compare(comp),
+			_value_compare(value_compare()),
+			_tree(_alloc) {}
 
 		// range constructor
 
@@ -68,14 +68,20 @@ template <class Key,
 			const allocator_type &alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 			InputIterator>::type* = NULL)
-			: _alloc(alloc), _key_compare(comp), _root(NULL), _size(0) {
+			:_alloc(alloc),
+			_key_compare(comp),
+			_value_compare(value_compare()),
+			_tree(_alloc) {
 			insert(first, last);
 		}
 
 		// copy constructor
 
 		map(const map &x)
-		: _alloc(x._alloc), _key_compare(x._key_compare), _root(NULL), _size(0) {}
+		: _alloc(x._alloc),
+		_key_compare(x._key_compare),
+		_value_compare(x._value_compare),
+		_tree(_alloc) {}
 
 		// destructor
 
@@ -113,11 +119,9 @@ template <class Key,
 
 		// modifiers
 
-		// ft::pair<iterator, bool> insert(const value_type &x) {
-		// 	std::cout << "debug" << std::endl;
-		// 	(void)x;
-		// 	return ;
-		// }
+		ft::pair<iterator, bool> insert(const value_type &x) {
+			return _tree.insert(x);
+		}
 
 		// iterator insert(iterator position, const value_type &x) {}
 

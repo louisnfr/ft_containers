@@ -1,10 +1,10 @@
 #pragma once
 
-#if STD
- #define NS std
-#else
- #define NS ft
-#endif
+// #if STD
+//  #define NS std
+// #else
+//  #define NS ft
+// #endif
 
 #include <iostream>
 #include <sstream>

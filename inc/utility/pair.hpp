@@ -26,11 +26,18 @@ class pair {
 
 		// initialization constructor
 
-		pair(const first_type &a, const second_type &b) : first(a), second(b) {}
+		pair(const first_type &a, const second_type &b) {
+			first = a;
+			second = b;
+		}
+
+		virtual ~pair(void) {}
 
 		pair	&operator=(const pair &pr) {
-			first = pr.first;
-			second = pr.second;
+			if (this != &pr) {
+				first = pr.first;
+				second = pr.second;
+			}
 			return *this;
 		}
 };
