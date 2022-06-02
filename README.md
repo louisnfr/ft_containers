@@ -9,3 +9,6 @@
 The goal of this project is to re-implement the standard C++ containers.
 
 - [Standard C++](https://www.lirmm.fr/~ducour/Doc-objets/ISO+IEC+14882-1998.pdf)
+- [Red Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+  - [Visualizer](cs.usfca.edu/~galles/visualization/RedBlack.html)
+  - [Balance Tutorial](https://habr.com/ru/company/otus/blog/472040/)
