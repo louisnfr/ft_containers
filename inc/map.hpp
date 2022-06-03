@@ -32,7 +32,7 @@ template <class Key,
 		class value_compare {
 		public:
 			bool operator()(const value_type &lhs, const value_type &rhs) const {
-				return key_compare(lhs.first, rhs.first);
+				return key_compare()(lhs.first, rhs.first);
 			}
 		};
 

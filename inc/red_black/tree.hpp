@@ -75,10 +75,35 @@ template <class T,
 		}
 
 		ft::pair<iterator, bool> __insert_node(const value_type &val) {
+			// create a node from pair value
 			pointer node = __alloc_node(val);
-			// first case scenario
-			if (_root == nil)
+
+			// looking for the place to insert the node
+			pointer x = _root;
+			pointer p = nil;
+			while (x != nil) {
+				p = x;
+				if (_comp(val, x->key) > 0)
+					x = x->left;
+				else
+					x = x->right;
+			}
+
+			node->parent = p;
+
+			// // first case scenario
+			if (p == nil)
+			{
 				_root = node;
+			}
+			// else if (_comp(_root)) {
+			// 	_root->left = node;
+			// 	node->parent = _root;
+			// }
+			// else if (val > _root) {
+			// 	_root->right = node;
+			// 	node->parent = _root;
+			// }
 			return ft::make_pair(iterator(_root), true);
 		}
 };
