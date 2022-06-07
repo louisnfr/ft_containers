@@ -5,3 +5,4 @@ int main(void) {
 	map.insert(ft::pair<int,int>(45, 8));
 	// map.insert(ft::pair<int,int>(4, 8));
 }
+
