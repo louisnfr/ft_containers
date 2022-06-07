@@ -37,12 +37,12 @@ template <class T,
 		allocator_type	_alloc;
 		key_compare		_comp;
 		pointer			_root;
-		pointer			nil;
+		pointer			NIL;
 		size_type		_size;
 
 	public:
 		explicit tree(allocator_type alloc = allocator_type())
-			: _alloc(alloc), _comp(key_compare()), _root(NULL), nil(NULL), _size(0) {
+			: _alloc(alloc), _comp(key_compare()), _root(NULL), NIL(NULL), _size(0) {
 			__alloc_null_node();
 		}
 
@@ -52,14 +52,14 @@ template <class T,
 
 	private:
 		void	__alloc_null_node(void) {
-			nil = _alloc.allocate(1);
+			NIL = _alloc.allocate(1);
 
-			nil->parent = NULL;
-			nil->left = NULL;
-			nil->right = NULL;
-			nil->color = BLACK;
+			NIL->parent = NULL;
+			NIL->left = NULL;
+			NIL->right = NULL;
+			NIL->color = BLACK;
 
-			_root = nil;
+			_root = NIL;
 		}
 
 		pointer __alloc_node(const value_type &val) {
@@ -80,30 +80,41 @@ template <class T,
 
 			// looking for the place to insert the node
 			pointer x = _root;
-			pointer p = nil;
-			while (x != nil) {
+			pointer p = NIL;
+			while (x != NIL) {
+				std::cout << "1" << std::endl;
 				p = x;
-				if (_comp(val, x->key) > 0)
+				if (_comp(val, x->key)) {
+					std::cout << "2" << std::endl;
 					x = x->left;
-				else
+				}
+				else {
 					x = x->right;
+					std::cout << "3" << std::endl;
+				}
 			}
 
 			node->parent = p;
 
-			// // first case scenario
-			if (p == nil)
-			{
+			if (p == NIL) // first case scenario
 				_root = node;
+			else if (_comp(node->key, p->key))
+				p->left = node;
+			else
+				p->right = node;
+
+			if (node->parent == NIL) {
+				node->color = BLACK;
+				return ft::make_pair(iterator(_root), true);
 			}
-			// else if (_comp(_root)) {
-			// 	_root->left = node;
-			// 	node->parent = _root;
-			// }
-			// else if (val > _root) {
-			// 	_root->right = node;
-			// 	node->parent = _root;
-			// }
+
+			if (node->parent->parent == NIL)
+			{
+				return ft::make_pair(iterator(_root), true);
+			}
+
+			// __insert_fixup(node);
+
 			return ft::make_pair(iterator(_root), true);
 		}
 };
