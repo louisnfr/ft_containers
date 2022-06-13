@@ -1,7 +1,6 @@
 #pragma once
 
-namespace ft
-{
+namespace ft {
 typedef enum color {
 	RED,
 	BLACK

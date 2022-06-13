@@ -78,4 +78,11 @@ class pair {
 	pair<T1, T2>	make_pair(T1 x, T2 y) {
 		return pair<T1, T2>(x, y);
 	}
+
+	template <typename T, typename U>
+	std::ostream	&operator<<(std::ostream &o, pair<T, U> const &rhs) {
+		o << "key(" << rhs.first << "):" << rhs.second;
+		return o;
+	}
+
 } // namespace ft

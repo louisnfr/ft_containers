@@ -5,8 +5,7 @@
 #include "inc/red_black/node.hpp"
 #include "inc/red_black/iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 template <class T,
 	class Compare,
 	class Alloc = std::allocator<node<T> >
@@ -49,6 +48,8 @@ template <class T,
 		ft::pair<iterator, bool> insert(const value_type &val) {
 			return __insert_node(val);
 		}
+
+		pointer	getNode(void) { return _root; }
 
 	private:
 		void	__alloc_null_node(void) {
@@ -112,5 +113,8 @@ template <class T,
 
 			return ft::make_pair(iterator(_root), true);
 		}
+
+	public:
+		#include "inc/red_black/visualizer.hpp"
 };
 } // namespace ft

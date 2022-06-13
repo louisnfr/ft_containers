@@ -5,4 +5,7 @@ int main(void) {
 	map.insert(ft::pair<int,int>(0, 0));
 	std::cout << "SECOND INSERT" << std::endl;
 	map.insert(ft::pair<int,int>(10, 10));
+	map.insert(ft::pair<int,int>(140, 190));
+
+	map.print_tree();
 }

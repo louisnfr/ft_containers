@@ -4,8 +4,7 @@
 
 #include "inc/red_black/tree.hpp"
 
-namespace ft
-{
+namespace ft {
 template <class T>
 class tree_iterator {
 	public:

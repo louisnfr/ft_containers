@@ -11,6 +11,11 @@
 
 #include "inc/red_black/tree.hpp"
 
+#define __BLACK "\033[40m"
+#define __RED   "\e[1;41m"
+#define __STOP  "\033[0m"
+#define __SIZE		5
+
 namespace ft {
 template <class Key,
 	class T,
@@ -122,6 +127,10 @@ template <class Key,
 
 		ft::pair<iterator, bool> insert(const value_type &x) {
 			return _tree.insert(x);
+		}
+
+		void	print_tree(void) {
+			_tree.print_tree(_tree.getNode());
 		}
 
 		// iterator insert(iterator position, const value_type &x) {}
