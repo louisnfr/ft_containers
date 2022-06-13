@@ -67,9 +67,9 @@ template <class T,
 
 			node->key = val;
 			node->color = RED;
-			node->left = NULL;
-			node->right = NULL;
-			node->parent = NULL;
+			node->left = NIL;
+			node->right = NIL;
+			node->parent = NIL;
 			++_size;
 			return node;
 		}
@@ -82,16 +82,11 @@ template <class T,
 			pointer x = _root;
 			pointer p = NIL;
 			while (x != NIL) {
-				std::cout << "1" << std::endl;
 				p = x;
-				if (_comp(val, x->key)) {
-					std::cout << "2" << std::endl;
+				if (_comp(val, x->key))
 					x = x->left;
-				}
-				else {
+				else
 					x = x->right;
-					std::cout << "3" << std::endl;
-				}
 			}
 
 			node->parent = p;
