@@ -9,7 +9,7 @@ template <class T>
 class tree_iterator {
 	public:
 		typedef T	*node_pointer;
-		typedef typename T::value_type const	value_type;
+		typedef typename T::value_type	value_type;
 
 		typedef value_type&		reference;
 		typedef value_type*		pointer;
@@ -27,7 +27,7 @@ class tree_iterator {
 		tree_iterator(void) : _ptr(NULL) {}
 
 		// pointer constructor
-		explicit tree_iterator(pointer ptr) : _ptr(ptr) {}
+		explicit tree_iterator(node_pointer ptr) : _ptr(ptr) {}
 
 		// copy constructor
 		tree_iterator(const tree_iterator &x) : _ptr(x._ptr) {}

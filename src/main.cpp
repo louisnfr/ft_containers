@@ -17,5 +17,5 @@ int main(void) {
 
 	std::cout << it->first << std::endl;
 
-	// map.print_tree();
+	map.print_tree();
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #define NODE node_type
-#define VALUE key
+#define VALUE value
 #define ROOT _root
 #define IS_BLACK color
 

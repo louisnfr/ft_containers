@@ -58,7 +58,7 @@ template <class T,
 		}
 
 		iterator	begin(void) {
-			return iterator(_root);
+			return iterator(__min_node(_root));
 		}
 
 	private:
@@ -199,6 +199,12 @@ template <class T,
 				node->parent->left = tmp;
 			tmp->right = node;
 			node->parent = tmp;
+		}
+
+		pointer	__min_node(pointer node) const {
+			while (node->left != NIL)
+				node = node->left;
+			return node;
 		}
 
 		#include "inc/red_black/visualizer.hpp"
