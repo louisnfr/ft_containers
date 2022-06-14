@@ -12,6 +12,8 @@
 #define V_RED "\033[1;41m"
 #define NOC "\033[0m"
 
+std::vector<std::vector <int> > aff;
+
 public:
 	void print_tree(NODE *ptr, int level = 0, bool is_right = 0) {
 		int i;
@@ -68,8 +70,6 @@ private:
 		else
 			return count_from_node(ptr->right);
 	}
-
-	std::vector<std::vector <int> > aff;
 
 	bool search_v(int level) {
 		for (size_t i = 0; i < aff.size(); i++) {
