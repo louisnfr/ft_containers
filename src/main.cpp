@@ -1,12 +1,21 @@
 #include "inc/utility/libs.hpp"
 
 int main(void) {
-	ft::map<int, int> map;
+	NS::pair<int,int> p(1,10);
+	std::cout << p.second << std::endl;
 
-	map.insert(ft::pair<int, int>(0, 0));
-	map.insert(ft::pair<int, int>(10, 10));
-	map.insert(ft::pair<int, int>(1, 1));
-	map.insert(ft::pair<int, int>(-1, -1));
+	NS::map<int, int> map;
 
-	map.print_tree();
+	map.insert(NS::pair<int, int>(0, 0));
+	map.insert(NS::pair<int, int>(10, 0));
+	map.insert(NS::pair<int, int>(1, 0));
+	map.insert(NS::pair<int, int>(-1, 0));
+
+	NS::map<int, int>::iterator it = map.begin();
+
+	// it--;
+
+	std::cout << it->first << std::endl;
+
+	// map.print_tree();
 }

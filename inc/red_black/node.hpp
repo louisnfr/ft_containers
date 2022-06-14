@@ -11,7 +11,7 @@ class node {
 	public:
 		typedef T	value_type;
 
-		T		key;
+		T		value;
 
 		node	*parent;
 		node	*left;
@@ -19,6 +19,6 @@ class node {
 
 		e_color	color;
 
-		explicit node(T const &val) : key(val) {}
+		explicit node(T const &val) : value(val) {}
 };
 } // namespace ft

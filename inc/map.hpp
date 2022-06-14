@@ -95,27 +95,35 @@ template <class Key,
 			// clear();
 		}
 
-		// map &operator=(const map &x) {
-		// 	clear();
-		// 	insert(x.begin(), x.end());
-		// }
+		// assignement operator
+
+		map	&operator=(const map &x) {
+			_alloc = x._alloc;
+			_key_compare = x._key_compare;
+			_value_compare = x._value_compare;
+			_tree= x._tree;
+			return *this;
+		}
 
 		// iterators
 
-		// iterator begin() {}
-		// const_iterator begin() const {}
-		// iterator end() {}
-		// const_iterator end() const {}
-		// reverse_iterator rbegin() {}
-		// const_reverse_iterator rbegin() const {}
-		// reverse_iterator rend() {}
-		// const_reverse_iterator rend() const {}
+		iterator begin(void) {
+			return _tree.begin();
+		}
+
+		// const_iterator begin(void) const {}
+		// iterator end(void) {}
+		// const_iterator end(void) const {}
+		// reverse_iterator rbegin(void) {}
+		// const_reverse_iterator rbegin(void) const {}
+		// reverse_iterator rend(void) {}
+		// const_reverse_iterator rend(void) const {}
 
 		// capacity
 
-		// bool empty() const {}
-		// size_type size() const {}
-		// size_type max_size() const {}
+		// bool empty(void) const {}
+		// size_type size(void) const {}
+		// size_type max_size(void) const {}
 
 		// element access
 
@@ -125,15 +133,17 @@ template <class Key,
 
 		// modifiers
 
-		ft::pair<iterator, bool> insert(const value_type &x) {
-			return _tree.insert(x);
+		ft::pair<iterator, bool> insert(const value_type &val) {
+			return _tree.insert(val);
 		}
 
 		void	print_tree(void) {
 			_tree.print_tree(_tree.getNode());
 		}
 
-		// iterator insert(iterator position, const value_type &x) {}
+		iterator	insert(iterator position, const value_type &x) {
+
+		}
 
 		// template <class InputIterator>
 		// void insert(InputIterator first, InputIterator last) {}

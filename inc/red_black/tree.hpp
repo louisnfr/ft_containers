@@ -45,12 +45,20 @@ template <class T,
 			__alloc_null_node();
 		}
 
+		virtual ~tree(void) {
+			// clear();
+		}
+
 		ft::pair<iterator, bool> insert(const value_type &val) {
 			return __insert_node(val);
 		}
 
 		pointer	getNode(void) {
 			return _root;
+		}
+
+		iterator	begin(void) {
+			return iterator(_root);
 		}
 
 	private:
@@ -68,7 +76,7 @@ template <class T,
 		pointer __alloc_node(const value_type &val) {
 			pointer node = _alloc.allocate(1);
 
-			node->key = val;
+			node->value = val;
 			node->color = RED;
 			node->left = NIL;
 			node->right = NIL;
@@ -87,7 +95,7 @@ template <class T,
 			// navigate the tree to find the parent
 			while (x != NIL) {
 				p = x;
-				if (_comp(val, x->key))
+				if (_comp(val, x->value))
 					x = x->left;
 				else
 					x = x->right;
@@ -96,7 +104,7 @@ template <class T,
 
 			if (p == NIL) // first insert
 				_root = node;
-			else if (_comp(node->key, p->key)) // greater than parent
+			else if (_comp(node->value, p->value)) // greater than parent
 				p->left = node;
 			else // less than parent
 				p->right = node;

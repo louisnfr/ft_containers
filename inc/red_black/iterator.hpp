@@ -8,14 +8,13 @@ namespace ft {
 template <class T>
 class tree_iterator {
 	public:
-		typedef T*	node_pointer;
+		typedef T	*node_pointer;
+		typedef typename T::value_type const	value_type;
 
-		typedef T	value_type;
-
-		typedef value_type&			reference;
-		typedef const value_type&	const_reference;
-		typedef value_type*			pointer;
-		typedef const value_type*	const_pointer;
+		typedef value_type&		reference;
+		typedef value_type*		pointer;
+		// typedef const value_type&	const_reference;
+		// typedef const value_type*	const_pointer;
 
 		typedef std::bidirectional_iterator_tag		iterator_category;
 		typedef std::ptrdiff_t		difference_type;
@@ -48,94 +47,89 @@ class tree_iterator {
 		}
 
 		// equality and inequality operators
-		bool	operator==(const tree_iterator &rhs) const {
-			return (_ptr == rhs._ptr);
-		}
+		// bool	operator==(const tree_iterator &rhs) const {
+		// 	return (_ptr == rhs._ptr);
+		// }
 
-		bool	operator!=(const tree_iterator &rhs) const {
-			return (_ptr != rhs._ptr);
-		}
+		// bool	operator!=(const tree_iterator &rhs) const {
+		// 	return (_ptr != rhs._ptr);
+		// }
 
 		// dereferenceable
 		reference	operator*(void) const {
-			return *_ptr;
+			return _ptr->value;
 		}
 
 		pointer	operator->(void) const {
-			return _ptr;
+			return &(operator*());
 		}
 
 		// increment and decrement operators
-		tree_iterator	&operator++(void) {
-			++_ptr;
-			return *this;
-		}
+		// tree_iterator	&operator++(void) {
+		// 	++_ptr;
+		// 	return *this;
+		// }
 
-		tree_iterator	operator++(int) {
-			tree_iterator	tmp = *this;
-			++_ptr;
-			return tmp;
-		}
+		// tree_iterator	operator++(int) {
+		// 	tree_iterator	tmp = *this;
+		// 	++_ptr;
+		// 	return tmp;
+		// }
 
-		tree_iterator	&operator--(void) {
-			--_ptr;
-			return *this;
-		}
+		// tree_iterator	&operator--(void) {
+		// 	--_ptr;
+		// 	return *this;
+		// }
 
-		tree_iterator	operator--(int) {
-			tree_iterator	tmp = *this;
-			--_ptr;
-			return tmp;
-		}
+		// tree_iterator	operator--(int) {
+		// 	tree_iterator	tmp = *this;
+		// 	--_ptr;
+		// 	return tmp;
+		// }
 
 		// arithmetic operators
-		tree_iterator	operator+(const difference_type &n) const {
-			return tree_iterator(_ptr + n);
-		}
+		// tree_iterator	operator+(const difference_type &n) const {
+		// 	return tree_iterator(_ptr + n);
+		// }
 
-		difference_type	operator+(const tree_iterator &rhs) const {
-			return (_ptr + rhs._ptr);
-		}
+		// difference_type	operator+(const tree_iterator &rhs) const {
+		// 	return (_ptr + rhs._ptr);
+		// }
 
-		tree_iterator	operator-(const difference_type &n) const {
-			return tree_iterator(_ptr - n);
-		}
+		// tree_iterator	operator-(const difference_type &n) const {
+		// 	return tree_iterator(_ptr - n);
+		// }
 
-		difference_type	operator-(const tree_iterator &rhs) const {
-			return (_ptr - rhs._ptr);
-		}
+		// difference_type	operator-(const tree_iterator &rhs) const {
+		// 	return (_ptr - rhs._ptr);
+		// }
 
 		// relational operators
-		bool	operator<(const tree_iterator &rhs) const {
-			return (_ptr < rhs._ptr);
-		}
+		// bool	operator<(const tree_iterator &rhs) const {
+		// 	return (_ptr < rhs._ptr);
+		// }
 
-		bool	operator>(const tree_iterator &rhs) const {
-			return (_ptr > rhs._ptr);
-		}
+		// bool	operator>(const tree_iterator &rhs) const {
+		// 	return (_ptr > rhs._ptr);
+		// }
 
-		bool	operator<=(const tree_iterator &rhs) const {
-			return (_ptr <= rhs._ptr);
-		}
+		// bool	operator<=(const tree_iterator &rhs) const {
+		// 	return (_ptr <= rhs._ptr);
+		// }
 
-		bool	operator>=(const tree_iterator &rhs) const {
-			return (_ptr >= rhs._ptr);
-		}
+		// bool	operator>=(const tree_iterator &rhs) const {
+		// 	return (_ptr >= rhs._ptr);
+		// }
 
 		// assignement operators
-		tree_iterator	&operator+=(const difference_type &n) const {
-			_ptr += n;
-			return *this;
-		}
+		// tree_iterator	&operator+=(const difference_type &n) const {
+		// 	_ptr += n;
+		// 	return *this;
+		// }
 
-		tree_iterator	&operator-=(const difference_type &n) const {
-			_ptr -= n;
-			return *this;
-		}
-
-		// offset dereference operator
-		value_type	&operator[](size_t n) const {
-			return *(_ptr + n);
-		}
+		// tree_iterator	&operator-=(const difference_type &n) const {
+		// 	_ptr -= n;
+		// 	return *this;
+		// }
 };
 } // namespace ft
