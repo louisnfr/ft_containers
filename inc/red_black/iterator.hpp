@@ -33,8 +33,9 @@ class tree_iterator {
 		tree_iterator(const tree_iterator &x) : _ptr(x._ptr) {}
 
 		// copy assignable
-		tree_iterator &operator=(const tree_iterator &x) {
-			_ptr = x._ptr;
+		tree_iterator &operator=(const tree_iterator &rhs) {
+			if (this != &rhs)
+				_ptr = rhs._ptr;
 			return *this;
 		}
 
@@ -65,27 +66,27 @@ class tree_iterator {
 		}
 
 		// increment and decrement operators
-		// tree_iterator	&operator++(void) {
-		// 	++_ptr;
-		// 	return *this;
-		// }
+		tree_iterator	&operator++(void) {
+			__increment();
+			return *this;
+		}
 
-		// tree_iterator	operator++(int) {
-		// 	tree_iterator	tmp = *this;
-		// 	++_ptr;
-		// 	return tmp;
-		// }
+		tree_iterator	operator++(int) {
+			tree_iterator	tmp(*this);
+			++(*this);
+			return tmp;
+		}
 
-		// tree_iterator	&operator--(void) {
-		// 	--_ptr;
-		// 	return *this;
-		// }
+		tree_iterator	&operator--(void) {
+			// __decrement();
+			return *this;
+		}
 
-		// tree_iterator	operator--(int) {
-		// 	tree_iterator	tmp = *this;
-		// 	--_ptr;
-		// 	return tmp;
-		// }
+		tree_iterator	operator--(int) {
+			tree_iterator	tmp(*this);
+			--(*this);
+			return tmp;
+		}
 
 		// arithmetic operators
 		// tree_iterator	operator+(const difference_type &n) const {
@@ -131,5 +132,28 @@ class tree_iterator {
 		// 	_ptr -= n;
 		// 	return *this;
 		// }
+
+	private:
+		void	__increment(void) {
+			// If the current node has a non-null right child,
+				// Take a step down to the right
+				// Then run down to the left as far as possible
+			// If the current node has a null right child,
+				// move up the tree until we have moved over a left child link
+			if (_ptr->right != NULL) {
+				_ptr = _ptr->right;
+				while (_ptr->left != NULL)
+					_ptr = _ptr->left;
+			}
+			else {
+				node_pointer	parent = _ptr->parent;
+
+				while (parent != NULL && _ptr == parent->right) {
+					_ptr = parent;
+					parent = parent->parent;
+				}
+				_ptr = parent;
+			}
+		}
 };
 } // namespace ft

@@ -112,7 +112,9 @@ template <class Key,
 		}
 
 		// const_iterator begin(void) const {}
-		// iterator end(void) {}
+		iterator end(void) {
+			return _tree.end();
+		}
 		// const_iterator end(void) const {}
 		// reverse_iterator rbegin(void) {}
 		// const_reverse_iterator rbegin(void) const {}

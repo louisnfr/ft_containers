@@ -61,6 +61,10 @@ template <class T,
 			return iterator(__min_node(_root));
 		}
 
+		iterator	end(void) {
+			return iterator(_root);
+		}
+
 	private:
 		void	__alloc_null_node(void) {
 			NIL = _alloc.allocate(1);
