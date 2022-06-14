@@ -1,12 +1,11 @@
 #pragma once
 
-#include "inc/red_black/node.hpp"
-
 #define NODE node_type
 #define VALUE key
-#define SIZE 6
 #define ROOT _root
 #define IS_BLACK color
+
+#define PRINT_SIZE 6
 
 #define V_BLACK "\033[40m"
 #define V_RED "\033[1;41m"
@@ -86,6 +85,6 @@ private:
 	void aff_chars(std::string a, std::string b, int size = -1) {
 		size = (size == -1) ? a.size() : size;
 		std::cout << a;
-		for (int i = SIZE; i - size > 0; i--)
-					std::cout << b;
+		for (int i = PRINT_SIZE; i - size > 0; i--)
+			std::cout << b;
 	}
