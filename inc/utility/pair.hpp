@@ -4,8 +4,7 @@
 **	https://www32.cplusplus.com/reference/utility/pair/
 */
 
-namespace ft
-{
+namespace ft {
 template <class T1, class T2>
 class pair {
 	public:

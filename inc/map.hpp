@@ -11,11 +11,6 @@
 
 #include "inc/red_black/tree.hpp"
 
-#define __BLACK "\033[40m"
-#define __RED   "\e[1;41m"
-#define __STOP  "\033[0m"
-#define __SIZE		5
-
 namespace ft {
 template <class Key,
 	class T,
@@ -41,10 +36,15 @@ template <class Key,
 			}
 		};
 
-		typedef typename ft::tree<value_type, value_compare>::iterator iterator;
-		typedef typename ft::tree<value_type, value_compare>::const_iterator const_iterator;
-		typedef typename ft::tree<value_type, value_compare>::reverse_iterator reverse_iterator;
-		typedef typename ft::tree<value_type, value_compare>::const_reverse_iterator const_reverse_iterator;
+		typedef typename
+			ft::tree<value_type, value_compare>::iterator iterator;
+		typedef typename
+			ft::tree<value_type, value_compare>::const_iterator const_iterator;
+		typedef typename
+			ft::tree<value_type, value_compare>::reverse_iterator reverse_iterator;
+		typedef typename
+			ft::tree<value_type, value_compare>::const_reverse_iterator
+			const_reverse_iterator;
 
 		typedef std::ptrdiff_t	difference_type;
 		typedef std::size_t		size_type;

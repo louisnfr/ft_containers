@@ -191,7 +191,6 @@ template <class T,
 			node->parent = tmp;
 		}
 
-	public:
 		#include "inc/red_black/visualizer.hpp"
 };
 } // namespace ft

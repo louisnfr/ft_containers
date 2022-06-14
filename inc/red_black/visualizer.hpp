@@ -1,10 +1,10 @@
-// #pragma once
+#pragma once
 
 #include "inc/red_black/node.hpp"
 
 #define __NODE node_type
 #define __VALUE key
-#define __SIZE 5
+#define __SIZE 6
 #define __ROOT _root
 #define __IS_BLACK color
 #define __NIL NIL
@@ -26,12 +26,10 @@ private:
 	}
 
 	int count_btw_p(__NODE *ptr, bool is_right) {
-		if (is_right) {
+		if (is_right)
 			return count_from_node(ptr->left);
-		}
-		else {
+		else
 			return count_from_node(ptr->right);
-		}
 	}
 
 	std::vector<std::vector <int> > aff;
@@ -56,12 +54,9 @@ private:
 	}
 
 public:
-
-	void print_tree(__NODE *ptr, int level = 0, bool is_right = 0)
-	{
+	void print_tree(__NODE *ptr, int level = 0, bool is_right = 0) {
 		int i;
-		if (ptr != __NIL)
-		{
+		if (ptr != __NIL) {
 			print_tree(ptr->right, level + 1, 1);
 			std::cout << std::endl;
 			for (i = 1; i < level && ptr != __ROOT; i++) {
@@ -94,4 +89,4 @@ public:
 				std::cout  << __RED << ptr->__VALUE << __STOP;
 			print_tree(ptr->left, level + 1, 0);
 		}
-}
+	}
