@@ -79,9 +79,10 @@ template <class T,
 			// create a node from pair value
 			pointer node = __alloc_node(val);
 
-			// looking for the place to insert the node
 			pointer x = _root;
 			pointer p = NIL;
+
+			// navigate the tree to find the parent
 			while (x != NIL) {
 				p = x;
 				if (_comp(val, x->key))
@@ -89,14 +90,13 @@ template <class T,
 				else
 					x = x->right;
 			}
-
 			node->parent = p;
 
-			if (p == NIL) // first case scenario
+			if (p == NIL) // first insert
 				_root = node;
-			else if (_comp(node->key, p->key))
+			else if (_comp(node->key, p->key)) // greater than parent
 				p->left = node;
-			else
+			else // less than parent
 				p->right = node;
 
 			if (node->parent == NIL) {
@@ -105,13 +105,91 @@ template <class T,
 			}
 
 			if (node->parent->parent == NIL)
-			{
 				return ft::make_pair(iterator(_root), true);
-			}
 
-			// __insert_fixup(node);
+			__insert_fixup(node);
 
 			return ft::make_pair(iterator(_root), true);
+		}
+
+
+		void	__insert_fixup(pointer node) {
+			pointer u;
+
+			while (node->parent->color == RED) {
+				if (node->parent == node->parent->parent->right) {
+					u = node->parent->parent->left;
+					if (u->color == RED) {
+						u->color = BLACK;
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						node = node->parent->parent;
+					} else {
+						if (node == node->parent->left) {
+							node = node->parent;
+							__rotate_right(node);
+						}
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						__rotate_left(node->parent->parent);
+					}
+				} else {
+					u = node->parent->parent->right;
+					if (u->color == RED) {
+						u->color = BLACK;
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						node = node->parent->parent;
+					} else {
+						if (node == node->parent->right) {
+							node = node->parent;
+							__rotate_left(node);
+						}
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						__rotate_right(node->parent->parent);
+					}
+				}
+				if (node == _root)
+					break;
+			}
+			_root->color = BLACK;
+		}
+
+		void	__rotate_left(pointer node) {
+			pointer tmp = node->right;
+
+			node->right = tmp->left;
+			if (tmp->left != NIL)
+				tmp->left->parent = node;
+
+			tmp->parent = node->parent;
+			if (node->parent == NIL)
+				_root = tmp;
+			else if (node == node->parent->left)
+				node->parent->left = tmp;
+			else
+				node->parent->right = tmp;
+			tmp->left = node;
+			node->parent = tmp;
+		}
+
+		void	__rotate_right(pointer node) {
+			pointer tmp = node->left;
+
+			node->left = tmp->right;
+			if (tmp->right != NIL)
+				tmp->right->parent = node;
+
+			tmp->parent = node->parent;
+			if (node->parent == NIL)
+				_root = tmp;
+			else if (node == node->parent->right)
+				node->parent->right = tmp;
+			else
+				node->parent->left = tmp;
+			tmp->right = node;
+			node->parent = tmp;
 		}
 
 	public:
