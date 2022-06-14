@@ -112,7 +112,6 @@ template <class T,
 			return ft::make_pair(iterator(_root), true);
 		}
 
-
 		void	__insert_fixup(pointer node) {
 			pointer u;
 
