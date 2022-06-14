@@ -49,7 +49,9 @@ template <class T,
 			return __insert_node(val);
 		}
 
-		pointer	getNode(void) { return _root; }
+		pointer	getNode(void) {
+			return _root;
+		}
 
 	private:
 		void	__alloc_null_node(void) {
@@ -107,12 +109,12 @@ template <class T,
 			if (node->parent->parent == NIL)
 				return ft::make_pair(iterator(_root), true);
 
-			__insert_fixup(node);
+			__balance_tree(node);
 
 			return ft::make_pair(iterator(_root), true);
 		}
 
-		void	__insert_fixup(pointer node) {
+		void	__balance_tree(pointer node) {
 			pointer u;
 
 			while (node->parent->color == RED) {
