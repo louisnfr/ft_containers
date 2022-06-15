@@ -21,16 +21,17 @@ class tree_iterator {
 
 	private:
 		node_pointer	_ptr;
+		node_pointer	NIL;
 
 	public:
 		// default constructor
-		tree_iterator(void) : _ptr(NULL) {}
+		tree_iterator(void) : _ptr(NULL), NIL(NULL) {}
 
 		// pointer constructor
-		explicit tree_iterator(node_pointer ptr) : _ptr(ptr) {}
+		explicit tree_iterator(node_pointer ptr) : _ptr(ptr), NIL(NULL) {}
 
 		// copy constructor
-		tree_iterator(const tree_iterator &x) : _ptr(x._ptr) {}
+		tree_iterator(const tree_iterator &x) : _ptr(x._ptr), NIL(x.NIL) {}
 
 		// copy assignable
 		tree_iterator &operator=(const tree_iterator &rhs) {
@@ -67,7 +68,8 @@ class tree_iterator {
 
 		// increment and decrement operators
 		tree_iterator	&operator++(void) {
-			__increment();
+			if (_ptr != NIL)
+				_ptr = __next(_ptr);
 			return *this;
 		}
 
@@ -134,26 +136,35 @@ class tree_iterator {
 		// }
 
 	private:
-		void	__increment(void) {
-			// If the current node has a non-null right child,
-				// Take a step down to the right
-				// Then run down to the left as far as possible
-			// If the current node has a null right child,
-				// move up the tree until we have moved over a left child link
-			if (_ptr->right != NULL) {
-				_ptr = _ptr->right;
-				while (_ptr->left != NULL)
-					_ptr = _ptr->left;
-			}
-			else {
-				node_pointer	parent = _ptr->parent;
-
-				while (parent != NULL && _ptr == parent->right) {
-					_ptr = parent;
-					parent = parent->parent;
-				}
-				_ptr = parent;
-			}
+		node_pointer __max_leaf(node_pointer node) const {
+			while (node->right != NIL)
+				node = node->right;
+			return node;
 		}
+
+		node_pointer	__prev(node_pointer node) const {
+			if (node->left != NIL)
+				return __max_leaf(node->left);
+
+			while (node->parent != NIL && node == node->parent->left)
+				node = node->parent;
+			return node->parent;
+		}
+
+		node_pointer	__min_leaf(node_pointer node) const {
+			while (node->left != NIL)
+				node = node->left;
+			return node;
+		}
+
+		node_pointer	__next(node_pointer node) const {
+			if (node->right != NULL)
+				return __min_leaf(node->right);
+
+			while (node->parent != NULL && node == node->parent->right)
+				node = node->parent;
+			return node->parent;
+		}
+
 };
 } // namespace ft

@@ -9,10 +9,13 @@ int main(void) {
 	map.insert(NS::pair<int, int>(-1, 0));
 
 	NS::map<int, int>::iterator it = map.begin();
+
 	std::cout << it->first << std::endl;
 	it++;
 	std::cout << it->first << std::endl;
-	// it++;
+	it++;
+	std::cout << it->second << std::endl;
+	it++;
 	std::cout << it->first << std::endl;
 
 
