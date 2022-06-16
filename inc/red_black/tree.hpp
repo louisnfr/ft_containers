@@ -36,12 +36,12 @@ template <class T,
 		allocator_type	_alloc;
 		key_compare		_comp;
 		pointer			_root;
-		pointer			NIL;
+		pointer			_nil;
 		size_type		_size;
 
 	public:
 		explicit tree(allocator_type alloc = allocator_type())
-			: _alloc(alloc), _comp(key_compare()), _root(NULL), NIL(NULL), _size(0) {
+			: _alloc(alloc), _comp(key_compare()), _root(NULL), _nil(NULL), _size(0) {
 			__alloc_null_node();
 		}
 
@@ -58,23 +58,23 @@ template <class T,
 		}
 
 		iterator	begin(void) {
-			return iterator(__min_node(_root));
+			return iterator(_root, __min_node(_root), _nil);
 		}
 
 		iterator	end(void) {
-			return iterator(_root);
+			return iterator(_root, _nil, _nil);
 		}
 
 	private:
 		void	__alloc_null_node(void) {
-			NIL = _alloc.allocate(1);
+			_nil = _alloc.allocate(1);
 
-			NIL->parent = NULL;
-			NIL->left = NULL;
-			NIL->right = NULL;
-			NIL->color = BLACK;
+			_nil->parent = NULL;
+			_nil->left = NULL;
+			_nil->right = NULL;
+			_nil->color = BLACK;
 
-			_root = NIL;
+			_root = _nil;
 		}
 
 		pointer __alloc_node(const value_type &val) {
@@ -82,9 +82,9 @@ template <class T,
 
 			node->value = val;
 			node->color = RED;
-			node->left = NIL;
-			node->right = NIL;
-			node->parent = NIL;
+			node->left = _nil;
+			node->right = _nil;
+			node->parent = _nil;
 			++_size;
 			return node;
 		}
@@ -94,10 +94,10 @@ template <class T,
 			pointer node = __alloc_node(val);
 
 			pointer x = _root;
-			pointer p = NIL;
+			pointer p = _nil;
 
 			// navigate the tree to find the parent
-			while (x != NIL) {
+			while (x != _nil) {
 				p = x;
 				if (_comp(val, x->value))
 					x = x->left;
@@ -106,24 +106,24 @@ template <class T,
 			}
 			node->parent = p;
 
-			if (p == NIL) // first insert
+			if (p == _nil) // first insert
 				_root = node;
 			else if (_comp(node->value, p->value)) // greater than parent
 				p->left = node;
 			else // less than parent
 				p->right = node;
 
-			if (node->parent == NIL) {
+			if (node->parent == _nil) {
 				node->color = BLACK;
-				return ft::make_pair(iterator(_root), true);
+				return ft::make_pair(iterator(_root, node, _nil), true);
 			}
 
-			if (node->parent->parent == NIL)
-				return ft::make_pair(iterator(_root), true);
+			if (node->parent->parent == _nil)
+				return ft::make_pair(iterator(_root, node, _nil), true);
 
 			__balance_tree(node);
 
-			return ft::make_pair(iterator(_root), true);
+			return ft::make_pair(iterator(_root, node, _nil), true);
 		}
 
 		void	__balance_tree(pointer node) {
@@ -173,11 +173,11 @@ template <class T,
 			pointer tmp = node->right;
 
 			node->right = tmp->left;
-			if (tmp->left != NIL)
+			if (tmp->left != _nil)
 				tmp->left->parent = node;
 
 			tmp->parent = node->parent;
-			if (node->parent == NIL)
+			if (node->parent == _nil)
 				_root = tmp;
 			else if (node == node->parent->left)
 				node->parent->left = tmp;
@@ -191,11 +191,11 @@ template <class T,
 			pointer tmp = node->left;
 
 			node->left = tmp->right;
-			if (tmp->right != NIL)
+			if (tmp->right != _nil)
 				tmp->right->parent = node;
 
 			tmp->parent = node->parent;
-			if (node->parent == NIL)
+			if (node->parent == _nil)
 				_root = tmp;
 			else if (node == node->parent->right)
 				node->parent->right = tmp;
@@ -206,7 +206,7 @@ template <class T,
 		}
 
 		pointer	__min_node(pointer node) const {
-			while (node->left != NIL)
+			while (node->left != _nil)
 				node = node->left;
 			return node;
 		}

@@ -1,8 +1,8 @@
 #pragma once
 
-#define NODE node_type
-#define VALUE value
 #define ROOT _root
+#define VALUE value
+#define NODE node_type
 #define IS_BLACK color
 
 #define PRINT_SIZE 6
@@ -16,7 +16,7 @@ std::vector<std::vector <int> > aff;
 public:
 	void print_tree(NODE *ptr, int level = 0, bool is_right = 0) {
 		int i;
-		if (ptr != NIL) {
+		if (ptr != _nil) {
 			print_tree(ptr->right, level + 1, 1);
 			std::cout << std::endl;
 			for (i = 1; i < level && ptr != ROOT; i++) {
@@ -37,7 +37,7 @@ public:
 				else
 						aff_chars("╰", "─", 1);
 			}
-			if (ptr->left != NIL && count_btw_p(ptr->left, 0) > 0) {
+			if (ptr->left != _nil && count_btw_p(ptr->left, 0) > 0) {
 				std::vector<int> tmp;
 				tmp.push_back(level + 1);
 				tmp.push_back(count_btw_p(ptr->left, 0));
@@ -53,10 +53,10 @@ public:
 
 private:
 	int count_from_node(NODE *ptr, int count = 0) {
-		if (ptr != NIL) {
-			if (ptr->right != NIL)
+		if (ptr != _nil) {
+			if (ptr->right != _nil)
 				count += count_from_node(ptr->right);
-			if (ptr->left != NIL)
+			if (ptr->left != _nil)
 				count += count_from_node(ptr->left);
 			return (++count);
 		}
