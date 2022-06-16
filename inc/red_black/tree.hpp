@@ -45,24 +45,66 @@ template <class T,
 			__alloc_null_node();
 		}
 
-		virtual ~tree(void) {
-			// clear();
+		tree(const tree &x)
+		:	_alloc(x._alloc), _root(NULL), _nil(NULL), _size(0) {
+			__alloc_null_node();
+			__copy_tree(x._root, x._nil);
+		}
+
+		tree	&operator=(const tree &rhs) {
+			if (this != &rhs) {
+				clear();
+				__destroy_null_node();
+				_alloc = rhs._alloc;
+				__alloc_null_node();
+				__copy_tree(rhs._root, rhs._nil);
+			}
+			return *this;
+		}
+
+		~tree(void) {
+				clear();
+				__destroy_null_node();
+		}
+
+		pointer	get_root(void) {
+			return _root;
 		}
 
 		ft::pair<iterator, bool> insert(const value_type &val) {
 			return __insert_node(val);
 		}
 
-		pointer	getNode(void) {
-			return _root;
+		void	clear(void) {
+			__destroy_nodes(_root);
+			_root = _nil;
+			_size = 0;
 		}
 
+		// iterators
 		iterator	begin(void) {
 			return iterator(_root, __min_node(_root), _nil);
 		}
-
 		iterator	end(void) {
 			return iterator(_root, _nil, _nil);
+		}
+		const_iterator	begin(void) const {
+			return const_iterator(_root, __min_node(_root), _nil);
+		}
+		const_iterator	end(void) const {
+			return const_iterator(_root, _nil, _nil);
+		}
+		reverse_iterator	rbegin(void) {
+			return reverse_iterator(end());
+		}
+		reverse_iterator	rend(void) {
+			return reverse_iterator(begin());
+		}
+		const_reverse_iterator	rbegin(void) const {
+			return const_reverse_iterator(end());
+		}
+		const_reverse_iterator	rend(void) const {
+			return const_reverse_iterator(begin());
 		}
 
 	private:
@@ -77,6 +119,14 @@ template <class T,
 			_root = _nil;
 		}
 
+		void	__destroy_null_node(void) {
+			if (_nil == NULL)
+				return;
+			_alloc.destroy(_nil);
+			_alloc.deallocate(_nil, 1);
+			_nil = NULL;
+		}
+
 		pointer __alloc_node(const value_type &val) {
 			pointer node = _alloc.allocate(1);
 
@@ -87,6 +137,20 @@ template <class T,
 			node->parent = _nil;
 			++_size;
 			return node;
+		}
+
+		void	__destroy_node(pointer node) {
+			_alloc.destroy(node);
+			_alloc.deallocate(node, 1);
+			--_size;
+		}
+
+		void	__destroy_nodes(pointer node) {
+			if (node == NULL || node == _nil)
+				return;
+			__destroy_nodes(node->left);
+			__destroy_nodes(node->right);
+			__destroy_node(node);
 		}
 
 		ft::pair<iterator, bool> __insert_node(const value_type &val) {
@@ -209,6 +273,14 @@ template <class T,
 			while (node->left != _nil)
 				node = node->left;
 			return node;
+		}
+
+		void	__copy_tree(pointer node, pointer null) {
+			if (node == _nil || node == null)
+				return;
+			__copy_tree(node->left, null);
+			__insert_node(node->value);
+			__copy_tree(node->right, null);
 		}
 
 		#include "inc/red_black/visualizer.hpp"

@@ -8,10 +8,16 @@ int main(void) {
 	map.insert(NS::pair<int, int>(1, 1));
 	map.insert(NS::pair<int, int>(-1, -1));
 
-	NS::map<int, int>::iterator it = map.begin();
+	NS::map<int, int>::iterator it = map.end();
 
 	std::cout << it->first << std::endl;
-	it++;
+	--it;
+	std::cout << it->first << std::endl;
+	--it;
+	std::cout << it->first << std::endl;
+	--it;
+	std::cout << it->first << std::endl;
+	--it;
 	std::cout << it->first << std::endl;
 	it++;
 	std::cout << it->first << std::endl;
@@ -19,16 +25,7 @@ int main(void) {
 	std::cout << it->first << std::endl;
 	it++;
 	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
-	it--;
-	std::cout << it->first << std::endl;
+	it++;
 
 	// map.print_tree();
 }

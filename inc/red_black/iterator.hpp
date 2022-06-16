@@ -39,7 +39,7 @@ class tree_iterator {
 			_nil = x._nil;
 		}
 
-		// copy assignable
+		// assignation operator
 		tree_iterator &operator=(const tree_iterator &rhs) {
 			if (this != &rhs) {
 				_root = rhs._root;
@@ -81,6 +81,7 @@ class tree_iterator {
 				_ptr = __next(_ptr);
 			return *this;
 		}
+
 		tree_iterator	operator++(int) {
 			tree_iterator tmp(*this);
 			++(*this);
@@ -94,64 +95,14 @@ class tree_iterator {
 				_ptr = __max_leaf(_root);
 			return *this;
 		}
+
 		tree_iterator	operator--(int) {
 			tree_iterator tmp(*this);
 			--(*this);
 			return tmp;
 		}
 
-		// arithmetic operators
-		// tree_iterator	operator+(const difference_type &n) const {
-		// 	return tree_iterator(_root + n);
-		// }
-
-		// difference_type	operator+(const tree_iterator &rhs) const {
-		// 	return (_root + rhs._root);
-		// }
-
-		// tree_iterator	operator-(const difference_type &n) const {
-		// 	return tree_iterator(_root - n);
-		// }
-
-		// difference_type	operator-(const tree_iterator &rhs) const {
-		// 	return (_root - rhs._root);
-		// }
-
-		// relational operators
-		// bool	operator<(const tree_iterator &rhs) const {
-		// 	return (_root < rhs._root);
-		// }
-
-		// bool	operator>(const tree_iterator &rhs) const {
-		// 	return (_root > rhs._root);
-		// }
-
-		// bool	operator<=(const tree_iterator &rhs) const {
-		// 	return (_root <= rhs._root);
-		// }
-
-		// bool	operator>=(const tree_iterator &rhs) const {
-		// 	return (_root >= rhs._root);
-		// }
-
-		// assignement operators
-		// tree_iterator	&operator+=(const difference_type &n) const {
-		// 	_root += n;
-		// 	return *this;
-		// }
-
-		// tree_iterator	&operator-=(const difference_type &n) const {
-		// 	_root -= n;
-		// 	return *this;
-		// }
-
 	private:
-		node_ptr __max_leaf(node_ptr node) const {
-			while (node->right != _nil)
-				node = node->right;
-			return node;
-		}
-
 		node_ptr	__prev(node_ptr node) const {
 			if (node->left != _nil)
 				return __max_leaf(node->left);
@@ -161,12 +112,6 @@ class tree_iterator {
 			return node->parent;
 		}
 
-		node_ptr	__min_leaf(node_ptr node) const {
-			while (node->left != _nil)
-				node = node->left;
-			return node;
-		}
-
 		node_ptr	__next(node_ptr node) const {
 			if (node->right != _nil)
 				return __min_leaf(node->right);
@@ -174,6 +119,18 @@ class tree_iterator {
 			while (node->parent != _nil && node == node->parent->right)
 				node = node->parent;
 			return node->parent;
+		}
+
+		node_ptr __max_leaf(node_ptr node) const {
+			while (node->right != _nil)
+				node = node->right;
+			return node;
+		}
+
+		node_ptr	__min_leaf(node_ptr node) const {
+			while (node->left != _nil)
+				node = node->left;
+			return node;
 		}
 };
 } // namespace ft
