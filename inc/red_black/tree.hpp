@@ -40,17 +40,20 @@ template <class T,
 		size_type		_size;
 
 	public:
+		// default constructor
 		explicit tree(allocator_type alloc = allocator_type())
 			: _alloc(alloc), _comp(key_compare()), _root(NULL), _nil(NULL), _size(0) {
 			__alloc_null_node();
 		}
 
+		// copy constructor
 		tree(const tree &x)
 		:	_alloc(x._alloc), _root(NULL), _nil(NULL), _size(0) {
 			__alloc_null_node();
 			__copy_tree(x._root, x._nil);
 		}
 
+		// assignation operator
 		tree	&operator=(const tree &rhs) {
 			if (this != &rhs) {
 				clear();
@@ -62,23 +65,15 @@ template <class T,
 			return *this;
 		}
 
+		// destructor
 		~tree(void) {
 				clear();
 				__destroy_null_node();
 		}
 
+		// getter
 		pointer	get_root(void) {
 			return _root;
-		}
-
-		ft::pair<iterator, bool> insert(const value_type &val) {
-			return __insert_node(val);
-		}
-
-		void	clear(void) {
-			__destroy_nodes(_root);
-			_root = _nil;
-			_size = 0;
 		}
 
 		// iterators
@@ -106,6 +101,49 @@ template <class T,
 		const_reverse_iterator	rend(void) const {
 			return const_reverse_iterator(begin());
 		}
+
+		// capacity
+		bool	empty(void) const {
+			return (_size == 0);
+		}
+
+		size_type	size(void) const {
+			return _size;
+		}
+
+		size_type	max_size(void) const {
+			return _alloc.max_size();
+		}
+
+		// insert (1)
+		ft::pair<iterator, bool> insert(const value_type &val) {
+			return __insert_node(val);
+		}
+
+		// insert (2)
+		iterator insert(iterator pos, const value_type &val) {
+			(void)pos;
+			return insert(val).first;
+		}
+
+		// insert (3)
+		template <class InputIterator>
+		void insert(InputIterator first, InputIterator last,
+					typename ft::enable_if<
+						!ft::is_integral<InputIterator>::value
+					>::type * = NULL) {
+			for (; first != last; ++first)
+				__insert_node(*first);
+		}
+
+
+
+		void	clear(void) {
+			__destroy_nodes(_root);
+			_root = _nil;
+			_size = 0;
+		}
+
 
 	private:
 		void	__alloc_null_node(void) {
