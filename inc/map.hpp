@@ -15,7 +15,7 @@ namespace ft {
 template <class Key,
 	class T,
 	class Compare = std::less<Key>,
-	class Alloc = std::allocator<ft::pair<const Key, T> >
+	class Alloc = std::allocator<ft::pair<Key, T> >
 > class map {
 	public:
 		typedef Key		key_type;
@@ -144,9 +144,9 @@ template <class Key,
 			iterator	ret = _tree.find(ft::make_pair(key, mapped_type()));
 
 			if (ret != end())
-				return ret.base->value.second;
+				return ret._ptr->value.second;
 			ft::pair<iterator, bool> tmp = insert(ft::make_pair(key, mapped_type()));
-			return tmp.first.base->value.second;
+			return tmp.first._ptr->value.second;
 		}
 
 		// modifiers

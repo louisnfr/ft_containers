@@ -470,7 +470,6 @@ template <class T,
 			node->color = BLACK;
 		}
 
-
 		void	__rotate_left(pointer node) {
 			pointer tmp = node->right;
 

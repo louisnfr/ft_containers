@@ -13,8 +13,8 @@ class tree_iterator {
 
 		typedef value_type&		reference;
 		typedef value_type*		pointer;
-		// typedef const value_type&	const_reference;
-		// typedef const value_type*	const_pointer;
+		typedef const value_type&	const_reference;
+		typedef const value_type*	const_pointer;
 
 		typedef std::bidirectional_iterator_tag		iterator_category;
 		typedef std::ptrdiff_t		difference_type;
@@ -67,11 +67,19 @@ class tree_iterator {
 		}
 
 		// dereferenceable
-		reference	operator*(void) const {
+		reference	operator*(void) {
 			return _ptr->value;
 		}
 
-		pointer	operator->(void) const {
+		const_reference	operator*(void) const {
+			return _ptr->value;
+		}
+
+		pointer	operator->(void) {
+			return &(operator*());
+		}
+
+		const_pointer	operator->(void) const {
 			return &(operator*());
 		}
 

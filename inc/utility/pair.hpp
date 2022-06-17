@@ -15,33 +15,34 @@ class pair {
 		second_type	second;
 
 		// default constructor
-
 		pair(void) : first(first_type()), second(second_type()) {}
 
 		// copy constructor
-
 		template<class U, class V>
-		pair(const pair<U, V> &pr) : first(pr.first), second(pr.second) {}
+		pair(const pair<U, V> &rhs) {
+			if (this != &rhs) {
+				first = rhs.first;
+				second = rhs.second;
+			}
+		}
 
 		// initialization constructor
-
-		pair(const first_type &a, const second_type &b) {
+		pair(first_type &a, second_type &b) {
 			first = a;
 			second = b;
 		}
 
-		virtual ~pair(void) {}
+		~pair(void) {}
 
-		pair	&operator=(const pair &pr) {
-			if (this != &pr) {
-				first = pr.first;
-				second = pr.second;
+		pair	&operator=(const pair &x) {
+			if (this != &x) {
+				first = x.first;
+				second = x.second;
 			}
 			return *this;
 		}
 };
 	// relational operators
-
 	template <class T1, class T2>
 	bool	operator==(const pair<T1, T2> &lhs, const pair<T1, T2> &rhs) {
 		return (lhs.first == rhs.first) && (lhs.second == rhs.second);
