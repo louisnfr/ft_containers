@@ -1,15 +1,18 @@
 #include "inc/utility/libs.hpp"
 
-// #include "inc/test/map_test.hpp"
+#include "inc/test/map_test.hpp"
 
 int main(void) {
+	// ft_test::map();
+
 	ft::map<char, int> mymap;
 
-	mymap['a'] = 101;
-	mymap['b'] = 202;
-	mymap['c'] = 303;
+	mymap.insert(ft::make_pair<char, int>('a', 100));
+	mymap.insert(ft::make_pair<char, int>('z', 200));
 
-	char c = 'a';
+	ft::pair<ft::map<char, int>::iterator, bool> ret;
+	ret = mymap.insert(ft::make_pair<char, int>('z', 500));
+	
+	std::cout << ret.second << std::endl;
 
-	mymap.count(c);
 }

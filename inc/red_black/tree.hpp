@@ -193,14 +193,14 @@ template <class T,
 
 		iterator lower_bound(const value_type &value) {
 			for (iterator it = begin(); it != end(); ++it) {
-				if (_comp(it.base->value, value) == false)
+				if (_comp(it._ptr->value, value) == false)
 					return it;
 			}
 			return end();
 		}
 		const_iterator lower_bound(const value_type &value) const {
 			for (const_iterator it = begin(); it != end(); ++it) {
-				if (_comp(it.base->value, value) == false)
+				if (_comp(it._ptr->value, value) == false)
 					return it;
 			}
 			return end();
@@ -208,14 +208,14 @@ template <class T,
 
 		iterator upper_bound(const value_type &value) {
 			for (iterator it = begin(); it != end(); ++it) {
-				if (_comp(value, it.base->value))
+				if (_comp(value, it._ptr->value))
 					return it;
 			}
 			return end();
 		}
 		const_iterator upper_bound(const value_type &value) const {
 			for (const_iterator it = begin(); it != end(); ++it) {
-				if (_comp(value, it.base->value))
+				if (_comp(value, it._ptr->value))
 					return it;
 			}
 			return end();

@@ -84,7 +84,9 @@ template <class Key,
 		: _alloc(x._alloc),
 		_key_compare(x._key_compare),
 		_value_compare(x._value_compare),
-		_tree(_alloc) {}
+		_tree(x._tree) {
+
+		}
 
 		// destructor
 		virtual ~map(void) {
