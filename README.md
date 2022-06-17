@@ -8,9 +8,13 @@
 
 The goal of this project is to re-implement the standard C++ containers.
 
+#### Useful links
+
 - [Standard C++](https://www.lirmm.fr/~ducour/Doc-objets/ISO+IEC+14882-1998.pdf)
+###### map
 - [Red Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+  - [Full tutorial with C++ Implementation 🥇](https://www.programiz.com/dsa/red-black-tree)
   - [C++ Implementation](https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/) 
   - [Insertion & Deletion](https://www.usna.edu/Users/cs/crabbe/SI321/2003-08/red-black/red-black.html) 
-  - [Visualizer](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
   - [Balance Tutorial](https://habr.com/ru/company/otus/blog/472040/)
+  - [Tree Visualizer](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
