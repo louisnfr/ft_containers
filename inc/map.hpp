@@ -141,8 +141,14 @@ template <class Key,
 		// template <class InputIterator>
 		// void insert(InputIterator first, InputIterator last) {}
 
-		// void erase(iterator position) {}
-		// size_type erase(const key_type &x) {}
+		void erase(iterator position) {
+			_tree.erase(position);
+		}
+
+		size_type erase(const key_type &k) {
+			return _tree.erase(ft::make_pair(k, mapped_type()));
+		}
+
 		// void erase(iterator first, iterator last) {}
 		// void swap(map<Key,T,Compare,Allocator>&) {}
 		// void clear() {}

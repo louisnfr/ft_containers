@@ -62,8 +62,8 @@ class vector {
 			InputIterator first,
 			InputIterator last,
 			const allocator_type& alloc = allocator_type(),
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
-			InputIterator>::type* = NULL)
+			typename ft::enable_if<!ft::is_integral<
+				InputIterator>::value>::type* = NULL)
 			: _alloc(alloc), _data(NULL), _size(0), _capacity(0) {
 			size_type n = last - first;
 			reserve(n);

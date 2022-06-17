@@ -1,5 +1,9 @@
 #pragma once
 
+/*
+**	https://cplusplus.com/reference/map/map/
+*/
+
 #include "inc/utility/libs.hpp"
 
 #include "inc/red_black/node.hpp"
@@ -130,13 +134,41 @@ template <class T,
 		template <class InputIterator>
 		void insert(InputIterator first, InputIterator last,
 					typename ft::enable_if<
-						!ft::is_integral<InputIterator>::value
-					>::type * = NULL) {
+					!ft::is_integral<InputIterator>::value
+					>::type* = NULL) {
 			for (; first != last; ++first)
 				__insert_node(*first);
 		}
 
+		// erase (1)
+		void	erase(iterator pos) {
+			if (pos != end())
+				__erase_node(pos._ptr);
+		}
 
+		// erase (2)
+		size_type	erase(const value_type &k) {
+			pointer	node = __find_node(k);
+			if (node) {
+				__erase_node(node);
+				return 1;
+			}
+			return 0;
+		}
+
+		// erase (3)
+		void	erase(iterator first, iterator last) {
+			while (first != last)
+				erase(first++);
+		}
+
+		void	swap(tree &rhs) {
+			std::swap(_alloc, rhs._alloc);
+			std::swap(_comp, rhs._comp);
+			std::swap(_root, rhs._root);
+			std::swap(_nil, rhs._nil);
+			std::swap(_size, rhs._size);
+		}
 
 		void	clear(void) {
 			__destroy_nodes(_root);
@@ -144,6 +176,65 @@ template <class T,
 			_size = 0;
 		}
 
+		iterator find(const value_type &value) {
+			pointer tmp = __find_node(value);
+
+			if (tmp)
+				return iterator(_root, tmp, _nil);
+			return end();
+		}
+		const_iterator find(const value_type &value) const {
+			pointer tmp = __find_node(value);
+
+			if (tmp)
+				return const_iterator(_root, tmp, _nil);
+			return end();
+		}
+
+		iterator lower_bound(const value_type &value) {
+			for (iterator it = begin(); it != end(); ++it) {
+				if (_comp(it.base->value, value) == false)
+					return it;
+			}
+			return end();
+		}
+		const_iterator lower_bound(const value_type &value) const {
+			for (const_iterator it = begin(); it != end(); ++it) {
+				if (_comp(it.base->value, value) == false)
+					return it;
+			}
+			return end();
+		}
+
+		iterator upper_bound(const value_type &value) {
+			for (iterator it = begin(); it != end(); ++it) {
+				if (_comp(value, it.base->value))
+					return it;
+			}
+			return end();
+		}
+		const_iterator upper_bound(const value_type &value) const {
+			for (const_iterator it = begin(); it != end(); ++it) {
+				if (_comp(value, it.base->value))
+					return it;
+			}
+			return end();
+		}
+
+		ft::pair<const_iterator, const_iterator>
+		equal_range(const value_type& k) const {
+			const_iterator first = lower_bound(k);
+			const_iterator last = upper_bound(k);
+
+			return ft::make_pair(first, last);
+		}
+
+		ft::pair<iterator, iterator> equal_range(const value_type &k) {
+			iterator first = lower_bound(k);
+			iterator last = upper_bound(k);
+
+			return ft::make_pair(first, last);
+		}
 
 	private:
 		void	__alloc_null_node(void) {
@@ -195,16 +286,16 @@ template <class T,
 			// create a node from pair value
 			pointer node = __alloc_node(val);
 
-			pointer x = _root;
+			pointer root = _root;
 			pointer p = _nil;
 
 			// navigate the tree to find the parent
-			while (x != _nil) {
-				p = x;
-				if (_comp(val, x->value))
-					x = x->left;
+			while (root != _nil) {
+				p = root;
+				if (_comp(val, root->value))
+					root = root->left;
 				else
-					x = x->right;
+					root = root->right;
 			}
 			node->parent = p;
 
@@ -223,12 +314,63 @@ template <class T,
 			if (node->parent->parent == _nil)
 				return ft::make_pair(iterator(_root, node, _nil), true);
 
-			__balance_tree(node);
+			__balance_insert(node);
 
 			return ft::make_pair(iterator(_root, node, _nil), true);
 		}
 
-		void	__balance_tree(pointer node) {
+		void	__erase_node(pointer node) {
+			if (node == NULL || node == _nil)
+				return;
+
+			pointer root = _root;
+			pointer z = _nil;
+
+			while (root != _nil) {
+				if (_comp(node->value, root->value) == 0)
+					z = root;
+
+				if (_comp(node->value, root->value) > 0)
+					root = root->left;
+				else
+					root = root->right;
+			}
+
+			if (z == _nil)
+				return;
+
+			pointer x;
+			pointer y = z;
+			color y_orig_color = y->color;
+
+			if (z->left == _nil) {
+				x = z->right;
+				__transplant(z, z->right);
+			} else if (z->right == _nil) {
+				x = z->left;
+				__transplant(z, z->left);
+			} else {
+				y = __min_node(z->right);
+				y_orig_color = y->color;
+				x = y->right;
+				if (y->parent == z) {
+					x->parent = y;
+				} else {
+					__transplant(y, y->right);
+					y->right = z->right;
+					y->right->parent = y;
+				}
+				__transplant(z, y);
+				y->left = z->left;
+				y->left->parent = y;
+				y->color = z->color;
+			}
+			__destroy_node(z);
+			if (y_orig_color == BLACK)
+				__balance_delete(x);
+		}
+
+		void	__balance_insert(pointer node) {
 			pointer u;
 
 			while (node->parent->color == RED) {
@@ -271,6 +413,64 @@ template <class T,
 			_root->color = BLACK;
 		}
 
+		void	__balance_delete(pointer node) {
+			pointer	s;
+
+			while (node != _root && node->color == BLACK) {
+				if (node == node->parent->left) {
+					s = node->parent->right;
+					if (s->color == 1) {
+						s->color = BLACK;
+						node->parent->color = RED;
+						__rotate_left(node->parent);
+						s = node->parent->right;
+					}
+					if (s->left->color == BLACK && s->right->color == BLACK) {
+						s->color = RED;
+						node = node->parent;
+					} else {
+						if (s->right->color == BLACK) {
+							s->left->color = BLACK;
+							s->color = RED;
+							__rotate_right(s);
+							s = node->parent->right;
+						}
+						s->color = node->parent->color;
+						node->parent->color = BLACK;
+						s->right->color = BLACK;
+						__rotate_left(node->parent);
+						node = _root;
+					}
+				} else {
+					s = node->parent->left;
+					if (s->color == 1) {
+					s->color = BLACK;
+					node->parent->color = RED;
+					__rotate_right(node->parent);
+					s = node->parent->left;
+					}
+					if (s->right->color == BLACK && s->right->color == BLACK) {
+					s->color = RED;
+					node = node->parent;
+					} else {
+					if (s->left->color == BLACK) {
+						s->right->color = BLACK;
+						s->color = RED;
+						__rotate_left(s);
+						s = node->parent->left;
+					}
+					s->color = node->parent->color;
+					node->parent->color = BLACK;
+					s->left->color = BLACK;
+					__rotate_right(node->parent);
+					node = _root;
+					}
+				}
+			}
+			node->color = BLACK;
+		}
+
+
 		void	__rotate_left(pointer node) {
 			pointer tmp = node->right;
 
@@ -305,6 +505,30 @@ template <class T,
 				node->parent->left = tmp;
 			tmp->right = node;
 			node->parent = tmp;
+		}
+
+		void	__transplant(pointer u, pointer v) {
+			if (u->parent == _nil)
+				_root = v;
+			else if (u == u->parent->left)
+				u->parent->left = v;
+			else
+				u->parent->right = v;
+			v->parent = u->parent;
+		}
+
+		pointer __find_node(const value_type &data) const {
+			pointer node = _root;
+
+			while (node != _nil) {
+				if (_comp(data, node->value))
+					node = node->left;
+				else if (_comp(node->value, data))
+					node = node->right;
+				else
+					return node;
+			}
+			return NULL;
 		}
 
 		pointer	__min_node(pointer node) const {

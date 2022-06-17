@@ -2,8 +2,8 @@
 
 namespace ft {
 typedef enum color {
-	RED,
-	BLACK
+	BLACK,
+	RED
 } e_color;
 
 template <class T>

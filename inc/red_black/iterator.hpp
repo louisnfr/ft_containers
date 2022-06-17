@@ -19,18 +19,18 @@ class tree_iterator {
 		typedef std::bidirectional_iterator_tag		iterator_category;
 		typedef std::ptrdiff_t		difference_type;
 
-	private:
-		node_ptr	_root;
 		node_ptr	_ptr;
 		node_ptr	_nil;
+	private:
+		node_ptr	_root;
 
 	public:
 		// default constructor
-		tree_iterator(void) : _root(NULL), _ptr(NULL), _nil(NULL) {}
+		tree_iterator(void) : _ptr(NULL), _nil(NULL), _root(NULL) {}
 
 		// pointer constructor
 		explicit tree_iterator(node_ptr ptr, node_ptr base, node_ptr nil)
-			: _root(ptr), _ptr(base), _nil(nil) {}
+			: _ptr(base), _nil(nil),_root(ptr) {}
 
 		// copy constructor
 		tree_iterator(const tree_iterator &x) {

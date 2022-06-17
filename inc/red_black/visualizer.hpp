@@ -43,7 +43,7 @@ public:
 				tmp.push_back(count_btw_p(ptr->left, 0));
 				aff.push_back(tmp);
 			}
-			if (ptr->IS_BLACK)
+			if (!ptr->IS_BLACK)
 				std::cout << V_BLACK << ptr->VALUE << NOC;
 			else
 				std::cout  << V_RED << ptr->VALUE << NOC;
