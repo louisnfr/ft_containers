@@ -29,7 +29,7 @@ template <class T,
 		typedef const node<T>*		const_pointer;
 
 		typedef ft::tree_iterator<node_type>			iterator;
-		typedef ft::tree_iterator<const_node_type>		const_iterator;
+		typedef ft::tree_iterator<node_type>		const_iterator;
 		typedef ft::reverse_iterator<iterator>			reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
