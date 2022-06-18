@@ -31,8 +31,12 @@ template <class Key,
 
 		class value_compare {
 		public:
-			bool operator()(const value_type &lhs, const value_type &rhs) const {
-				return key_compare()(lhs.first, rhs.first);
+			bool operator()(const value_type &a, const value_type &b) const {
+				return (key_compare()(a.first, b.first));
+			}
+
+			value_compare &operator=(const value_compare &) {
+				return *this;
 			}
 		};
 
@@ -70,8 +74,8 @@ template <class Key,
 		map(InputIterator first, InputIterator last,
 			const key_compare &comp = key_compare(),
 			const allocator_type &alloc = allocator_type(),
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value,
-			InputIterator>::type* = NULL)
+			typename ft::enable_if<!ft::is_integral<InputIterator>
+			::value>::type* = NULL)
 			:_alloc(alloc),
 			_key_compare(comp),
 			_value_compare(value_compare()),
@@ -84,14 +88,10 @@ template <class Key,
 		: _alloc(x._alloc),
 		_key_compare(x._key_compare),
 		_value_compare(x._value_compare),
-		_tree(x._tree) {
-
-		}
+		_tree(x._tree) {}
 
 		// destructor
-		virtual ~map(void) {
-			// clear();
-		}
+		~map(void) {}
 
 		// assignement operator
 		map	&operator=(const map &x) {
@@ -163,9 +163,9 @@ template <class Key,
 		template <class InputIterator>
 		void insert(InputIterator first, InputIterator last,
 					typename ft::enable_if<
-					!ft::is_integral<InputIterator>::value
-					>::type* = NULL) {
-			return _tree.insert(first, last);
+					!ft::is_integral<InputIterator>
+					::value>::type* = NULL) {
+			_tree.insert(first, last);
 		}
 
 		void	print_tree(void) {

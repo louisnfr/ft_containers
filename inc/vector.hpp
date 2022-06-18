@@ -179,7 +179,6 @@ class vector {
 		}
 
 	// element access
-
 		reference operator[](size_type n) {
 			return _data[n];
 		}
@@ -214,7 +213,6 @@ class vector {
 		}
 
 	// modifiers
-
 		template <class InputIterator>
 		void assign(InputIterator first,
 					InputIterator last,
@@ -258,19 +256,22 @@ class vector {
 		iterator insert(iterator position, const value_type &val) {
 			size_type pos = position - begin();
 
-			reserve(++_size);
+			if (_size + 1 > _capacity)
+				reserve(__new_size());
 			__shift_right(pos, 1);
 			_alloc.construct(_data + pos, val);
+			++_size;
 			return iterator(_data);
 		}
 
 		void insert(iterator position, size_type n, const value_type &val) {
 			size_type pos = position - begin();
 
-			reserve(_size + n);
+			if (_size + n > _capacity)
+				reserve(_capacity + n);
 			__shift_right(pos, n);
 			for (size_type i = 0; i < n; i++)
-				_alloc.construct(_data + pos + i, val);
+				_alloc.construct(&_data[pos + i], val);
 			_size += n;
 		}
 
@@ -333,6 +334,10 @@ class vector {
 		}
 
 	private:
+		size_type	__new_size(void) {
+			return _size == 0 ? 1 : _size * 2;
+		}
+
 		void	__range_check(size_type n) {
 			std::ostringstream c_n;
 			std::ostringstream c_size;
@@ -357,9 +362,9 @@ class vector {
 		}
 
 		void	__shift_left(size_type pos, size_type n) {
-			for (; pos < _size; pos++) {
+			for (; pos < _size && pos + n < _capacity; pos++) {
 				_alloc.construct(_data + pos, _data[pos + n]);
-				_alloc.destroy(_data + pos);
+				_alloc.destroy(_data + pos + n);
 			}
 		}
 };

@@ -134,8 +134,8 @@ template <class T,
 		template <class InputIterator>
 		void insert(InputIterator first, InputIterator last,
 					typename ft::enable_if<
-					!ft::is_integral<InputIterator>::value
-					>::type* = NULL) {
+					!ft::is_integral<InputIterator>
+					::value>::type* = NULL) {
 			for (; first != last; ++first)
 				__insert_node(*first);
 		}
@@ -240,9 +240,9 @@ template <class T,
 		void	__alloc_null_node(void) {
 			_nil = _alloc.allocate(1);
 
-			_nil->parent = NULL;
-			_nil->left = NULL;
-			_nil->right = NULL;
+			_nil->parent = _nil;
+			_nil->left = _nil;
+			_nil->right = _nil;
 			_nil->color = BLACK;
 
 			_root = _nil;
@@ -283,6 +283,9 @@ template <class T,
 		}
 
 		ft::pair<iterator, bool> __insert_node(const value_type &val) {
+			pointer exist = __find_node(val);
+			if (exist)
+				return ft::make_pair(iterator(_root, exist, _nil), false);
 			// create a node from pair value
 			pointer node = __alloc_node(val);
 

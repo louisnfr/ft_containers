@@ -29,8 +29,8 @@ class tree_iterator {
 		tree_iterator(void) : _ptr(NULL), _nil(NULL), _root(NULL) {}
 
 		// pointer constructor
-		explicit tree_iterator(node_ptr ptr, node_ptr base, node_ptr nil)
-			: _ptr(base), _nil(nil),_root(ptr) {}
+		tree_iterator(node_ptr root, node_ptr ptr, node_ptr nil)
+			: _ptr(ptr), _nil(nil), _root(root) {}
 
 		// copy constructor
 		tree_iterator(const tree_iterator &x) {

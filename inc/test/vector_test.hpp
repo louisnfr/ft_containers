@@ -829,7 +829,6 @@ void	vector() {
 	v_log->section("ASSIGNEMENT OPERATOR");
 	ft_test::run(v_log, &test_vector_assignement_operator, "Assignement Operator");
 
-
 	v_log->section("ITERATORS");
 	ft_test::run(v_log, &test_vector_begin, "Begin");
 	ft_test::run(v_log, &test_vector_end, "End");
@@ -843,7 +842,6 @@ void	vector() {
 	ft_test::run(v_log, &test_vector_capacity, "Capacity");
 	ft_test::run(v_log, &test_vector_empty, "Empty");
 	ft_test::run(v_log, &test_vector_reserve, "Reserve");
-
 
 	v_log->section("ELEMENT ACCESS");
 	ft_test::run(v_log, &test_vector_operator_access, "Operator []");
@@ -869,7 +867,6 @@ void	vector() {
 	ft_test::run(v_log, &test_vector_non_member_function_swap,
 		"Non-member function swap");
 
-	#ifdef FT_BENCHMARK
 	v_log->section("BENCHMARKS");
 	ft_test::run(v_log, &benchmark_vector_constructor, "Benchmark Constructor");
 	ft_test::run(v_log, &benchmark_vector_destructor, "Benchmark Destructor");
@@ -882,7 +879,6 @@ void	vector() {
 	ft_test::run(v_log, &benchmark_vector_insert_n, "Benchmark Insert N");
 	ft_test::run(v_log, &benchmark_vector_insert_range, "Benchmark Insert Range");
 	ft_test::run(v_log, &benchmark_vector_erase, "Benchmark Erase\t");
-	#endif
 	delete v_log;
 }
 }  // namespace ft_test
