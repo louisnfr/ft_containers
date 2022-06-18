@@ -881,4 +881,4 @@ void	vector() {
 	ft_test::run(v_log, &benchmark_vector_erase, "Benchmark Erase\t");
 	delete v_log;
 }
-}  // namespace ft_test
+} // namespace ft_test

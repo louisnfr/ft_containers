@@ -11,4 +11,4 @@ void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
 		logger->error(name);
 	}
 }
-}  // namespace ft_test
+} // namespace ft_test

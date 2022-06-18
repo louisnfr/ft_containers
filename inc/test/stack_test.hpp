@@ -250,4 +250,4 @@ void	stack() {
 	ft_test::run(s_log, &benchmark_stack_pop, "Benchmark Pop");
 	delete s_log;
 }
-}  // namespace ft_test
+} // namespace ft_test
