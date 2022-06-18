@@ -21,6 +21,7 @@ class tree_iterator {
 
 		node_ptr	_ptr;
 		node_ptr	_nil;
+
 	private:
 		node_ptr	_root;
 

@@ -27,7 +27,7 @@ class pair {
 		}
 
 		// initialization constructor
-		pair(first_type &a, second_type &b) {
+		pair(first_type a, second_type b) {
 			first = a;
 			second = b;
 		}
