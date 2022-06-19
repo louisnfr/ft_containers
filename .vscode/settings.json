@@ -81,6 +81,7 @@
 		"codecvt": "cpp",
 		"fstream": "cpp",
 		"iomanip": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"ranges": "cpp"
 	}
 }

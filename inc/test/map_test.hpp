@@ -857,6 +857,7 @@ void	map() {
 	m_log->section("ALLOCATOR");
 	ft_test::run(m_log, test_map_allocator, "allocator");
 
+	#ifdef BENCHMARK
 	m_log->section("BENCHMARK");
 	ft_test::run(m_log, &benchmark_map_constructor, "Benchmark Constructor\t");
 	ft_test::run(m_log, &benchmark_map_destructor, "Benchmark Destructor\t");
@@ -870,6 +871,7 @@ void	map() {
 		"Benchmark Erase Iterator\t");
 	ft_test::run(m_log, &benchmark_map_find, "Benchmark Find\t\t");
 	ft_test::run(m_log, &benchmark_map_count, "Benchmark Count\t\t");
+	#endif
 	delete m_log;
 }
 

@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/06/17 16:55:24 by lraffin          ###   ########.fr        #
+#    Updated: 2022/06/19 17:08:09 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ else
 	CXX = c++
 endif
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. #$(DEBUG)
-DEBUG = -g3 -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. #$(BENCHMARK)
+BENCHMARK = -O3 -D BENCHMARK=1
 
 S = src
 I = inc

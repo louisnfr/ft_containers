@@ -36,6 +36,11 @@ class random_access_iterator {
 		// destructor
 		virtual ~random_access_iterator(void) {}
 
+		// getter
+		pointer	getPtr(void) {
+			return _ptr;
+		}
+
 		// const iterator cast
 		operator random_access_iterator<T const>(void) const {
 			return random_access_iterator<T const>(_ptr);

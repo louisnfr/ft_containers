@@ -245,9 +245,10 @@ void	stack() {
 	s_log->section("RELATIONAL OPERATORS");
 	ft_test::run(s_log, &test_stack_relationnal_operators,
 		"Relationnal Operators");
-
+	#ifdef BENCHMARK
 	ft_test::run(s_log, &benchmark_stack_push, "Benchmark Push");
 	ft_test::run(s_log, &benchmark_stack_pop, "Benchmark Pop");
+	#endif
 	delete s_log;
 }
 } // namespace ft_test

@@ -711,17 +711,17 @@ bool	benchmark_vector_push_back() {
 	delete v_og;
 	return v_log->benchmark(end - start, end_og - start_og);
 }
-bool	benchmark_vector_insert_regular() {
+bool	benchmark_vector_insert() {
 	ft::vector<int> *v = new ft::vector<int>(10000, 42);
 	std::vector<int> *v_og = new std::vector<int>(10000, 42);
 
 	time_t start = clock();
-	for (size_t i = 0; i < 10000; i++)
+	for (size_t i = 0; i < 5000; i++)
 		v->insert(v->begin(), 42);
 	time_t end = clock();
 
 	time_t start_og = clock();
-	for (size_t i = 0; i < 10000; i++)
+	for (size_t i = 0; i < 5000; i++)
 		v_og->insert(v_og->begin(), 42);
 	time_t end_og = clock();
 
@@ -867,6 +867,7 @@ void	vector() {
 	ft_test::run(v_log, &test_vector_non_member_function_swap,
 		"Non-member function swap");
 
+	#ifdef BENCHMARK
 	v_log->section("BENCHMARKS");
 	ft_test::run(v_log, &benchmark_vector_constructor, "Benchmark Constructor");
 	ft_test::run(v_log, &benchmark_vector_destructor, "Benchmark Destructor");
@@ -874,11 +875,12 @@ void	vector() {
 		"Benchmark Assign Op");
 	ft_test::run(v_log, &benchmark_vector_assign, "Benchmark Assign\t");
 	ft_test::run(v_log, &benchmark_vector_push_back, "Benchmark Push Back");
-	ft_test::run(v_log, &benchmark_vector_insert_regular,
-		"Benchmark Insert Regular");
+	ft_test::run(v_log, &benchmark_vector_insert,
+		"Benchmark Insert");
 	ft_test::run(v_log, &benchmark_vector_insert_n, "Benchmark Insert N");
 	ft_test::run(v_log, &benchmark_vector_insert_range, "Benchmark Insert Range");
 	ft_test::run(v_log, &benchmark_vector_erase, "Benchmark Erase\t");
+	#endif
 	delete v_log;
 }
 } // namespace ft_test

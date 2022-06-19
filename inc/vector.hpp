@@ -335,7 +335,9 @@ class vector {
 
 	private:
 		size_type	__new_size(void) {
-			return _size == 0 ? 1 : _size * 2;
+			if (_size == 0)
+				return 1;
+			return (_size * 2);
 		}
 
 		void	__range_check(size_type n) {
