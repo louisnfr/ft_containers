@@ -783,7 +783,7 @@ void	set() {
 	st_log->section("ALLOCATORS");
 	ft_test::run(st_log, test_set_allocator, "allocator");
 
-	#ifdef FT_BENCHMARK
+	#ifdef BENCHMARK
 	st_log->section("BENCHMARK");
 	ft_test::run(st_log, &benchmark_set_constructor, "Benchmark Constructor\t");
 	ft_test::run(st_log, &benchmark_set_destructor, "Benchmark Destructor\t");
@@ -800,6 +800,4 @@ void	set() {
 	#endif
 	delete st_log;
 }
-}  // namespace ft_test
-
-#endif  // SET_TEST_HPP_
+} // namespace ft_test

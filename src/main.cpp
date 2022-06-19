@@ -4,4 +4,5 @@ int main(void) {
 	ft_test::vector();
 	ft_test::stack();
 	ft_test::map();
+	ft_test::set();
 }
