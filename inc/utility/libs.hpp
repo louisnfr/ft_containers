@@ -12,13 +12,16 @@
 #include <vector>
 #include <stack>
 #include <map>
+#include <set>
 
 #include "inc/vector.hpp"
 #include "inc/stack.hpp"
 #include "inc/map.hpp"
+#include "inc/set.hpp"
 
 #include "inc/test/logger.hpp"
 #include "inc/test/run_test.hpp"
 #include "inc/test/vector_test.hpp"
 #include "inc/test/stack_test.hpp"
 #include "inc/test/map_test.hpp"
+#include "inc/test/set_test.hpp"
