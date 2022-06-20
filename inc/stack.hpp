@@ -33,15 +33,15 @@ class stack {
 			return c.size();
 		}
 
-		value_type& top(void) {
+		value_type &top(void) {
 			return c.back();
 		}
 
-		const value_type& top(void) const {
+		const value_type &top(void) const {
 			return c.back();
 		}
 
-		void push(const value_type& val) {
+		void push(const value_type &val) {
 			c.push_back(val);
 		}
 
@@ -50,33 +50,33 @@ class stack {
 		}
 
 	// non-member function overloads
-	friend bool operator==(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator==(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c == rhs.c);
 	}
 
-	friend bool operator!=(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator!=(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c != rhs.c);
 	}
 
-	friend bool operator<(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator<(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c < rhs.c);
 	}
 
-	friend bool operator<=(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator<=(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c <= rhs.c);
 	}
 
-	friend bool operator>(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator>(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c > rhs.c);
 	}
 
-	friend bool operator>=(const stack<T, Container>& lhs,
-		const stack<T, Container>& rhs) {
+	friend bool operator>=(const stack<T, Container> &lhs,
+		const stack<T, Container> &rhs) {
 			return (lhs.c >= rhs.c);
 	}
 };
