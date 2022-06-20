@@ -11,6 +11,7 @@ The goal of this project is to re-implement the standard C++ containers.
 #### Useful links
 
 - [Standard C++](https://www.lirmm.fr/~ducour/Doc-objets/ISO+IEC+14882-1998.pdf)
+- [Comprendre les conteneurs](http://tvaira.free.fr/dev/cours/cours-conteneurs-stl.pdf)
 ###### map
 - [Red Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
   - [Full tutorial with C++ Implementation](https://www.programiz.com/dsa/red-black-tree)
