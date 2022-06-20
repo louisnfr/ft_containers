@@ -18,16 +18,13 @@ class stack {
 
 	public:
 	// constructor
-
 		explicit stack(const container_type &ctnr = container_type())
 			: c(ctnr) {}
 
 	// destructor
-
 		virtual ~stack(void) {}
 
 	// member functions
-
 		bool empty(void) const {
 			return c.empty();
 		}
@@ -53,7 +50,6 @@ class stack {
 		}
 
 	// non-member function overloads
-
 	friend bool operator==(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
 			return (lhs.c == rhs.c);
