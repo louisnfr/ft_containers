@@ -6,8 +6,10 @@
 
 #include "inc/iterators/random_access_iterator.hpp"
 #include "inc/iterators/reverse_iterator.hpp"
+
 #include "inc/type_traits/enable_if.hpp"
 #include "inc/type_traits/is_integral.hpp"
+
 #include "inc/algorithm/equal.hpp"
 #include "inc/algorithm/lexicographical_compare.hpp"
 
@@ -32,19 +34,17 @@ class vector {
 		typedef std::size_t		size_type;
 
 	private:
-		allocator_type _alloc;
-		pointer _data;
-		size_type _size;
-		size_type _capacity;
+		allocator_type	_alloc;
+		pointer		_data;
+		size_type	_size;
+		size_type	_capacity;
 
 	public:
 	// default constructor
-
 		explicit vector(const allocator_type &alloc = allocator_type())
 			: _alloc(alloc), _data(NULL), _size(0), _capacity(0) {}
 
 	// fill constructor
-
 		explicit vector(
 			size_type n,
 			const value_type &val = value_type(),
@@ -56,7 +56,6 @@ class vector {
 		}
 
 	// range constructor
-
 		template <class InputIterator>
 		vector(
 			InputIterator first,
@@ -73,7 +72,6 @@ class vector {
 		}
 
 	// copy constructor
-
 		vector(const vector &x)
 			: _alloc(x._alloc), _size(x._size), _capacity(x._capacity) {
 			_data = _alloc.allocate(x.capacity());
@@ -82,13 +80,11 @@ class vector {
 		}
 
 	// destructor
-
 		virtual ~vector(void) {
 			_alloc.deallocate(_data, size());
 		}
 
 	// operator overload
-
 		vector	&operator=(const vector &x) {
 			clear();
 			if (_capacity < x._size)
@@ -100,7 +96,6 @@ class vector {
 		}
 
 	// iterators
-
 		iterator begin(void) {
 			return iterator(_data);
 		}
@@ -134,7 +129,6 @@ class vector {
 		}
 
 	// capacity
-
 		size_type	size(void) const {
 			return this->_size;
 		}
@@ -328,7 +322,6 @@ class vector {
 		}
 
 	// allocator
-
 		allocator_type	get_allocator(void) const {
 			return this->_alloc;
 		}

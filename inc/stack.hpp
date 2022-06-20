@@ -14,13 +14,13 @@ class stack {
 		typedef typename container_type::const_reference	const_reference;
 
 	protected:
-		container_type	_c;
+		container_type	c;
 
 	public:
 	// constructor
 
 		explicit stack(const container_type &ctnr = container_type())
-			: _c(ctnr) {}
+			: c(ctnr) {}
 
 	// destructor
 
@@ -29,59 +29,59 @@ class stack {
 	// member functions
 
 		bool empty(void) const {
-			return _c.empty();
+			return c.empty();
 		}
 
 		size_type size(void) const {
-			return _c.size();
+			return c.size();
 		}
 
 		value_type& top(void) {
-			return _c.back();
+			return c.back();
 		}
 
 		const value_type& top(void) const {
-			return _c.back();
+			return c.back();
 		}
 
 		void push(const value_type& val) {
-			_c.push_back(val);
+			c.push_back(val);
 		}
 
 		void pop() {
-			_c.pop_back();
+			c.pop_back();
 		}
 
 	// non-member function overloads
 
 	friend bool operator==(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c == rhs._c);
+			return (lhs.c == rhs.c);
 	}
 
 	friend bool operator!=(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c != rhs._c);
+			return (lhs.c != rhs.c);
 	}
 
 	friend bool operator<(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c < rhs._c);
+			return (lhs.c < rhs.c);
 	}
 
 	friend bool operator<=(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c <= rhs._c);
+			return (lhs.c <= rhs.c);
 	}
 
 	friend bool operator>(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c > rhs._c);
+			return (lhs.c > rhs.c);
 	}
 
 	friend bool operator>=(const stack<T, Container>& lhs,
 		const stack<T, Container>& rhs) {
-			return (lhs._c >= rhs._c);
+			return (lhs.c >= rhs.c);
 	}
 };
 } // namespace ft
