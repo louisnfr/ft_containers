@@ -23,7 +23,7 @@ else
 endif
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. $(BENCHMARK)
-BENCHMARK = -D BENCHMARK=1
+BENCHMARK = -D BENCHMARK=1 -O3
 
 S = src
 I = inc
