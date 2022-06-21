@@ -81,7 +81,7 @@ class pair {
 
 	template <typename T, typename U>
 	std::ostream	&operator<<(std::ostream &o, pair<T, U> const &rhs) {
-		o << "key(" << rhs.first << "):" << rhs.second;
+		o << rhs.first << "(" << rhs.second << ")";
 		return o;
 	}
 

@@ -82,6 +82,8 @@
 		"fstream": "cpp",
 		"iomanip": "cpp",
 		"filesystem": "cpp",
-		"ranges": "cpp"
+		"ranges": "cpp",
+		"list": "cpp",
+		"set": "cpp"
 	}
 }
