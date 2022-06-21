@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ft_test {
+namespace test {
 bool fncomp(int lhs, int rhs) {
 	return lhs < rhs;
 }
@@ -10,4 +10,4 @@ struct classcomp {
 		return lhs < rhs;
 	}
 };
-} // namespace ft_test
+} // namespace test

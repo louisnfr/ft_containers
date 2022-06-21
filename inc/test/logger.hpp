@@ -3,15 +3,14 @@
 #include <unistd.h>
 #include <cstring>
 
-namespace ft_test {
+namespace test {
 class Logger {
- private:
-  std::string _prefix;
+private:
+	std::string _prefix;
+	std::string _pending_err;
+	std::string _pending_success;
 
-  std::string _pending_err;
-  std::string _pending_success;
-
- public:
+public:
 	explicit Logger(std::string const &prefix)
 		: _prefix(prefix), _pending_err(""), _pending_success("") {
 		_announce();
@@ -86,4 +85,4 @@ class Logger {
 		std::cout << "|" << std::endl << "======================" << std::endl;
 	}
 };
-}  // namespace ft_test
+}  // namespace test

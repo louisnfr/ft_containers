@@ -1,7 +1,7 @@
 #pragma once
 
-namespace ft_test {
-void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
+namespace test {
+void	run(test::Logger *logger, bool (*fn)(), const char name[]) {
 	try {
 		if (fn())
 			logger->success(name);
@@ -11,4 +11,4 @@ void	run(ft_test::Logger *logger, bool (*fn)(), const char name[]) {
 		logger->error(name);
 	}
 }
-} // namespace ft_test
+} // namespace test

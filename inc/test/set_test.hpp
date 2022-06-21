@@ -1,7 +1,7 @@
 #pragma once
 
-namespace ft_test {
-ft_test::Logger *st_log;
+namespace test {
+test::Logger *st_log;
 
 bool	test_set_constructor() {
 	ft::set<int> first;
@@ -742,62 +742,62 @@ bool	benchmark_set_count() {
 }
 
 void	set() {
-	st_log = new ft_test::Logger("set ");
+	st_log = new test::Logger("set ");
 
 	st_log->section("CONSTRUCTORS");
-	ft_test::run(st_log, test_set_constructor, "constructor");
-	ft_test::run(st_log, test_set_copy_constructor, "copy constructor");
-	ft_test::run(st_log, test_set_assignement_operator, "assignment operator");
+	test::run(st_log, test_set_constructor, "constructor");
+	test::run(st_log, test_set_copy_constructor, "copy constructor");
+	test::run(st_log, test_set_assignement_operator, "assignment operator");
 
 	st_log->section("DESTRUCTOR");
-	ft_test::run(st_log, test_set_destructor, "destructor");
+	test::run(st_log, test_set_destructor, "destructor");
 
 	st_log->section("ITERATORS");
-	ft_test::run(st_log, test_set_begin, "begin");
-	ft_test::run(st_log, test_set_end, "end");
-	ft_test::run(st_log, test_set_rbegin, "rbegin");
-	ft_test::run(st_log, test_set_rend, "rend");
+	test::run(st_log, test_set_begin, "begin");
+	test::run(st_log, test_set_end, "end");
+	test::run(st_log, test_set_rbegin, "rbegin");
+	test::run(st_log, test_set_rend, "rend");
 
 	st_log->section("CAPACITY");
-	ft_test::run(st_log, test_set_empty, "empty");
-	ft_test::run(st_log, test_set_size, "size");
-	ft_test::run(st_log, test_max_size, "max_size");
+	test::run(st_log, test_set_empty, "empty");
+	test::run(st_log, test_set_size, "size");
+	test::run(st_log, test_max_size, "max_size");
 
 	st_log->section("MODIFIERS");
-	ft_test::run(st_log, test_set_insert, "insert");
-	ft_test::run(st_log, test_set_erase, "erase");
-	ft_test::run(st_log, test_set_swap, "swap");
-	ft_test::run(st_log, test_set_clear, "clear");
+	test::run(st_log, test_set_insert, "insert");
+	test::run(st_log, test_set_erase, "erase");
+	test::run(st_log, test_set_swap, "swap");
+	test::run(st_log, test_set_clear, "clear");
 
 	st_log->section("OBSERVERS");
-	ft_test::run(st_log, test_set_key_comp, "key_comp");
-	ft_test::run(st_log, test_set_value_comp, "value_comp");
+	test::run(st_log, test_set_key_comp, "key_comp");
+	test::run(st_log, test_set_value_comp, "value_comp");
 
 	st_log->section("OPERATIONS");
-	ft_test::run(st_log, test_set_find, "find");
-	ft_test::run(st_log, test_set_count, "count");
-	ft_test::run(st_log, test_set_lower_bound, "lower_bound");
-	ft_test::run(st_log, test_set_upper_bound, "upper_bound");
-	ft_test::run(st_log, test_set_equal_range, "equal_range");
+	test::run(st_log, test_set_find, "find");
+	test::run(st_log, test_set_count, "count");
+	test::run(st_log, test_set_lower_bound, "lower_bound");
+	test::run(st_log, test_set_upper_bound, "upper_bound");
+	test::run(st_log, test_set_equal_range, "equal_range");
 
 	st_log->section("ALLOCATORS");
-	ft_test::run(st_log, test_set_allocator, "allocator");
+	test::run(st_log, test_set_allocator, "allocator");
 
 	#ifdef BENCHMARK
 	st_log->section("BENCHMARK");
-	ft_test::run(st_log, &benchmark_set_constructor, "Benchmark Constructor\t");
-	ft_test::run(st_log, &benchmark_set_destructor, "Benchmark Destructor\t");
-	ft_test::run(st_log, &benchmark_set_assignement_operator,
+	test::run(st_log, &benchmark_set_constructor, "Benchmark Constructor\t");
+	test::run(st_log, &benchmark_set_destructor, "Benchmark Destructor\t");
+	test::run(st_log, &benchmark_set_assignement_operator,
 		"Benchmark Assignement Operator");
-	ft_test::run(st_log, &benchmark_set_insert, "Benchmark Insert\t\t");
-	ft_test::run(st_log, &benchmark_set_insert_iterator,
+	test::run(st_log, &benchmark_set_insert, "Benchmark Insert\t\t");
+	test::run(st_log, &benchmark_set_insert_iterator,
 		"Benchmark Insert Iterator");
-	ft_test::run(st_log, &benchmark_set_erase, "Benchmark Erase\t\t");
-	ft_test::run(st_log, &benchmark_set_erase_iterator,
+	test::run(st_log, &benchmark_set_erase, "Benchmark Erase\t\t");
+	test::run(st_log, &benchmark_set_erase_iterator,
 		"Benchmark Erase Iterator\t");
-	ft_test::run(st_log, &benchmark_set_find, "Benchmark Find\t\t");
-	ft_test::run(st_log, &benchmark_set_count, "Benchmark Count\t\t");
+	test::run(st_log, &benchmark_set_find, "Benchmark Find\t\t");
+	test::run(st_log, &benchmark_set_count, "Benchmark Count\t\t");
 	#endif
 	delete st_log;
 }
-} // namespace ft_test
+} // namespace test

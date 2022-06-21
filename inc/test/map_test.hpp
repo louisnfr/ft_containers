@@ -4,9 +4,9 @@
 #include "inc/test/run_test.hpp"
 #include "inc/test/compare_test.hpp"
 
-namespace ft_test {
+namespace test {
 
-ft_test::Logger *m_log;
+test::Logger *m_log;
 
 bool	test_map_default_constructor() {
 	ft::map<int, char> intcharmap;
@@ -810,69 +810,69 @@ bool	benchmark_map_count() {
 }
 
 void	map() {
-	m_log = new ft_test::Logger("map ");
+	m_log = new test::Logger("map ");
 
 	m_log->section("CONSTRUCTORS");
-	ft_test::run(m_log, test_map_default_constructor, "default constructor");
-	ft_test::run(m_log, test_map_range_constructor, "range constructor");
-	ft_test::run(m_log, test_map_copy_constructor, "copy constructor");
+	test::run(m_log, test_map_default_constructor, "default constructor");
+	test::run(m_log, test_map_range_constructor, "range constructor");
+	test::run(m_log, test_map_copy_constructor, "copy constructor");
 
 	m_log->section("DESTRUCTORS");
-	ft_test::run(m_log, test_map_destructor, "destructor");
+	test::run(m_log, test_map_destructor, "destructor");
 
 	m_log->section("ASSIGNEMENT OPERATOR");
-	ft_test::run(m_log, test_map_assignement_operator, "operator=");
+	test::run(m_log, test_map_assignement_operator, "operator=");
 
 	m_log->section("ITERATORS");
-	ft_test::run(m_log, test_map_begin, "begin");
-	ft_test::run(m_log, test_map_end, "end");
-	ft_test::run(m_log, test_map_rbegin, "rbegin");
-	ft_test::run(m_log, test_map_rend, "rend");
+	test::run(m_log, test_map_begin, "begin");
+	test::run(m_log, test_map_end, "end");
+	test::run(m_log, test_map_rbegin, "rbegin");
+	test::run(m_log, test_map_rend, "rend");
 
 	m_log->section("CAPACITY");
-	ft_test::run(m_log, test_map_empty, "empty");
-	ft_test::run(m_log, test_map_size, "size");
-	ft_test::run(m_log, test_map_max_size, "max_size");
+	test::run(m_log, test_map_empty, "empty");
+	test::run(m_log, test_map_size, "size");
+	test::run(m_log, test_map_max_size, "max_size");
 
 	m_log->section("ELEMENTS ACCESS");
-	ft_test::run(m_log, test_map_operator_access, "operator[]");
+	test::run(m_log, test_map_operator_access, "operator[]");
 
 	m_log->section("MODIFIERS");
-	ft_test::run(m_log, test_map_insert, "insert");
-	ft_test::run(m_log, test_map_erase, "erase");
-	ft_test::run(m_log, test_map_swap, "swap");
-	ft_test::run(m_log, test_map_clear, "clear");
+	test::run(m_log, test_map_insert, "insert");
+	test::run(m_log, test_map_erase, "erase");
+	test::run(m_log, test_map_swap, "swap");
+	test::run(m_log, test_map_clear, "clear");
 
 	m_log->section("OBSERVERS");
-	ft_test::run(m_log, test_map_key_comp, "key_comp");
-	ft_test::run(m_log, test_map_value_comp, "value_comp");
+	test::run(m_log, test_map_key_comp, "key_comp");
+	test::run(m_log, test_map_value_comp, "value_comp");
 
 	m_log->section("OPERATIONS");
-	ft_test::run(m_log, test_map_find, "find");
-	ft_test::run(m_log, test_map_count, "count");
-	ft_test::run(m_log, test_map_lower_bound, "lower_bound");
-	ft_test::run(m_log, test_map_upper_bound, "upper_bound");
-	ft_test::run(m_log, test_map_equal_range, "equal_range");
+	test::run(m_log, test_map_find, "find");
+	test::run(m_log, test_map_count, "count");
+	test::run(m_log, test_map_lower_bound, "lower_bound");
+	test::run(m_log, test_map_upper_bound, "upper_bound");
+	test::run(m_log, test_map_equal_range, "equal_range");
 
 	m_log->section("ALLOCATOR");
-	ft_test::run(m_log, test_map_allocator, "allocator");
+	test::run(m_log, test_map_allocator, "allocator");
 
 	#ifdef BENCHMARK
 	m_log->section("BENCHMARK");
-	ft_test::run(m_log, &benchmark_map_constructor, "Benchmark Constructor\t");
-	ft_test::run(m_log, &benchmark_map_destructor, "Benchmark Destructor\t");
-	ft_test::run(m_log, &benchmark_map_assignement_operator,
+	test::run(m_log, &benchmark_map_constructor, "Benchmark Constructor\t");
+	test::run(m_log, &benchmark_map_destructor, "Benchmark Destructor\t");
+	test::run(m_log, &benchmark_map_assignement_operator,
 		"Benchmark Assignement Operator");
-	ft_test::run(m_log, &benchmark_map_insert, "Benchmark Insert\t\t");
-	ft_test::run(m_log, &benchmark_map_insert_iterator,
+	test::run(m_log, &benchmark_map_insert, "Benchmark Insert\t\t");
+	test::run(m_log, &benchmark_map_insert_iterator,
 		"Benchmark Insert Iterator");
-	ft_test::run(m_log, &benchmark_map_erase, "Benchmark Erase\t\t");
-	ft_test::run(m_log, &benchmark_map_erase_iterator,
+	test::run(m_log, &benchmark_map_erase, "Benchmark Erase\t\t");
+	test::run(m_log, &benchmark_map_erase_iterator,
 		"Benchmark Erase Iterator\t");
-	ft_test::run(m_log, &benchmark_map_find, "Benchmark Find\t\t");
-	ft_test::run(m_log, &benchmark_map_count, "Benchmark Count\t\t");
+	test::run(m_log, &benchmark_map_find, "Benchmark Find\t\t");
+	test::run(m_log, &benchmark_map_count, "Benchmark Count\t\t");
 	#endif
 	delete m_log;
 }
 
-} // namespace ft_test
+} // namespace test

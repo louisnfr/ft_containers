@@ -2,8 +2,8 @@
 
 #include <cstdlib>
 
-namespace ft_test {
-ft_test::Logger *v_log;
+namespace test {
+test::Logger *v_log;
 
 bool	test_vector_empty_constructor() {
 	ft::vector<int>		i;
@@ -14,13 +14,6 @@ bool	test_vector_empty_constructor() {
 	if (i_og.size() != i.size() || i_og.capacity() != i.capacity())
 		return v_log->err("1: size() differs");
 
-	ft::vector<bool> 	b;
-	std::vector<bool> 	b_og;
-
-	if (b.size() != 0 || b.capacity() != 0)
-		return false;
-	if (b_og.size() != b.size() || b_og.capacity() != b.capacity())
-		return v_log->err("2: size() differs");
 	return true;
 }
 bool	test_vector_fill_constructor() {
@@ -29,16 +22,16 @@ bool	test_vector_fill_constructor() {
 	if (i.size() != i_og.size() || i.capacity() != i_og.capacity())
 		return v_log->err("1: size() differs");
 
-	ft::vector<int> i1(10, 42);
-	std::vector<int> i1_og(10, 42);
+	ft::vector<int> i1(100, 42);
+	std::vector<int> i1_og(100, 42);
 	if (i1.size() != i1_og.size() || i1.capacity() != i1_og.capacity())
 		return v_log->err("2: size() differs");
 	for (size_t i = 0; i < i1.size(); i++)
 		if (i1[i] != i1_og[i])
 			return v_log->err("3: content() differs");
 
-	ft::vector<int> i2(112, 42);
-	std::vector<int> i2_og(112, 42);
+	ft::vector<int> i2(1120, 42);
+	std::vector<int> i2_og(1120, 42);
 	if (i2.size() != i2_og.size() || i2.capacity() != i2_og.capacity())
 		return v_log->err("4: size() differs");
 	for (size_t i = 0; i < i2.size(); i++)
@@ -815,72 +808,72 @@ bool	benchmark_vector_erase() {
 }
 
 void	vector() {
-	v_log = new ft_test::Logger("vector");
+	v_log = new test::Logger("vector");
 
 	v_log->section("CONSTRUCTORS");
-	ft_test::run(v_log, &test_vector_empty_constructor, "Empty Constructor");
-	ft_test::run(v_log, &test_vector_fill_constructor, "Fill Constructor");
-	ft_test::run(v_log, &test_vector_range_constructor, "Range Constructor");
-	ft_test::run(v_log, &test_vector_copy_constructor, "Copy Constructor");
+	test::run(v_log, &test_vector_empty_constructor, "Empty Constructor");
+	test::run(v_log, &test_vector_fill_constructor, "Fill Constructor");
+	test::run(v_log, &test_vector_range_constructor, "Range Constructor");
+	test::run(v_log, &test_vector_copy_constructor, "Copy Constructor");
 
 	v_log->section("DESTRUCTOR");
-	ft_test::run(v_log, &test_vector_destructor, "Destructor");
+	test::run(v_log, &test_vector_destructor, "Destructor");
 
 	v_log->section("ASSIGNEMENT OPERATOR");
-	ft_test::run(v_log, &test_vector_assignement_operator, "Assignement Operator");
+	test::run(v_log, &test_vector_assignement_operator, "Assignement Operator");
 
 	v_log->section("ITERATORS");
-	ft_test::run(v_log, &test_vector_begin, "Begin");
-	ft_test::run(v_log, &test_vector_end, "End");
-	ft_test::run(v_log, &test_vector_rbegin, "RBegin");
-	ft_test::run(v_log, &test_vector_rend, "REnd");
+	test::run(v_log, &test_vector_begin, "Begin");
+	test::run(v_log, &test_vector_end, "End");
+	test::run(v_log, &test_vector_rbegin, "RBegin");
+	test::run(v_log, &test_vector_rend, "REnd");
 
 	v_log->section("CAPACITY");
-	ft_test::run(v_log, &test_vector_size, "Size");
-	ft_test::run(v_log, &test_vector_max_size, "Max Size");
-	ft_test::run(v_log, &test_vector_resize, "Resize");
-	ft_test::run(v_log, &test_vector_capacity, "Capacity");
-	ft_test::run(v_log, &test_vector_empty, "Empty");
-	ft_test::run(v_log, &test_vector_reserve, "Reserve");
+	test::run(v_log, &test_vector_size, "Size");
+	test::run(v_log, &test_vector_max_size, "Max Size");
+	test::run(v_log, &test_vector_resize, "Resize");
+	test::run(v_log, &test_vector_capacity, "Capacity");
+	test::run(v_log, &test_vector_empty, "Empty");
+	test::run(v_log, &test_vector_reserve, "Reserve");
 
 	v_log->section("ELEMENT ACCESS");
-	ft_test::run(v_log, &test_vector_operator_access, "Operator []");
-	ft_test::run(v_log, &test_vector_at, "At");
-	ft_test::run(v_log, &test_vector_front, "Front");
-	ft_test::run(v_log, &test_vector_back, "Back");
+	test::run(v_log, &test_vector_operator_access, "Operator []");
+	test::run(v_log, &test_vector_at, "At");
+	test::run(v_log, &test_vector_front, "Front");
+	test::run(v_log, &test_vector_back, "Back");
 
 	v_log->section("MODIFIERS");
-	ft_test::run(v_log, &test_vector_assign, "Assign");
-	ft_test::run(v_log, &test_vector_push_back, "Push Back");
-	ft_test::run(v_log, &test_vector_pop_back, "Pop Back");
-	ft_test::run(v_log, &test_vector_insert, "Insert");
-	ft_test::run(v_log, &test_vector_erase, "Erase");
-	ft_test::run(v_log, &test_vector_swap, "Swap");
-	ft_test::run(v_log, &test_vector_clear, "Clear");
+	test::run(v_log, &test_vector_assign, "Assign");
+	test::run(v_log, &test_vector_push_back, "Push Back");
+	test::run(v_log, &test_vector_pop_back, "Pop Back");
+	test::run(v_log, &test_vector_insert, "Insert");
+	test::run(v_log, &test_vector_erase, "Erase");
+	test::run(v_log, &test_vector_swap, "Swap");
+	test::run(v_log, &test_vector_clear, "Clear");
 
 	v_log->section("ALLOCATOR");
-	ft_test::run(v_log, &test_vector_allocator, "Allocator");
+	test::run(v_log, &test_vector_allocator, "Allocator");
 
 	v_log->section("NON-MEMBER FUNCTION OVERLOADS");
-	ft_test::run(v_log, &test_vector_non_member_function_operator,
+	test::run(v_log, &test_vector_non_member_function_operator,
 		"Non-member function operators");
-	ft_test::run(v_log, &test_vector_non_member_function_swap,
+	test::run(v_log, &test_vector_non_member_function_swap,
 		"Non-member function swap");
 
 	#ifdef BENCHMARK
 	v_log->section("BENCHMARKS");
-	ft_test::run(v_log, &benchmark_vector_constructor, "Benchmark Constructor");
-	ft_test::run(v_log, &benchmark_vector_destructor, "Benchmark Destructor");
-	ft_test::run(v_log, &benchmark_vector_assignement_operator,
+	test::run(v_log, &benchmark_vector_constructor, "Benchmark Constructor");
+	test::run(v_log, &benchmark_vector_destructor, "Benchmark Destructor");
+	test::run(v_log, &benchmark_vector_assignement_operator,
 		"Benchmark Assign Op");
-	ft_test::run(v_log, &benchmark_vector_assign, "Benchmark Assign\t");
-	ft_test::run(v_log, &benchmark_vector_push_back, "Benchmark Push Back");
-	ft_test::run(v_log, &benchmark_vector_insert,
+	test::run(v_log, &benchmark_vector_assign, "Benchmark Assign\t");
+	test::run(v_log, &benchmark_vector_push_back, "Benchmark Push Back");
+	test::run(v_log, &benchmark_vector_insert,
 		"Benchmark Insert");
-	ft_test::run(v_log, &benchmark_vector_insert_n, "Benchmark Insert N");
-	ft_test::run(v_log, &benchmark_vector_insert_range, "Benchmark Insert Range");
-	ft_test::run(v_log, &benchmark_vector_erase, "Benchmark Erase\t");
+	test::run(v_log, &benchmark_vector_insert_n, "Benchmark Insert N");
+	test::run(v_log, &benchmark_vector_insert_range, "Benchmark Insert Range");
+	test::run(v_log, &benchmark_vector_erase, "Benchmark Erase\t");
 	#endif
 	delete v_log;
 }
-} // namespace ft_test
+} // namespace test

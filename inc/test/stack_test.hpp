@@ -1,7 +1,7 @@
 #pragma once
 
-namespace ft_test {
-ft_test::Logger *s_log;
+namespace test {
+test::Logger *s_log;
 
 bool	test_stack_constructor() {
 	ft::vector<int> myvector(2, 200);
@@ -225,30 +225,30 @@ bool	benchmark_stack_pop() {
 }
 
 void	stack() {
-	s_log = new ft_test::Logger("stack ");
+	s_log = new test::Logger("stack ");
 
 	s_log->section("CONSTRUCTORS");
-	ft_test::run(s_log, &test_stack_constructor, "Constructor");
-	ft_test::run(s_log, &test_stack_copy_constructor, "Copy Constructor");
-	ft_test::run(s_log, &test_stack_assignment_operator, "Assignement Operator");
+	test::run(s_log, &test_stack_constructor, "Constructor");
+	test::run(s_log, &test_stack_copy_constructor, "Copy Constructor");
+	test::run(s_log, &test_stack_assignment_operator, "Assignement Operator");
 
 	s_log->section("DESTRUCTOR");
-	ft_test::run(s_log, &test_stack_destructor, "Destructor");
+	test::run(s_log, &test_stack_destructor, "Destructor");
 
 	s_log->section("METHODS");
-	ft_test::run(s_log, &test_stack_empty, "Empty");
-	ft_test::run(s_log, &test_stack_size, "Size");
-	ft_test::run(s_log, &test_stack_top, "Top");
-	ft_test::run(s_log, &test_stack_push, "Push");
-	ft_test::run(s_log, &test_stack_pop, "Pop");
+	test::run(s_log, &test_stack_empty, "Empty");
+	test::run(s_log, &test_stack_size, "Size");
+	test::run(s_log, &test_stack_top, "Top");
+	test::run(s_log, &test_stack_push, "Push");
+	test::run(s_log, &test_stack_pop, "Pop");
 
 	s_log->section("RELATIONAL OPERATORS");
-	ft_test::run(s_log, &test_stack_relationnal_operators,
+	test::run(s_log, &test_stack_relationnal_operators,
 		"Relationnal Operators");
 	#ifdef BENCHMARK
-	ft_test::run(s_log, &benchmark_stack_push, "Benchmark Push");
-	ft_test::run(s_log, &benchmark_stack_pop, "Benchmark Pop");
+	test::run(s_log, &benchmark_stack_push, "Benchmark Push");
+	test::run(s_log, &benchmark_stack_pop, "Benchmark Pop");
 	#endif
 	delete s_log;
 }
-} // namespace ft_test
+} // namespace test
