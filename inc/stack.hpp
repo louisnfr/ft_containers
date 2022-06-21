@@ -22,7 +22,7 @@ class stack {
 			: c(ctnr) {}
 
 	// destructor
-		virtual ~stack(void) {}
+		~stack(void) {}
 
 	// member functions
 		bool empty(void) const {

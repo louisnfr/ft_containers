@@ -34,7 +34,7 @@ class random_access_iterator {
 		}
 
 		// destructor
-		virtual ~random_access_iterator(void) {}
+		~random_access_iterator(void) {}
 
 		// getter
 		pointer	getPtr(void) {

@@ -283,5 +283,4 @@ bool operator>=(const ft::map<Key, T, Compare, Alloc> &lhs,
 	const ft::map<Key, T, Compare, Alloc> &rhs) {
 	return !(lhs < rhs);
 }
-
 } // namespace ft

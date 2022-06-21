@@ -30,7 +30,7 @@ public:
 		std::cerr << "\033[1;41;37mFAILED\033[0m " << test_name;
 		if (_pending_err != "") {
 			std::cerr << "\t\t\t\033[0;37m"
-				<< _pending_err.c_str() << "\033[0m" << std::endl;
+				<< _pending_err << "\033[0m" << std::endl;
 			_pending_err = "";
 		} else {
 			std::cerr << std::endl;

@@ -6,14 +6,16 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/06/21 15:22:59 by lraffin          ###   ########.fr        #
+#    Updated: 2022/06/21 17:45:18 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_FT = ft_containers
 NAME_STD = std_containers
 
-SRC =	main.cpp
+SRC =	main.cpp \
+		subject_main.cpp
+
 
 HOST = $(shell hostname)
 ifeq ($(HOST),macbook)
