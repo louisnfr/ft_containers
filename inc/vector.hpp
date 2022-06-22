@@ -333,7 +333,7 @@ class vector {
 		}
 
 		void	__shift_left(size_type pos, size_type n) {
-			for (; pos < _size & &pos + n < _capacity; pos++) {
+			for (; pos < _size && pos + n < _capacity; pos++) {
 				_alloc.construct(_data + pos, _data[pos + n]);
 				_alloc.destroy(_data + pos + n);
 			}
