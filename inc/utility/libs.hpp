@@ -9,13 +9,13 @@
 #include <iostream> // standard library
 #include <sstream> // use to convert int to string
 
-// STL containers
+// stl containers
 #include <vector>
 #include <stack>
 #include <map>
 #include <set>
 
-// FT containers
+// ft containers
 #include "inc/vector.hpp"
 #include "inc/stack.hpp"
 #include "inc/map.hpp"

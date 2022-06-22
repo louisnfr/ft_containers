@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/06/23 01:13:52 by lraffin          ###   ########.fr        #
+#    Updated: 2022/06/23 01:30:05 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME_FT = ft_containers
 NAME_STD = std_containers
 
 SRC =	main.cpp \
+		vector.cpp \
 		# subject_main.cpp
 
 HOST = $(shell hostname)
