@@ -35,9 +35,9 @@ template <class Key,
 				return (key_compare()(a.first, b.first));
 			}
 
-			value_compare &operator=(const value_compare &) {
-				return *this;
-			}
+			// value_compare &operator=(const value_compare &) {
+			// 	return *this;
+			// }
 		};
 
 		typedef typename

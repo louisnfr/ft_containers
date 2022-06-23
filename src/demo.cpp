@@ -1,4 +1,4 @@
-#include "inc/utility/libs.hpp"
+#include "inc/utility/demo.hpp"
 
 static void	announce(std::string msg) {
 	std::cout << "\033[1;32m" << msg << "\033[0m" << std::endl;
@@ -73,4 +73,30 @@ void	vector_swap(void) {
 	for (; it != vect2.end(); it++) {
 		std::cout << *it << std::endl;
 	}
+}
+
+void	pair_test(void) {
+	announce("pair test");
+
+	NS::pair<char, int> p;
+
+	p = NS::make_pair('s', 2);
+
+	std::cout << p.first << std::endl;
+	std::cout << p.second << std::endl;
+}
+
+void	unique_keys(void) {
+	announce("unique keys");
+
+	NS::map<int, int> map;
+
+	map.insert(NS::make_pair(7,1));
+	map.insert(NS::make_pair(2,1));
+	map.insert(NS::make_pair(3,1));
+	map.insert(NS::make_pair(7,10));
+
+	std::cout << map.count(1) << std::endl;
+
+	// map.print_tree();
 }

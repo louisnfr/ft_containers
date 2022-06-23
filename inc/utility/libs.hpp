@@ -28,3 +28,16 @@
 #include "inc/test/stack_test.hpp"
 #include "inc/test/map_test.hpp"
 #include "inc/test/set_test.hpp"
+
+// vector
+void	iterator_comparison(void);
+void	reallocation(void);
+void	vector_swap(void);
+
+// stack
+
+// map
+void	pair_test(void);
+void	unique_keys(void);
+
+// set
