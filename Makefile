@@ -6,7 +6,7 @@
 #    By: lraffin <lraffin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 19:22:29 by lraffin           #+#    #+#              #
-#    Updated: 2022/06/23 02:37:24 by lraffin          ###   ########.fr        #
+#    Updated: 2022/06/23 02:40:52 by lraffin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ diff: $(NAME_FT) $(NAME_STD)
 	@rm -rf $(NAME_FT).txt $(NAME_STD).txt
 
 lint:
-	cpplint --recursive --filter=-whitespace/tab,-whitespace/indent,-whitespace/comments,-legal/copyright,-build/include_what_you_use,-runtime/int,-build/explicit_make_pair .
+	cpplint --recursive --filter=-whitespace/tab,-whitespace/indent,-whitespace/comments,-legal/copyright,-build/include_what_you_use,-runtime/int,-build/explicit_make_pair,-runtime/threadsafe_fn .
 
 .PHONY: all clean fclean re std diff lint
 
