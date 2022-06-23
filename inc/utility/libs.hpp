@@ -39,5 +39,6 @@ void	vector_swap(void);
 // map
 void	pair_test(void);
 void	unique_keys(void);
+void	erase(void);
 
 // set

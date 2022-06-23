@@ -100,3 +100,28 @@ void	unique_keys(void) {
 
 	// map.print_tree();
 }
+
+void	erase(void) {
+	announce("erase");
+
+	NS::map<int, int> map;
+
+	NS::map<int, int>::iterator it = map.begin();
+
+	map.insert(NS::make_pair(7,1));
+	map.insert(NS::make_pair(2,1));
+	map.insert(NS::make_pair(4,1));
+
+	// map.erase(7);
+
+	std::cout << (*it).first << std::endl;
+
+	map.insert(NS::make_pair(3,1));
+
+	// map.erase(3);
+	// map.erase(7);
+
+	std::cout << (*it).first << std::endl;
+
+	// map.print_tree();
+}
