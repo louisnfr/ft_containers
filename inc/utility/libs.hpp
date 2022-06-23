@@ -34,11 +34,8 @@ void	iterator_comparison(void);
 void	reallocation(void);
 void	vector_swap(void);
 
-// stack
-
 // map
 void	pair_test(void);
 void	unique_keys(void);
 void	erase(void);
-
-// set
+void	swap(void);

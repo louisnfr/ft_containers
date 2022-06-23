@@ -96,7 +96,7 @@ void	unique_keys(void) {
 	map.insert(NS::make_pair(3,1));
 	map.insert(NS::make_pair(7,10));
 
-	std::cout << map.count(1) << std::endl;
+	std::cout << map.count(7) << std::endl;
 
 	// map.print_tree();
 }
@@ -106,22 +106,44 @@ void	erase(void) {
 
 	NS::map<int, int> map;
 
-	NS::map<int, int>::iterator it = map.begin();
-
 	map.insert(NS::make_pair(7,1));
 	map.insert(NS::make_pair(2,1));
 	map.insert(NS::make_pair(4,1));
 
-	// map.erase(7);
+	NS::map<int, int>::iterator it = map.begin();
+	it++;
+
+	map.erase(7);
 
 	std::cout << (*it).first << std::endl;
 
 	map.insert(NS::make_pair(3,1));
 
-	// map.erase(3);
-	// map.erase(7);
-
 	std::cout << (*it).first << std::endl;
+}
 
-	// map.print_tree();
+void	swap(void) {
+	announce("swap");
+
+	NS::map<int, int> map1;
+
+	map1.insert(NS::make_pair(7,1));
+	map1.insert(NS::make_pair(2,1));
+	map1.insert(NS::make_pair(4,1));
+
+	NS::map<int, int>::iterator it = map1.begin();
+
+	NS::map<int, int> map2;
+
+	map2.insert(NS::make_pair(70,10));
+	map2.insert(NS::make_pair(20,10));
+	map2.insert(NS::make_pair(40,10));
+
+	map1.swap(map2);
+
+	std::cout << map1.count(7) << std::endl;
+	std::cout << map1.count(70) << std::endl;
+
+	for (; it != map2.end(); it++)
+		std::cout << (*it).first << std::endl;
 }

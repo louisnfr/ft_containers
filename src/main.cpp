@@ -14,6 +14,10 @@ int main(void) {
 	pair_test();
 	unique_keys();
 	erase();
+	swap();
 
-	// test::vector();
+	test::vector();
+	test::stack();
+	test::map();
+	test::set();
 }

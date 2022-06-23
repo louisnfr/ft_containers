@@ -34,10 +34,6 @@ template <class Key,
 			bool operator()(const value_type &a, const value_type &b) const {
 				return (key_compare()(a.first, b.first));
 			}
-
-			// value_compare &operator=(const value_compare &) {
-			// 	return *this;
-			// }
 		};
 
 		typedef typename
